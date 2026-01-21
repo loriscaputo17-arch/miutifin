@@ -51,10 +51,14 @@ export default async function PlaceDetailPage({
         <DescriptionSection text={place.description} />
 
         <InfoSidebar
-          address={place.address}
-          priceLevel={place.price_level}
-          openHours={place.open_hours}
-        />
+                      price={place.price_min}
+                      priceLevel={place.priceLevel}
+                      date={place.start_at}
+                      endDate={place.end_at}
+                      location={place.place_name}
+                      crowdLevel={place.crowdLevel}
+                      source_url={place.source_url}
+                    />
       </div>
 
       {/* REVIEWS */}
