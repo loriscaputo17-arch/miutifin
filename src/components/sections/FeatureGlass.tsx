@@ -1,110 +1,192 @@
 "use client";
 
+import {
+  Sparkles,
+  Brain,
+  Boxes,
+  Wand2,
+  Workflow,
+  Cpu,
+} from "lucide-react";
 import { Container } from "@/components/ui/Container";
 
 export function FeatureGlass() {
   const features = [
     {
       title: "Impossible Product Engineering",
-      desc: "We build technologies that others call unbuildable — unconventional architectures and entirely new categories of digital systems.",
+      desc: (
+        <>
+          We build technologies others call{" "}
+          <em className="italic text-white">unbuildable</em> — unconventional
+          architectures and entirely new{" "}
+          <strong className="font-semibold text-white">
+            categories of digital systems
+          </strong>
+          .
+        </>
+      ),
+      icon: Cpu,
     },
     {
       title: "Creative Systems Design",
-      desc: "We merge engineering and creativity to design systems that think, adapt, and evolve as living technological organisms.",
+      desc: (
+        <>
+          Engineering meets creativity to design systems that{" "}
+          <strong className="font-semibold text-white">
+            think, adapt, and evolve
+          </strong>{" "}
+          as living technological organisms.
+        </>
+      ),
+      icon: Sparkles,
     },
     {
       title: "AI-Driven Concept Development",
-      desc: "We transform early ideas into intelligent product blueprints using intuition, AI reasoning, and deep technical exploration.",
+      desc: (
+        <>
+          Early ideas become{" "}
+          <em className="italic text-white">
+            intelligent product blueprints
+          </em>{" "}
+          through intuition, AI reasoning, and deep technical exploration.
+        </>
+      ),
+      icon: Brain,
     },
     {
       title: "Multi-Domain Integration",
-      desc: "CRMs, documents, data streams, and workflows converge into one synchronized ecosystem with zero friction.",
+      desc: (
+        <>
+          CRMs, documents, data streams, and workflows converge into{" "}
+          <strong className="font-semibold text-white">
+            one synchronized ecosystem
+          </strong>{" "}
+          with zero friction.
+        </>
+      ),
+      icon: Boxes,
     },
     {
       title: "Rapid Experimental Prototyping",
-      desc: "We bring concepts to life fast — prototypes, intelligent demos, and experimental systems that accelerate real decisions.",
+      desc: (
+        <>
+          Concepts become real fast — prototypes, intelligent demos, and{" "}
+          <em className="italic text-white">
+            experimental systems
+          </em>{" "}
+          that accelerate real decisions.
+        </>
+      ),
+      icon: Wand2,
     },
     {
       title: "Autonomous Workflow Orchestration",
-      desc: "We build orchestration engines that coordinate tasks, tools, and AI agents autonomously and precisely.",
+      desc: (
+        <>
+          Orchestration engines that coordinate tasks, tools, and AI agents{" "}
+          <strong className="font-semibold text-white">
+            autonomously and precisely
+          </strong>
+          .
+        </>
+      ),
+      icon: Workflow,
     },
   ];
 
   return (
-    <section className="relative bg-black py-24 sm:py-32 md:py-40 overflow-hidden px-4">
-
-      {/* RED GLOW (responsive sizing) */}
+    <section className="relative bg-black py-24 sm:py-28 md:py-40 overflow-hidden px-4">
+      {/* RED GLOW */}
       <div className="absolute inset-0 pointer-events-none">
-        <div className="
-          absolute left-1/2 top-20 sm:top-32 
-          -translate-x-1/2 
-          w-[350px] h-[350px] 
-          sm:w-[500px] sm:h-[500px]
-          md:w-[650px] md:h-[650px]
-          bg-red-500/20 blur-[140px] sm:blur-[180px]
-        " />
+        <div
+          className="
+            absolute left-1/2 top-24
+            -translate-x-1/2
+            w-[420px] h-[420px]
+            md:w-[700px] md:h-[700px]
+            bg-red-500/20 blur-[160px]
+          "
+        />
       </div>
 
       <Container className="relative z-10 px-6 sm:px-8">
+        {/* HEADER */}
+        <div className="text-center mb-20 md:mb-24 max-w-2xl mx-auto">
+          <div className="flex justify-center mb-6">
+            <div className="flex items-center gap-2 text-red-400 text-sm tracking-[0.35em] font-mono">
+              <span className="block w-2 h-2 rounded-full bg-red-500" />
+              MIUTIFIN SYSTEMS
+            </div>
+          </div>
 
-        {/* ---------- HEADER ---------- */}
-        <div className="text-center mb-16 sm:mb-20 md:mb-24 max-w-2xl mx-auto">
-          <h2 className="
-            text-white 
-            text-3xl sm:text-4xl md:text-6xl 
-            font-semibold leading-tight
-          ">
-            Technology shaped by <span className="text-red-400">creation.</span>
+          <h2 className="text-white text-4xl md:text-6xl font-semibold leading-tight">
+            Technology shaped by{" "}
+            <span className="text-red-400 italic">creation</span>.
           </h2>
 
-          <p className="
-            text-white/60 
-            text-base sm:text-lg 
-            mt-4 sm:mt-6 
-            leading-relaxed max-w-xl mx-auto
-          ">
-            Our services are not processes — they are creative engines  
-            designed to transform impossible ideas into living systems.
+          <p className="text-white/60 text-base sm:text-lg mt-6 leading-relaxed max-w-xl mx-auto">
+            Our services are not processes — they are{" "}
+            <strong className="text-white font-medium">
+              creative engines
+            </strong>{" "}
+            designed to transform impossible ideas into{" "}
+            <em className="italic text-white">living systems</em>.
           </p>
         </div>
 
-        {/* ---------- GRID RESPONSIVA ---------- */}
-        <div className="
-          grid 
-          gap-10 sm:gap-12 md:gap-14 
-          grid-cols-1 
-          sm:grid-cols-2 
-          md:grid-cols-3
-        ">
-          {features.map((f, i) => (
-            <div
-              key={i}
-              className="
-                group relative p-6 sm:p-8 rounded-3xl 
-                bg-white/[0.07] backdrop-blur-xl
-                border border-white/10 
-                shadow-[0_0_40px_-10px_rgba(255,0,0,0.25)]
-                transition-all duration-500
-                hover:-translate-y-2 hover:bg-white/[0.12]
-              "
-              style={{
-                // Soft floating effect only on desktop  
-                transform: `translateY(${i % 3 === 1 ? "30px" : "0"})`,
-              }}
-            >
-              <h3 className="text-white text-xl sm:text-2xl md:text-2xl font-semibold mb-3">
-                {f.title}
-              </h3>
+        {/* FEATURE GRID */}
+        <div
+          className="
+            grid
+            grid-cols-1
+            sm:grid-cols-2
+            md:grid-cols-3
+            gap-8 sm:gap-10 md:gap-14
+          "
+        >
+          {features.map((f, i) => {
+            const Icon = f.icon;
 
-              <p className="text-white/60 text-sm sm:text-base leading-relaxed">
-                {f.desc}
-              </p>
+            return (
+              <div
+                key={i}
+                className={`
+                  group relative
+                  p-7 sm:p-8
+                  rounded-3xl
+                  bg-white/[0.06] backdrop-blur-xl
+                  border border-white/10
+                  shadow-[0_0_40px_-10px_rgba(255,0,0,0.25)]
+                  transition-all duration-500
+                  hover:-translate-y-2 hover:bg-white/[0.1]
+                  md:${i % 3 === 1 ? "translate-y-6" : ""}
+                `}
+              >
+                {/* ICON */}
+                <div
+                  className="
+                    mb-6 inline-flex items-center justify-center
+                    w-12 h-12 rounded-xl
+                    bg-red-500/10 text-red-400
+                    group-hover:scale-110 transition-transform
+                  "
+                >
+                  <Icon size={22} />
+                </div>
 
-              <div className="mt-6 h-[2px] w-16 sm:w-20 bg-gradient-to-r from-red-500 to-transparent" />
-            </div>
-          ))}
+                <h3 className="text-white text-xl sm:text-2xl font-semibold mb-3">
+                  {f.title}
+                </h3>
+
+                <p className="text-white/60 text-sm sm:text-base leading-relaxed">
+                  {f.desc}
+                </p>
+
+                <div className="mt-6 h-[2px] w-16 bg-gradient-to-r from-red-500 to-transparent" />
+              </div>
+            );
+          })}
         </div>
-
       </Container>
     </section>
   );

@@ -34,16 +34,15 @@ export function Navbar() {
       >
         <Container>
           <nav
-  className={clsx(
-    `
-      pointer-events-auto flex items-center justify-between
-      text-[0.65rem] md:text-xs font-medium uppercase
-      tracking-[0.05em] text-white/75 transition-all duration-500
-    `,
-    scrolled ? "py-3 md:py-4" : "py-6 md:py-8"
-  )}
->
-  {/* MOBILE: Logo Left */}
+          className={clsx(
+            `
+              pointer-events-auto flex items-center justify-between
+              text-[0.65rem] md:text-xs font-medium uppercase
+              tracking-[0.05em] text-white/75 transition-all duration-500
+            `,
+            scrolled ? "py-3 md:py-4" : "py-6 md:py-8"
+          )}
+        >
   <Link href="/" className="flex md:hidden items-center">
     <img
       src="./logo_small_trasparent.png"
@@ -71,7 +70,7 @@ export function Navbar() {
     <Link className="hover:text-white" href="#resources">SOCIAL</Link>
     <Link className="hover:text-white" href="#resources">RESOURCES</Link>
 <Link
-  href="#get-started"
+  href="/auth/register"
   className="
     px-5 py-3 rounded-full 
     bg-white hover:bg-red-600 

@@ -12,7 +12,7 @@ export function Hero2() {
       {/* BACKGROUND IMAGE */}
       <div className="absolute inset-0">
         <Image
-          src="/bg2.jpg"
+          src="/bg5.png"
           alt="Miutifin hero background"
           fill
           priority
@@ -54,15 +54,15 @@ export function Hero2() {
           <div className="
             mt-8 
             flex 
-            flex-row               /* <— per mobile: stessa linea */
+            flex-row              
             items-center 
             gap-4 
-            flex-wrap              /* evita overflow su schermi molto piccoli */
-            sm:flex-row            /* su desktop rimane già row */
+            flex-wrap              
+            sm:flex-row            
           ">            
             {/* GET STARTED */}
             <Link
-              href="/get-started"
+              href="/auth/register"
               className="
                 px-6 py-3 rounded-full
                 bg-white hover:bg-red-600 hover:text-white
@@ -75,7 +75,7 @@ export function Hero2() {
 
             {/* LOGIN */}
             <Link
-              href="/login"
+              href="/auth/login"
               className="
                 px-6 py-3 rounded-full
                 border border-white/20 hover:border-white/40
@@ -90,7 +90,7 @@ export function Hero2() {
           </div>
 
           {/* RED UNDERLINE */}
-          <div className="mt-8 h-[2px] w-24 bg-gradient-to-r from-red-500 to-transparent opacity-70" />
+          <div className="mt-8 h-[2px] w-24 bg-red-500/60" />
         </div>
 
         {/* LOWER TEXT BLOCK */}
