@@ -50,3 +50,13 @@ export default function HorizontalSection({ title, items }: Props) {
     </section>
   );
 }
+
+function formatDate(date: string) {
+  return new Date(date).toLocaleString("it-IT", {
+    weekday: "short",
+    day: "numeric",
+    month: "short",
+    hour: "2-digit",
+    minute: "2-digit",
+  });
+}

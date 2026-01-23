@@ -23,12 +23,12 @@ export default function CardItem({
       "
     >
       {/* IMAGE */}
-      <div className="relative w-full h-[300px] overflow-hidden">
+      <div className="relative w-[300px] h-[300px] overflow-hidden">
         <img
           src={imageUrl}
           alt={title}
           className="
-            w-full h-full object-cover
+            w-[300px] h-[300px] object-cover
             transition-transform duration-500
             rounded-2xl
           "
@@ -36,7 +36,7 @@ export default function CardItem({
       </div>
 
       {/* INFO */}
-      <div className="pt-3">
+      <div className="pt-3 w-[300px]">
         <h3 className="text-white font-medium text-base leading-tight">
           {title}
         </h3>

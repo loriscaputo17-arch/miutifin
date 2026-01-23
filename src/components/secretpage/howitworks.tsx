@@ -4,7 +4,7 @@ import { Compass, Lock, Sparkles } from "lucide-react";
 
 export function HowItWorks() {
   return (
-    <section className="relative py-20 overflow-hidden">
+    <section className="relative py-20 px-6 overflow-hidden">
       {/* BACKGROUND DECOR */}
       <div className="absolute inset-0 pointer-events-none">
         <div className="absolute -top-40 left-1/2 -translate-x-1/2 w-[700px] h-[700px] bg-red-600/10 rounded-full blur-[120px]" />

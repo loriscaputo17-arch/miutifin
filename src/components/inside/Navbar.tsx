@@ -73,7 +73,8 @@ export default function Navbar() {
         <div className="hidden md:flex gap-6 text-sm text-white/60">
           <Link href="/home" className="hover:text-white">Home</Link>
           <Link href="/events" className="hover:text-white">Events</Link>
-          <Link href="/journeys" className="hover:text-white">Journeys</Link>
+          <Link href="/search" className="hover:text-white">Places</Link>
+          {/*<Link href="/journeys" className="hover:text-white">Journeys</Link>*/}
           <Link href="/search" className="hover:text-white">Explore</Link>
         </div>
       </div>
@@ -217,7 +218,7 @@ export default function Navbar() {
             🔍 Search
           </Link>
 
-          {["Home", "Events", "Explore", "Plans"].map((item) => (
+          {["Home", "Events", "Explore", "Places"].map((item) => (
             <Link
               key={item}
               href={`/${item.toLowerCase()}`}

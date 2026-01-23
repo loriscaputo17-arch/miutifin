@@ -157,11 +157,6 @@ export default function HomePage() {
         items={filteredSections.bars}
       />
 
-      <ColumnSection
-        title="Popular Journeys Tonight"
-        items={filteredSections.journeys}
-      />
-
       <div className="mt-32">
         <Footer />
       </div>

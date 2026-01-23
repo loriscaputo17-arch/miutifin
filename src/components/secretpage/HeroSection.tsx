@@ -149,7 +149,7 @@ export function HeroSection() {
 
 
       <div className="relative max-w-4xl mx-auto">
-        <p className="mb-6 text-xs uppercase tracking-[0.3em] text-white/40">
+        <p className="md:w-full w-[60%] mx-auto mb-6 text-xs uppercase tracking-[0.3em] text-white/40">
           Private experiences around your city
         </p>
 

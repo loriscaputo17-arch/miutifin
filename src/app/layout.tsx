@@ -2,9 +2,9 @@ import type { Metadata } from "next";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "Miutifin – Step into AI-driven efficiency",
+  title: "Miutifin – Discover Your Journey",
   description:
-    "Miutifin is an AI-driven orchestration layer that turns data into decisions and automated workflows.",
+    "A private platform to explore events, places and journeys. Visibility is intentional. Access is limited.",
 };
 
 export default function RootLayout({
