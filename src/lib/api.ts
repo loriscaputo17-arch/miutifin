@@ -1,22 +1,31 @@
 const API_URL = process.env.NEXT_PUBLIC_API_URL;
 
-type FetchEventsParams = {
+/* --------------------------------------------------
+   TYPES
+-------------------------------------------------- */
+
+export type TimeFilter = "today" | "weekend" | "free" | null;
+
+export type FetchEventsParams = {
+  city: string;
+  query?: string;
+  filter?: TimeFilter | string | null;
+};
+
+export type FetchPlansParams = {
   city: string;
   query?: string;
   filter?: string | null;
 };
 
-type FetchPlansParams = {
-  city: string;
-  query?: string;
-  filter?: string | null;
-};
-
-type FetchSearchParams = {
+export type FetchSearchParams = {
   city: string;
   query: string;
 };
 
+/* --------------------------------------------------
+   HOME
+-------------------------------------------------- */
 export async function fetchHome(city: string) {
   const res = await fetch(`${API_URL}/home?city_slug=${city}`, {
     cache: "no-store",
@@ -29,13 +38,27 @@ export async function fetchHome(city: string) {
   return res.json();
 }
 
+export async function fetchNeighborhood(city: string) {
+  const res = await fetch(`${API_URL}/by_neighborhood?city_slug=${city}`, {
+    cache: "no-store",
+  });
+
+  if (!res.ok) {
+    throw new Error("Failed to load home");
+  }
+
+  return res.json();
+}
+
+/* --------------------------------------------------
+   EVENTS
+-------------------------------------------------- */
 export async function fetchEvents({
   city,
   query,
   filter,
 }: FetchEventsParams) {
   const params = new URLSearchParams();
-
   params.append("city_slug", city);
 
   if (query) {
@@ -46,9 +69,10 @@ export async function fetchEvents({
     params.append("filter", filter);
   }
 
-  const res = await fetch(`${API_URL}/events?${params.toString()}`, {
-    cache: "no-store",
-  });
+  const res = await fetch(
+    `${API_URL}/events?${params.toString()}`,
+    { cache: "no-store" }
+  );
 
   if (!res.ok) {
     throw new Error("Failed to load events");
@@ -57,6 +81,9 @@ export async function fetchEvents({
   return res.json();
 }
 
+/* --------------------------------------------------
+   PLANS
+-------------------------------------------------- */
 export async function fetchPlans({
   city,
   query,
@@ -69,7 +96,7 @@ export async function fetchPlans({
   if (filter) params.append("filter", filter);
 
   const res = await fetch(
-    `${process.env.NEXT_PUBLIC_API_URL}/plans?${params.toString()}`,
+    `${API_URL}/plans?${params.toString()}`,
     { cache: "no-store" }
   );
 
@@ -80,6 +107,9 @@ export async function fetchPlans({
   return res.json();
 }
 
+/* --------------------------------------------------
+   SEARCH
+-------------------------------------------------- */
 export async function fetchSearch({
   city,
   query,
@@ -89,7 +119,7 @@ export async function fetchSearch({
   params.append("q", query);
 
   const res = await fetch(
-    `${process.env.NEXT_PUBLIC_API_URL}/search?${params.toString()}`,
+    `${API_URL}/search?${params.toString()}`,
     { cache: "no-store" }
   );
 

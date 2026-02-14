@@ -39,7 +39,7 @@ export function Navbar() {
 
               {/* TikTok */}
               <a 
-                href="https://www.tiktok.com/@miutifin" 
+                href="https://www.tiktok.com/@loris_caputo" 
                 target="_blank" 
                 className="hover:opacity-80 transition"
               >
@@ -50,7 +50,7 @@ export function Navbar() {
 
               {/* Instagram */}
               <a 
-                href="https://instagram.com/miutifin" 
+                href="https://instagram.com/miutifinglobal" 
                 target="_blank" 
                 className="hover:opacity-80 transition"
               >
@@ -72,7 +72,7 @@ export function Navbar() {
 
               {/* WhatsApp */}
               <a 
-                href="https://wa.me/393000000000" 
+                href="https://wa.me/393478655415" 
                 target="_blank" 
                 className="hover:opacity-80 transition"
               >
@@ -83,7 +83,7 @@ export function Navbar() {
 
               {/* Email */}
               <a 
-                href="mailto:hello@miutifin.com"
+                href="mailto:miutifin.ask@google.com"
                 className="hover:opacity-80 transition"
               >
                 <svg width="22" height="22" fill="white" viewBox="0 0 24 24">
@@ -155,7 +155,14 @@ export function Navbar() {
         </button>
 
         {/* MENU CONTENT */}
-        <nav className="relative h-full flex flex-col justify-center px-8 gap-10 text-left">
+        <nav className="relative h-full flex flex-col justify-center px-8 gap-4 text-left">
+            <div className="mb-12">
+              <img
+                  src="/miutifinlogo.png"
+                  alt="Miutifin"
+                  className="w-[25%] w-[45%]"
+                  />
+            </div>
 
             <a
               href="/"
@@ -181,32 +188,40 @@ export function Navbar() {
               Login
             </a>
 
-            <div className="h-px bg-white/10 my-6" />
+            <div className="h-px bg-white/10 my-3" />
 
-            <div className="flex gap-6 text-white/70">
-            <a href="https://instagram.com" target="_blank">Instagram</a>
-            <a href="https://tiktok.com" target="_blank">TikTok</a>
-            <a 
-                href="https://linkedin.com/company/miutifin" 
-                target="_blank" 
-              >
-                LinkedIn
-              </a>
+            <div className="inline text-white/70">
+              <div className="mb-4">
+                <a href="https://instagram.com/miutifinglobal" target="_blank">Instagram</a>
+              </div>
+              <div className="mb-4">
+                <a href="https://www.tiktok.com/@loris_caputo" target="_blank">TikTok</a>
+              </div>
 
-              {/* WhatsApp */}
-              <a 
-                href="https://wa.me/393000000000" 
-                target="_blank" 
-              >
-                WhatsApp
-              </a>
+              <div className="mb-4">
+                <a 
+                  href="https://linkedin.com/company/miutifin" 
+                  target="_blank" 
+                >
+                  LinkedIn
+                </a>
+              </div>
+              <div className="mb-4">
+                <a 
+                  href="https://wa.me/393478655415" 
+                  target="_blank" 
+                >
+                  WhatsApp
+                </a>
+              </div>
 
-              {/* Email */}
-              <a 
-                href="mailto:hello@miutifin.com"
-              >
-                Email
-              </a>
+              <div className="mb-4">
+                <a 
+                  href="mailto:miutifin.ask@gmail.com"
+                >
+                  Email
+                </a>
+              </div>
 
             </div>
 

@@ -70,7 +70,7 @@ export function Navbar() {
     <Link className="hover:text-white" href="#resources">SOCIAL</Link>
     <Link className="hover:text-white" href="#resources">RESOURCES</Link>
 <Link
-  href="/auth/register"
+  href="/"
   className="
     px-5 py-3 rounded-full 
     bg-white hover:bg-red-600 
@@ -130,7 +130,7 @@ export function Navbar() {
           <Link href="#how" onClick={() => setOpen(false)} className="text-lg text-white/80 hover:text-white transition">HOW IT WORKS</Link>
           <Link href="#pricing" onClick={() => setOpen(false)} className="text-lg text-white/80 hover:text-white transition">PRICING</Link>
           <Link href="#resources" onClick={() => setOpen(false)} className="text-lg text-white/80 hover:text-white transition">RESOURCES</Link>
-          <Link href="#get-started" onClick={() => setOpen(false)} className="text-lg text-white/80 hover:text-white transition">GET STARTED</Link>
+          <Link href="/" onClick={() => setOpen(false)} className="text-lg text-white/80 hover:text-white transition">GET STARTED</Link>
         </div>
 
         {/* SIDEBAR FOOTER */}

@@ -45,14 +45,6 @@ export default function CardItem({
           <span className="text-white/50 text-xs uppercase tracking-wide">
             {category}
           </span>
-
-          <span
-            className={`text-xs ${
-              isOpen ? "text-green-400" : "text-red-400"
-            }`}
-          >
-            {isOpen ? "Open" : "Closed"}
-          </span>
         </div>
       </div>
     </div>

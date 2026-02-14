@@ -4,14 +4,15 @@ import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
 import { useEffect, useState, useRef } from "react";
 import { createSupabaseBrowserClient } from "@/lib/supabaseClient";
+import { useCity } from "@/context/CityContext";
 
-const CITIES = ["Milano", "Roma", "Torino", "Napoli", "Bologna", "Firenze"];
+const CITIES = ["Milano"];
 
 export default function Navbar() {
   const supabase = createSupabaseBrowserClient();
 
   const [user, setUser] = useState<any>(null);
-  const [city, setCity] = useState("Milano");
+  const { city, setCity } = useCity();
   const [cityOpen, setCityOpen] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
 
@@ -22,15 +23,8 @@ export default function Navbar() {
     supabase.auth.getUser().then(({ data }) => setUser(data.user));
   }, []);
 
-  /* CITY */
-  useEffect(() => {
-    const saved = localStorage.getItem("city");
-    if (saved) setCity(saved);
-  }, []);
-
   const selectCity = (c: string) => {
     setCity(c);
-    localStorage.setItem("city", c);
     setCityOpen(false);
   };
 
@@ -62,7 +56,7 @@ export default function Navbar() {
     >
       {/* LEFT */}
       <div className="flex items-center gap-4">
-        <Link href="/">
+        <Link href="/home">
           <img
             src="/logo_small_trasparent.png"
             className="h-8 w-8 object-contain"
@@ -73,9 +67,8 @@ export default function Navbar() {
         <div className="hidden md:flex gap-6 text-sm text-white/60">
           <Link href="/home" className="hover:text-white">Home</Link>
           <Link href="/events" className="hover:text-white">Events</Link>
-          <Link href="/search" className="hover:text-white">Places</Link>
+          <Link href="/map" className="hover:text-white">Places</Link>
           {/*<Link href="/journeys" className="hover:text-white">Journeys</Link>*/}
-          <Link href="/search" className="hover:text-white">Explore</Link>
         </div>
       </div>
 
@@ -171,7 +164,7 @@ export default function Navbar() {
           onClick={() => setMenuOpen(true)}
           className="md:hidden text-white text-xl px-2"
         >
-          ☰
+          <svg xmlns="http://www.w3.org/2000/svg" fill="white" height={"24px"} width={"24px"} viewBox="0 0 640 640"><path d="M96 160C96 142.3 110.3 128 128 128L512 128C529.7 128 544 142.3 544 160C544 177.7 529.7 192 512 192L128 192C110.3 192 96 177.7 96 160zM96 320C96 302.3 110.3 288 128 288L512 288C529.7 288 544 302.3 544 320C544 337.7 529.7 352 512 352L128 352C110.3 352 96 337.7 96 320zM544 480C544 497.7 529.7 512 512 512L128 512C110.3 512 96 497.7 96 480C96 462.3 110.3 448 128 448L512 448C529.7 448 544 462.3 544 480z"/></svg>
         </button>
       </div>
     </motion.nav>
@@ -218,7 +211,7 @@ export default function Navbar() {
             🔍 Search
           </Link>
 
-          {["Home", "Events", "Explore", "Places"].map((item) => (
+          {["Home", "Events", "Map"].map((item) => (
             <Link
               key={item}
               href={`/${item.toLowerCase()}`}

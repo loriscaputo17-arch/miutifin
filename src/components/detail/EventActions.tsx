@@ -262,7 +262,7 @@ export default function EventActions({
               initial={{ opacity: 0, y: 6 }}
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: 6 }}
-              className="absolute left-0 mt-2 w-56 rounded-xl bg-[#0b0b0b] border border-white/10 shadow-xl"
+              className="absolute md:left-0 left-[-80%] z-100 mt-2 w-56 rounded-xl bg-[#0b0b0b] border border-white/10 shadow-xl"
             >
               <ShareItem icon={<MessageCircle size={16} />} label="WhatsApp" onClick={share.whatsapp} />
               <ShareItem icon={<Send size={16} />} label="Telegram" onClick={share.telegram} />
@@ -278,7 +278,7 @@ export default function EventActions({
       </div>
 
       <div className="text-sm text-white/50">
-        Attendees: {goingCount}
+        People: {goingCount}
       </div>
     </div>
   );

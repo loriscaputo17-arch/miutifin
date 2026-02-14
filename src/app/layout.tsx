@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import "./globals.css";
+import { CityProvider } from "@/context/CityContext";
 
 export const metadata: Metadata = {
   title: "Miutifin – Discover Your Journey",
@@ -14,7 +15,11 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className="bg-black text-white">{children}</body>
+      <body className="bg-black text-white">
+        <CityProvider>
+          {children}
+        </CityProvider>
+      </body>
     </html>
   );
 }

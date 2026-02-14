@@ -40,7 +40,7 @@ export default function MapSectionMini({ lat, lng, title }: Props) {
   }, [lat, lng]);
 
   return (
-    <section className="mt-12 px-6 max-w-8xl mx-auto">
+    <section className="mt-4 mx-auto">
       <div className="h-64 rounded-2xl overflow-hidden border border-white/5">
         <div ref={mapContainerRef} className="w-full h-full" />
       </div>

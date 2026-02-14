@@ -24,9 +24,11 @@ export default function HorizontalSection({ title, items }: Props) {
         {/* HEADER */}
         <div className="flex items-center justify-between px-6 mb-4">
           <h2 className="text-lg sm:text-xl text-white">{title}</h2>
-          <button className="text-white/40 text-sm hover:text-white">
-            See all
-          </button>
+          <a href="/events">
+            <button className="text-white/40 text-sm hover:text-white">
+              See all
+            </button>
+          </a>
         </div>
 
         {/* SCROLL */}

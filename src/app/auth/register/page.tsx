@@ -58,6 +58,31 @@ export default function RegisterPage() {
 
   const [done, setDone] = useState(false);
 
+  const inviteToken =
+  typeof window !== "undefined"
+    ? new URLSearchParams(window.location.search).get("invite")
+    : null;
+
+    useEffect(() => {
+      if (!inviteToken) {
+        setErrorMsg("Accesso riservato. Serve un invito.");
+        return;
+      }
+
+      fetch(`${process.env.NEXT_PUBLIC_API_URL}/admin/auth/invite/${inviteToken}`)
+        .then((r) => {
+          if (!r.ok) throw new Error("Invalid invite");
+          return r.json();
+        })
+        .then((data) => {
+          setEmail(data.email); // 🔥 prefill email
+        })
+        .catch(() => {
+          setErrorMsg("Invito non valido o scaduto.");
+        });
+    }, [inviteToken]);
+
+
   useEffect(() => {
     supabase
       .from("categories")
@@ -135,6 +160,16 @@ export default function RegisterPage() {
       }
     );
 
+    await fetch(
+      `${process.env.NEXT_PUBLIC_API_URL}/admin/waitlist/consume`,
+      {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ token: inviteToken }),
+      }
+    );
+
+
     if (rpcError) {
       if (rpcError.message === "NICKNAME_TAKEN") {
         setErrorMsg("Questo nickname è già in uso, scegline un altro.");
@@ -150,6 +185,15 @@ export default function RegisterPage() {
     setLoading(false);
     setDone(true);
   };
+
+  if (errorMsg && step === 1) {
+    return (
+      <div className="min-h-screen bg-[#050505] flex items-center justify-center text-white">
+        <p>{errorMsg}</p>
+      </div>
+    );
+  }
+
 
   return (
     <div className="min-h-screen bg-[#050505] flex items-center justify-center px-4">

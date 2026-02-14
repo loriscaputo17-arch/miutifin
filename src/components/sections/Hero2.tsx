@@ -59,33 +59,7 @@ export function Hero2() {
             gap-4 
             flex-wrap              
             sm:flex-row            
-          ">            
-            {/* GET STARTED */}
-            <Link
-              href="/auth/register"
-              className="
-                px-6 py-3 rounded-full
-                bg-white hover:bg-red-600 hover:text-white
-                text-black text-sm uppercase 
-                transition-all
-              "
-            >
-              Get Started
-            </Link>
-
-            {/* LOGIN */}
-            <Link
-              href="/auth/login"
-              className="
-                px-6 py-3 rounded-full
-                border border-white/20 hover:border-white/40
-                text-white/80 hover:text-white 
-                text-sm uppercase 
-                bg-white/5 backdrop-blur-md transition
-              "
-            >
-              Login
-            </Link>
+          "> 
 
           </div>
 

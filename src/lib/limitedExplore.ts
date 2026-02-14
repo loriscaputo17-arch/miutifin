@@ -1,38 +1,46 @@
 const API_URL = process.env.NEXT_PUBLIC_API_URL;
 
 type LimitedExploreParams = {
-  city: string;
-  date?: string;
-  people?: number;
-  type?: "event" | "place" | "activity" | "journey";
+  city_slug: string;
+  type?: "event" | "place" | "mixed";
   price?: number;
+  district?: string;
 };
 
-export async function fetchLimitedExplore({
-  city,
-  date,
-  people,
-  type,
-  price,
-}: LimitedExploreParams) {
-  const params = new URLSearchParams();
+type ExploreSearchParams = {
+  city_slug: string;
+  type: "event" | "place" | "mixed";
+  price?: number;
+  district?: string;
+};
 
-  params.set("city_slug", city);
-  if (date) params.set("date", date);
-  if (people) params.set("people", String(people));
-  if (type) params.set("type", type);
-  if (price) params.set("price", String(price));
+export async function fetchLimitedExplore(params: LimitedExploreParams) {
+  const qs = new URLSearchParams(
+    Object.entries(params).filter(([, v]) => v !== undefined) as any
+  );
 
   const res = await fetch(
-    `${API_URL}/limited-explore?${params.toString()}`,
-    {
-      cache: "no-store",
-    }
+    `${process.env.NEXT_PUBLIC_API_URL}/explore/limited?${qs.toString()}`
+  );
+
+  if (!res.ok) throw new Error("Explore failed");
+  return res.json();
+}
+
+export async function fetchExploreSearch(params: ExploreSearchParams) {
+  const qs = new URLSearchParams(
+    Object.entries(params).filter(([, v]) => v !== undefined) as any
+  );
+
+  const res = await fetch(
+    `${API_URL}/explore/search?${qs.toString()}`
   );
 
   if (!res.ok) {
-    throw new Error("Failed to load limited explore");
+    throw new Error("Explore search failed");
   }
 
   return res.json();
 }
+
+

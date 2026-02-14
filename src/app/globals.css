@@ -1,3 +1,5 @@
+@import "mapbox-gl/dist/mapbox-gl.css";
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -23,5 +25,91 @@ html {
 
 .animate-fadeIn {
   animation: fadeIn 0.25s ease-out;
+}
+
+@layer components {
+  .admin-input {
+    @apply
+      w-full
+      bg-black/40
+      border border-white/10
+      rounded-xl
+      px-4 py-2.5
+      text-white
+      text-sm
+      outline-none
+      transition
+      placeholder:text-white/30
+      hover:border-white/20
+      focus:border-white/40
+      focus:bg-black/60;
+  }
+
+  .admin-label {
+    @apply
+      text-xs
+      text-white/40
+      mb-1
+      block;
+  }
+
+  .admin-card {
+    @apply
+      bg-[#0c0c0c]
+      border border-white/5
+      rounded-2xl;
+  }
+
+  .admin-button-primary {
+    @apply
+      bg-white
+      text-black
+      px-5 py-2
+      rounded-lg
+      font-medium
+      text-sm
+      hover:bg-white/90
+      disabled:opacity-50;
+  }
+
+  .admin-button-secondary {
+    @apply
+      bg-white/10
+      text-white
+      px-4 py-2
+      rounded-lg
+      text-sm
+      hover:bg-white/20;
+  }
+}
+
+.map-pin {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  cursor: pointer;
+  transform: translateY(-4px);
+}
+
+.pin-dot {
+  width: 14px;
+  height: 14px;
+  background: #ffffff;
+  border: 3px solid #000;
+  border-radius: 9999px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.4);
+}
+
+.pin-label {
+  margin-top: 6px;
+  padding: 2px 8px;
+  background: rgba(0,0,0,0.75);
+  color: white;
+  font-size: 11px;
+  border-radius: 9999px;
+  white-space: nowrap;
+  max-width: 140px;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 

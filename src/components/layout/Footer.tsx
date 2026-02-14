@@ -1,7 +1,38 @@
+"use client";
+
+import { useState } from "react";
 import { Container } from "../ui/Container";
 import { BodyMuted } from "../ui/Typography";
 
 export function Footer() {
+  const [email, setEmail] = useState("");
+  const [phone, setPhone] = useState("");
+  const [loading, setLoading] = useState(false);
+  const [success, setSuccess] = useState(false);
+  const [error, setError] = useState<string | null>(null);
+
+  async function handleSubmit() {
+    setLoading(true);
+    setError(null);
+
+    const res = await fetch("/api/newsletter", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ email, phone }),
+    });
+
+    const data = await res.json();
+    setLoading(false);
+
+    if (!res.ok) {
+      setError(data.error || "Something went wrong");
+      return;
+    }
+
+    setSuccess(true);
+    setEmail("");
+    setPhone("");
+  }
   return (
     <footer className="border-t border-white/10 bg-black pt-16 pb-12 px-4">
        <div className=" w-full flex justify-center pointer-events-none mb-12">
@@ -33,8 +64,7 @@ export function Footer() {
 
             {/* SHORT ABOUT */}
             <p className="text-white/60 text-sm leading-relaxed">
-              Miutifin empowers organizations to automate workflows, accelerate 
-              decision-making, and unlock AI-powered operations with precision.
+              Miutifin is a software house where technology and vision come together to create products built to last.
             </p>
 
             {/* SOCIAL ICONS */}
@@ -42,7 +72,7 @@ export function Footer() {
 
               {/* TikTok */}
               <a 
-                href="https://www.tiktok.com/@miutifin" 
+                href="https://www.tiktok.com/@loris_caputo" 
                 target="_blank" 
                 className="hover:opacity-80 transition"
               >
@@ -53,7 +83,7 @@ export function Footer() {
 
               {/* Instagram */}
               <a 
-                href="https://instagram.com/miutifin" 
+                href="https://instagram.com/miutifinglobal" 
                 target="_blank" 
                 className="hover:opacity-80 transition"
               >
@@ -75,7 +105,7 @@ export function Footer() {
 
               {/* WhatsApp */}
               <a 
-                href="https://wa.me/393000000000" 
+                href="https://wa.me/393478655415" 
                 target="_blank" 
                 className="hover:opacity-80 transition"
               >
@@ -86,7 +116,7 @@ export function Footer() {
 
               {/* Email */}
               <a 
-                href="mailto:hello@miutifin.com"
+                href="mailto:miutifin.ask@gmail.com"
                 className="hover:opacity-80 transition"
               >
                 <svg width="22" height="22" fill="white" viewBox="0 0 24 24">
@@ -97,29 +127,50 @@ export function Footer() {
             </div>
 
             {/* NEWSLETTER */}
-            <div className="flex flex-col gap-3 mt-4">
-              <h4 className="text-white/80 text-xs uppercase tracking-wider">
-                Stay Updated
-              </h4>
+<div className="flex flex-col gap-3 mt-4">
+  <h4 className="text-white/80 text-xs uppercase tracking-wider">
+    Stay Updated
+  </h4>
 
-              <div className="flex flex-col gap-3">
-                <input
-                  type="email"
-                  placeholder="Your email"
-                  className="bg-white/5 border border-white/10 text-sm text-white rounded-xl px-4 py-2 placeholder-white/40 focus:bg-white/10 outline-none"
-                />
+  {!success ? (
+    <div className="flex flex-col gap-3">
+      <input
+        type="email"
+        placeholder="Your email"
+        value={email}
+        onChange={(e) => setEmail(e.target.value)}
+        className="bg-white/5 border border-white/10 text-sm text-white rounded-xl px-4 py-2 placeholder-white/40 focus:bg-white/10 outline-none"
+      />
 
-                <input
-                  type="tel"
-                  placeholder="Phone number"
-                  className="bg-white/5 border border-white/10 text-sm text-white rounded-xl px-4 py-2 placeholder-white/40 focus:bg-white/10 outline-none"
-                />
+      <input
+        type="tel"
+        placeholder="Phone number"
+        value={phone}
+        onChange={(e) => setPhone(e.target.value)}
+        className="bg-white/5 border border-white/10 text-sm text-white rounded-xl px-4 py-2 placeholder-white/40 focus:bg-white/10 outline-none"
+      />
 
-                <button className="bg-white text-black font-medium rounded-xl py-2 hover:bg-white/90 transition">
-                  Subscribe
-                </button>
-              </div>
-            </div>
+      <button
+        onClick={handleSubmit}
+        disabled={loading}
+        className="bg-white text-black font-medium rounded-xl py-2 hover:bg-white/90 transition disabled:opacity-50"
+      >
+        {loading ? "Saving..." : "Subscribe"}
+      </button>
+
+      {error && (
+        <p className="text-xs text-red-500">
+          {error}
+        </p>
+      )}
+    </div>
+  ) : (
+    <p className="text-sm text-white/70">
+      Thanks for joining. We’ll reach out when it matters.
+    </p>
+  )}
+</div>
+
           </div>
 
           {/* LINK COLUMNS */}
@@ -133,8 +184,8 @@ export function Footer() {
               <ul className="space-y-2 text-white/50">
                 <li><a href="#features" className="hover:text-white transition">Features</a></li>
                 <li><a href="#solutions" className="hover:text-white transition">Solutions</a></li>
-                <li><a href="#pricing" className="hover:text-white transition">Pricing</a></li>
-                <li><a href="#how" className="hover:text-white transition">How it Works</a></li>
+                <li><a href="#howitworks2" className="hover:text-white transition">How it Works</a></li>
+                <li><a href="#invite" className="hover:text-white transition">Invite friends</a></li>
               </ul>
             </div>
 
@@ -144,15 +195,15 @@ export function Footer() {
                 Company
               </h3>
               <ul className="space-y-2 text-white/50">
-                <li><a href="#about" className="hover:text-white transition">About</a></li>
-                <li><a href="#careers" className="hover:text-white transition">Careers</a></li>
+                <li><a href="/hub" className="hover:text-white transition">About</a></li>
+                {/*<li><a href="#careers" className="hover:text-white transition">Careers</a></li>
                 <li><a href="#contact" className="hover:text-white transition">Contact</a></li>
-                <li><a href="#team" className="hover:text-white transition">Team</a></li>
+                <li><a href="#team" className="hover:text-white transition">Team</a></li>*/}
               </ul>
             </div>
 
             {/* RESOURCES */}
-            <div>
+            {/*<div>
               <h3 className="text-white/80 font-semibold uppercase tracking-wider text-xs mb-3">
                 Resources
               </h3>
@@ -162,7 +213,7 @@ export function Footer() {
                 <li><a href="#guides" className="hover:text-white transition">Guides</a></li>
                 <li><a href="#support" className="hover:text-white transition">Support</a></li>
               </ul>
-            </div>
+            </div>*/}
           </div>
         </div>
 
@@ -177,7 +228,6 @@ export function Footer() {
             <div className="flex gap-6 text-xs text-white/50">
               <a href="#privacy" className="hover:text-white transition">Privacy Policy</a>
               <a href="#terms" className="hover:text-white transition">Terms of Service</a>
-              <a href="#cookies" className="hover:text-white transition">Cookies</a>
             </div>
           </div>
         </div>

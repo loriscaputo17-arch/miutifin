@@ -97,7 +97,7 @@ export default function QuickRating({ eventId }: Props) {
   }
 
   return (
-    <div className="mt-8">
+    <div className="mt-8 md:mb-0 mb-36">
       <p className="text-white mb-2 text-sm">
         Valuta l’evento
       </p>

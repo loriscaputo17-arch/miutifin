@@ -51,44 +51,17 @@ export default function InfoSidebar({
           </div>
         )}
 
-        {/* DATE */}
-        {date && (
-          <div className="text-sm text-white/70">
-            {new Date(date).toLocaleDateString("en-GB", {
-              weekday: "short",
-              day: "numeric",
-              month: "short",
-            })}
-            {endDate && (
-              <> –{" "}
-                {new Date(endDate).toLocaleDateString("en-GB", {
-                  weekday: "short",
-                  day: "numeric",
-                  month: "short",
-                })}
-              </>
-            )}
-          </div>
-        )}
-
-        {/* LOCATION */}
-        {location && (
-          <div className="text-sm text-white/60">
-            {location}
-          </div>
-        )}
-
         {/* CTA */}
         <button
           onClick={() => setOpen(true)}
           disabled={!source_url}
           className="w-full bg-white text-black py-3 rounded-lg font-medium disabled:opacity-40"
         >
-          View tickets
+          Tickets
         </button>
 
         <div className="text-xs text-white/40 text-center">
-          Via official partner
+          Via main platform
         </div>
       </div>
 
