@@ -1,6 +1,7 @@
 "use client";
 
 import { createContext, useContext, useEffect, useState } from "react";
+import posthog from "posthog-js";
 
 type CityContextType = {
   city: string;
@@ -15,12 +16,22 @@ export function CityProvider({ children }: { children: React.ReactNode }) {
   /* load from localStorage */
   useEffect(() => {
     const saved = localStorage.getItem("city");
-    if (saved) setCityState(saved);
+    if (saved) {
+      setCityState(saved);
+
+      // opzionale: evento iniziale
+      posthog.capture("city_loaded", { city: saved });
+    }
   }, []);
 
   const setCity = (c: string) => {
     setCityState(c);
     localStorage.setItem("city", c);
+
+    /* 🔹 PostHog */
+    posthog.capture("city_changed", {
+      city: c,
+    });
   };
 
   return (
