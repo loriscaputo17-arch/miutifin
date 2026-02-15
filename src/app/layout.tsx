@@ -4,6 +4,7 @@ import { CityProvider } from "@/context/CityContext";
 import { PostHogProvider } from "@/context/providers";
 import { PostHogPageView } from "@/context/posthog-pageview";
 import Script from "next/script";
+import { Suspense } from "react";
 
 export const metadata: Metadata = {
   title: "Miutifin – Discover Your Journey",
@@ -39,7 +40,9 @@ export default function RootLayout({
 
       <body className="bg-black text-white">
         <PostHogProvider>
-          <PostHogPageView />
+          <Suspense fallback={null}>
+            <PostHogPageView />
+          </Suspense>
           <CityProvider>
             {children}
           </CityProvider>
