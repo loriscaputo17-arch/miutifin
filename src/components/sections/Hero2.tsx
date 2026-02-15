@@ -73,8 +73,9 @@ export function Hero2() {
             
             {/* LEFT TEXT */}
             <BodyMuted className="text-white/70">
-              Miutifin learns from every interaction — revealing bottlenecks, automating
-              processes, and anticipating what your team needs next.
+             Miutifin designs systems that learn from real operational context —
+analyzing processes, identifying bottlenecks,
+and continuously improving performance.
             </BodyMuted>
 
             {/* RIGHT TEXT */}

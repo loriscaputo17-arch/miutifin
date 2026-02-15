@@ -7,39 +7,32 @@ import { Container } from "@/components/ui/Container";
 export function FeatureCurve() {
   const products = [
     {
-      title: "Miutifin",
+      title: "Miutifin Aggregator",
       desc: "A city-scale discovery and social concierge that learns what you like and suggests where to go, what to do, and who to meet — in real time.",
       tag: "01",
-      image: "/images/miutifin.jpg",
-      href: "/miutifin",
-    },
-    {
-      title: "MONO",
-      desc: "A community operating system for brands, events, and companies — members, drops, guest lists, and engagement managed from a single intelligent layer.",
-      tag: "02",
-      image: "/images/comm.jpg",
-      href: "/mono",
+      image: "/system/miutifinscreen.png",
+      href: "/",
     },
     {
       title: "Cleope",
       desc: "A creative engine for experiences. From concept to flow, Cleope helps design events that feel cinematic, on-brand, and impossible to forget.",
-      tag: "03",
+      tag: "02",
       image: "/system/cleopescreen.png",
-      href: "/cleope",
+      href: "https://cleopeofficial.com",
     },
     {
       title: "Blink",
       desc: "A video-first dating app where matches happen through live calls, not endless swipes — built for real chemistry, not just profiles.",
-      tag: "04",
+      tag: "03",
       image: "/system/blinkscreen.png",
-      href: "/blink",
+      href: "https://blink.chat",
     },
     {
       title: "Skema",
       desc: "A study companion for university: turn files, notes, or audio into structured diagrams and learning maps that make revision actually usable.",
-      tag: "05",
+      tag: "04",
       image: "/system/skemascreen.png",
-      href: "/skema",
+      href: "https://skemapp.com/",
     },
   ];
 
@@ -143,18 +136,6 @@ export function FeatureCurve() {
                       "
                     >
                       Visit
-                    </Link>
-
-                    <Link
-                      href={p.href}
-                      className="
-                        px-6 py-3 rounded-full
-                        border border-white/20 text-white/80
-                        transition-all duration-300
-                        hover:text-white hover:border-white/40
-                      "
-                    >
-                      Discover more
                     </Link>
                   </div>
 

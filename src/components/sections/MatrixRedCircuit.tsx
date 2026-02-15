@@ -10,56 +10,50 @@ import { Container } from "@/components/ui/Container";
 export function FeatureMatrix() {
   const features = [
     {
-      title: "The Right Systems Engine",
+      title: "End-to-End Technology & Product Development",
       icon: Cpu,
       desc: (
         <>
-          We architect technology that feels{" "}
-          <em className="italic text-white">unreal</em> until it exists.
-          Miutifin turns abstract,{" "}
+          We design and build digital products{" "}
           <strong className="font-semibold text-white">
-            unbuildable visions
-          </strong>{" "}
-          into real systems by designing the underlying architecture,
-          data models, and execution logic required to operate at scale.
-          This means fewer compromises, cleaner foundations, and products
-          that remain adaptable long after launch.
+            from the ground up
+          </strong>
+          . From system architecture to production-ready software,
+          we develop custom solutions written in native technologies,
+          tailored to real business, product, and market needs.
+          No templates. No shortcuts. Only systems engineered to last.
         </>
       ),
     },
     {
-      title: "Autonomous Creative Intelligence",
+      title: "Custom AI & LLM-Based Solutions",
       icon: BrainCircuit,
       desc: (
         <>
-          A system that{" "}
+          We design and develop{" "}
           <strong className="font-semibold text-white">
-            thinks alongside you
-          </strong>
-          , not after you. Miutifin continuously expands ideas,
-          proposes alternatives, and redesigns workflows based on
-          real usage, constraints, and objectives. Instead of static
-          features, you get an intelligence layer that actively
-          contributes to strategy, execution, and evolution.
+            custom AI systems
+          </strong>{" "}
+          and Large Language Model solutions from scratch.
+          From model selection and fine-tuning to orchestration,
+          reasoning pipelines, and real-world integration,
+          we build AI as part of the product — not as an add-on.
         </>
       ),
     },
     {
-      title: "Total Signal Convergence",
+      title: "Technology, Marketing & Growth Systems",
       icon: Network,
       desc: (
         <>
-          Every interaction becomes a{" "}
-          <em className="italic text-white">signal</em>.
-          Every signal becomes{" "}
-          <strong className="font-semibold text-white">
-            usable intelligence
-          </strong>
-          . Miutifin connects data, documents, tools, and workflows
-          into a single operational context, allowing decisions to be
-          informed by the full picture rather than isolated inputs.
-          The result is a system that understands how everything
-          relates — and acts accordingly.
+          We combine technology and marketing into{" "}
+          <em className="italic text-white">
+            unified digital ecosystems
+          </em>
+          . Platforms, data, automation, analytics, and growth tools
+          are designed together, allowing products to scale,
+          communicate, and evolve with a clear technical
+          and strategic foundation.
         </>
       ),
     },
@@ -104,27 +98,24 @@ export function FeatureMatrix() {
           <div className="flex justify-center mb-6">
             <div className="flex items-center gap-2 text-red-400 text-sm tracking-[0.35em] font-mono">
               <span className="block w-2 h-2 rounded-full bg-red-500" />
-              MIUTIFIN CIRCUIT
+              MIUTIFIN SYSTEMS
             </div>
           </div>
 
           <h2 className="text-white text-4xl md:text-6xl font-semibold leading-tight">
-            The system beneath
+            We build technology
             <br className="hidden sm:block" />
             <span className="text-red-400 italic">
-              everything you build
+              from zero
             </span>
             .
           </h2>
 
           <p className="text-white/60 mt-6 text-base sm:text-lg max-w-xl mx-auto leading-relaxed">
-            Miutifin designs systems that do not exist yet —
-            an architectural engine built to translate{" "}
-            <strong className="text-white font-medium">
-              ambitious ideas
-            </strong>{" "}
-            into real, scalable, and operational technology without
-            sacrificing flexibility or long-term vision.
+            Miutifin is a technology production company.
+            We design and develop custom software, digital products,
+            and AI-powered systems from scratch — combining engineering,
+            algorithms, and strategy into scalable, real-world solutions.
           </p>
         </div>
 

@@ -4,18 +4,18 @@ import { Container } from "@/components/ui/Container";
 import { motion } from "framer-motion";
 
 export function FeatureShowcase() {
-  const features = [
+   const features = [
     {
-      title: "Self-Calibrating Intelligence",
-      desc: "An intelligence layer that continuously observes patterns, adapts its internal logic, and refines future decisions automatically. Every interaction becomes feedback. Every signal strengthens the system.",
+      title: "Custom Software Development",
+      desc: "We design and build custom software systems tailored to real operational needs. From backend architecture to core business logic, every system is engineered for reliability, performance, and long-term maintainability.",
     },
     {
-      title: "Precision Orchestration",
-      desc: "A deterministic orchestration engine coordinating tools, agents, and workflows with absolute precision. Complex operations execute seamlessly across multiple domains in real time.",
+      title: "Web Platforms & Digital Systems",
+      desc: "We develop complex web platforms and internal tools that handle data, users, and workflows at scale. Our focus is on clean architecture, security, and seamless user experience across devices.",
     },
     {
-      title: "Unified Neural Layer",
-      desc: "A single cognitive fabric connecting data, documents, processes, and decisions. No silos. No fragmentation. One evolving intelligence that understands the entire operational context.",
+      title: "Mobile & Cross-Platform Applications",
+      desc: "We build high-quality mobile applications for iOS, Android, and cross-platform environments. From early prototypes to production-ready apps, we ensure performance, stability, and scalability.",
     },
   ];
 
@@ -29,19 +29,19 @@ export function FeatureShowcase() {
         {/* HEADER */}
         <div className="max-w-3xl mb-20 md:mb-28">
           <span className="text-red-400/80 tracking-[0.3em] uppercase text-xs">
-            Core Capabilities
+            Core Technology
           </span>
 
           <h2 className="text-white text-4xl sm:text-5xl md:text-6xl font-semibold leading-tight mt-6">
-            Built as a system.
+            Engineered as a system.
             <br />
-            Designed to <span className="text-red-400 italic">evolve</span>.
+            Built to <span className="text-red-400 italic">scale</span>.
           </h2>
 
           <p className="text-white/60 text-lg mt-6 max-w-xl">
-            Miutifin is not a collection of features.
-            It is an intelligent foundation designed to adapt,
-            orchestrate, and scale across complexity.
+            Miutifin is a technology production company.
+            We design and build software systems from the ground up,
+            focusing on architecture, reliability, and long-term evolution.
           </p>
         </div>
 

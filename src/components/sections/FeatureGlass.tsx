@@ -13,81 +13,91 @@ import { Container } from "@/components/ui/Container";
 export function FeatureGlass() {
   const features = [
     {
-      title: "Impossible Product Engineering",
+      title: "Custom Software & Product Development",
       desc: (
         <>
-          We build technologies others call{" "}
-          <em className="italic text-white">unbuildable</em> — unconventional
-          architectures and entirely new{" "}
+          We design and build{" "}
           <strong className="font-semibold text-white">
-            categories of digital systems
-          </strong>
-          .
+            custom software products
+          </strong>{" "}
+          from the ground up. From backend systems to full digital
+          platforms, every solution is engineered specifically
+          for the product, the market, and long-term scalability.
         </>
       ),
       icon: Cpu,
     },
     {
-      title: "Creative Systems Design",
+      title: "Web Platforms & Digital Ecosystems",
       desc: (
         <>
-          Engineering meets creativity to design systems that{" "}
+          We develop complex{" "}
           <strong className="font-semibold text-white">
-            think, adapt, and evolve
+            web platforms
           </strong>{" "}
-          as living technological organisms.
-        </>
-      ),
-      icon: Sparkles,
-    },
-    {
-      title: "AI-Driven Concept Development",
-      desc: (
-        <>
-          Early ideas become{" "}
-          <em className="italic text-white">
-            intelligent product blueprints
-          </em>{" "}
-          through intuition, AI reasoning, and deep technical exploration.
-        </>
-      ),
-      icon: Brain,
-    },
-    {
-      title: "Multi-Domain Integration",
-      desc: (
-        <>
-          CRMs, documents, data streams, and workflows converge into{" "}
-          <strong className="font-semibold text-white">
-            one synchronized ecosystem
-          </strong>{" "}
-          with zero friction.
+          that manage users, data, content, and workflows.
+          Clean architecture, secure infrastructure, and
+          performance-focused user experiences are built in by design.
         </>
       ),
       icon: Boxes,
     },
     {
-      title: "Rapid Experimental Prototyping",
+      title: "Mobile Applications (Native & Cross-Platform)",
       desc: (
         <>
-          Concepts become real fast — prototypes, intelligent demos, and{" "}
+          We build high-quality{" "}
           <em className="italic text-white">
-            experimental systems
+            mobile applications
           </em>{" "}
-          that accelerate real decisions.
+          using native and cross-platform technologies.
+          From MVPs to production-ready apps,
+          we focus on stability, performance, and maintainability.
+        </>
+      ),
+      icon: Sparkles,
+    },
+    {
+      title: "Custom AI & LLM Systems",
+      desc: (
+        <>
+          We design and implement{" "}
+          <strong className="font-semibold text-white">
+            AI and LLM-based solutions
+          </strong>{" "}
+          from scratch. Model selection, fine-tuning,
+          orchestration, and integration are handled
+          as part of a single, coherent system.
+        </>
+      ),
+      icon: Brain,
+    },
+    {
+      title: "Rapid Prototyping & MVP Development",
+      desc: (
+        <>
+          We turn ideas into{" "}
+          <em className="italic text-white">
+            working products
+          </em>{" "}
+          quickly. Prototypes and MVPs are built to validate
+          real assumptions, without compromising code quality
+          or future scalability.
         </>
       ),
       icon: Wand2,
     },
     {
-      title: "Autonomous Workflow Orchestration",
+      title: "Workflow Automation & System Integration",
       desc: (
         <>
-          Orchestration engines that coordinate tasks, tools, and AI agents{" "}
+          We automate and connect existing tools, services,
+          and processes into{" "}
           <strong className="font-semibold text-white">
-            autonomously and precisely
+            unified operational systems
           </strong>
-          .
+          . Technology and automation are designed to reduce
+          friction and support real business workflows.
         </>
       ),
       icon: Workflow,
@@ -115,22 +125,20 @@ export function FeatureGlass() {
           <div className="flex justify-center mb-6">
             <div className="flex items-center gap-2 text-red-400 text-sm tracking-[0.35em] font-mono">
               <span className="block w-2 h-2 rounded-full bg-red-500" />
-              MIUTIFIN SYSTEMS
+              MIUTIFIN SERVICES
             </div>
           </div>
 
           <h2 className="text-white text-4xl md:text-6xl font-semibold leading-tight">
-            Technology shaped by{" "}
-            <span className="text-red-400 italic">creation</span>.
+            Technology built
+            <span className="text-red-400 italic"> from scratch</span>.
           </h2>
 
           <p className="text-white/60 text-base sm:text-lg mt-6 leading-relaxed max-w-xl mx-auto">
-            Our services are not processes — they are{" "}
-            <strong className="text-white font-medium">
-              creative engines
-            </strong>{" "}
-            designed to transform impossible ideas into{" "}
-            <em className="italic text-white">living systems</em>.
+            Miutifin is a technology production company.
+            We design, develop, and deliver custom software,
+            digital platforms, and AI-powered systems
+            built to support real products and real businesses.
           </p>
         </div>
 
