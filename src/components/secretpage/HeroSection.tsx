@@ -262,7 +262,14 @@ export function HeroSection() {
               </div>
             )}
 
-            <div className="p-6 grid md:grid-cols-4 gap-6 max-h-[70vh] overflow-y-auto">
+              <div className="p-4 md:p-6 
+                grid grid-cols-1 
+                sm:grid-cols-2 
+                lg:grid-cols-3 
+                xl:grid-cols-4 
+                gap-4 md:gap-6 
+                max-h-[70vh] 
+                overflow-y-auto">
               {(type !== "place" && activeResultTab === "events") &&
                 exploreResult.events.map((e: any) => (
                   <ExploreCard key={e.id} item={e} />
@@ -480,7 +487,7 @@ function ExploreCard({
   return (
     <div
       onClick={onClick}
-      className="relative aspect-[9/16] rounded-3xl overflow-hidden cursor-pointer group"
+      className="relative aspect-[9/16] rounded-3xl overflow-hidden cursor-pointer group md:w-auto w-[80%] md:ml-0 ml-auto md:mr-0 mr-auto"
     >
       {/* BG IMAGE */}
       <div
