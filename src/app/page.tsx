@@ -168,8 +168,8 @@ function VerticalCard({
         className="absolute inset-0 bg-cover bg-center transition-transform duration-500 "
         style={{
           backgroundImage: imageUrl
-            ? `url(${imageUrl})`
-            : "linear-gradient(to bottom, #111, #000)",
+            ? `url(/api/image-proxy?url=${encodeURIComponent(imageUrl)})`
+            : `url('https://i.pinimg.com/736x/f1/80/57/f1805766c6f8955bbe860b98f4ded9a5.jpg')`,
         }}
       />
 

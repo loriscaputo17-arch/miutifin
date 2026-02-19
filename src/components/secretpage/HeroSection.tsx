@@ -494,8 +494,8 @@ function ExploreCard({
         className="absolute inset-0 bg-cover bg-center transition-transform duration-500"
         style={{
           backgroundImage: item.imageUrl
-            ? `url(${item.imageUrl})`
-            : "linear-gradient(to bottom, #111, #000)",
+            ? `url(/api/image-proxy?url=${encodeURIComponent(item.imageUrl)})`
+            : `url('https://i.pinimg.com/736x/f1/80/57/f1805766c6f8955bbe860b98f4ded9a5.jpg')`,
         }}
       />
 
