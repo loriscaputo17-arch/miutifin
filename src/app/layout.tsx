@@ -11,11 +11,11 @@ const BASE_URL = "https://miutifin.com";
 export const metadata: Metadata = {
   metadataBase: new URL(BASE_URL),
   title: {
-    default: "Miutifin | Tech Agency – AI, Software Development, Robotics & Marketing",
+    default: "Miutifin | Tech Hub – AI, Software Development, Robotics & Marketing",
     template: "%s | Miutifin",
   },
   description:
-    "Miutifin is a full-stack tech agency specialising in AI development, software engineering, robotics automation, and AI-driven marketing. We build LLM integrations, web & mobile apps, ROS 2 systems, and data-driven growth strategies.",
+    "Miutifin is a full-stack tech hub specialising in AI development, software engineering, robotics automation, and AI-driven marketing. We build LLM integrations, web & mobile apps, ROS 2 systems, and data-driven growth strategies.",
   keywords: [
     "tech agency",
     "software development agency",
