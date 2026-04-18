@@ -63,7 +63,7 @@ export function Footer() {
           </div>
           <div>
             <h4 className="f-col-title">Get in touch</h4>
-            <div className="f-ci"><div className="f-ci-icon">@</div><div><div className="f-ci-l">Email</div><div className="f-ci-v"><a href="mailto:miutifin.ask@gmail.com">hello@miutifin.com</a></div></div></div>
+            <div className="f-ci"><div className="f-ci-icon">@</div><div><div className="f-ci-l">Email</div><div className="f-ci-v"><a href="mailto:miutifin.ask@gmail.com">miutifin.ask@gmail.com</a></div></div></div>
             <div className="f-ci"><div className="f-ci-icon">◎</div><div><div className="f-ci-l">Presence</div><div className="f-ci-v">US · UK · AU · DE · FR · ES · IT</div></div></div>
             <div className="f-ci"><div className="f-ci-icon">⬡</div><div><div className="f-ci-l">Response</div><div className="f-ci-v">Within 24h guaranteed</div></div></div>
             <div style={{ marginTop: "1.3rem" }}><a href="#contact" className="btn-r" style={{ fontSize: 13, padding: "9px 18px" }}>Start now →</a></div>
