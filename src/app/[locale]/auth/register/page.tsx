@@ -149,7 +149,6 @@ export default function RegisterPage() {
     const { error: rpcError } = await supabase.rpc(
       "complete_registration",
       {
-        p_user_id: userId,
         p_nickname: nickname,
         p_birthday: birthday,
         p_avg_price_level: avgPrice,

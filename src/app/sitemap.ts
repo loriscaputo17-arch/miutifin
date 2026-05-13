@@ -1,32 +1,32 @@
 import type { MetadataRoute } from "next";
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const base = "https://miutifin.com";
+  const baseUrl = "https://miutifin.com";
+  const lastModified = new Date();
 
-  return [
-    {
-      url: base,
-      lastModified: new Date(),
-      changeFrequency: "weekly",
-      priority: 1,
-    },
-    {
-      url: `${base}/landing`,
-      lastModified: new Date(),
-      changeFrequency: "weekly",
-      priority: 0.9,
-    },
-    {
-      url: `${base}/privacy`,
-      lastModified: new Date(),
-      changeFrequency: "yearly",
-      priority: 0.3,
-    },
-    {
-      url: `${base}/terms`,
-      lastModified: new Date(),
-      changeFrequency: "yearly",
-      priority: 0.3,
-    },
+  const routes = [
+    "",
+    "/esco",
+    "/esco/journal",
+    "/esco/press",
+    "/esco/cookies",
+    "/esco/privacy",
+    "/esco/terms",
   ];
+
+  const locales = ["it", "en"];
+
+  return routes.flatMap((route) =>
+    locales.map((locale) => ({
+      url: `${baseUrl}/${locale}${route}`,
+      lastModified,
+      changeFrequency: "weekly" as const,
+      priority: route === "" ? 1.0 : route === "/esco" ? 0.9 : 0.6,
+      alternates: {
+        languages: Object.fromEntries(
+          locales.map((l) => [l, `${baseUrl}/${l}${route}`])
+        ),
+      },
+    }))
+  );
 }
