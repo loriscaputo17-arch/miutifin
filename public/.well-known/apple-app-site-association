@@ -1,0 +1,35 @@
+
+{
+
+  "applinks": {
+
+    "apps": [],
+
+    "details": [
+
+      {
+
+        "appID": "4ZZKR3BX3H.com.miutifin.esco",
+
+        "paths": [
+
+          "/journey/*",
+
+          "/place/*",
+
+          "/event/*",
+
+          "/list/*",
+
+          "/u/*"
+
+        ]
+
+      }
+
+    ]
+
+  }
+
+}
+
