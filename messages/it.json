@@ -106,54 +106,78 @@
     "line3": "In settimane, non in trimestri."
   },
   "works": {
-    "eyebrow": "Lavori selezionati",
-    "titleLine1": "Cose",
-    "titleLine1Em": "fatte.",
-    "titleLine2": "Non slide deck.",
-    "lead": "Una selezione di progetti recenti. Codice in produzione, utenti reali, metriche misurate. Senza NDA siamo limitati su nomi e dettagli — chiedici di più in privato.",
-    "items": [
-      {
-        "tag": "AI / Production",
-        "title": "Conversational agent per fintech enterprise",
-        "desc": "RAG su 80k documenti regolatori, deployato su 12 mercati EU.",
-        "mono": "Ai",
-        "size": "lg",
-        "image": "/images/img1.jpg"
-      },
-      {
-        "tag": "Software",
-        "title": "Piattaforma SaaS B2B in 6 settimane",
-        "desc": "Da MVP a 1.200 utenti paganti — stack Next.js + Supabase.",
-        "mono": "S",
-        "size": "md",
-        "image": "/images/img2.jpg"
-      },
-      {
-        "tag": "Robotics",
-        "title": "Sistema di vision per linea industriale",
-        "desc": "ROS 2 + edge inference. -34% scarti in linea.",
-        "mono": "R",
-        "size": "tall",
-        "image": "/images/img3.jpg"
-      },
-      {
-        "tag": "Growth",
-        "title": "SEO + AI content engine",
-        "desc": "+420% traffico organico in 9 mesi.",
-        "mono": "G",
-        "size": "wide",
-        "image": "/images/img4.jpg"
-      },
-      {
-        "tag": "Generative",
-        "title": "Pipeline video AI multilingua",
-        "desc": "1.000+ video al mese, voice cloning + lip sync.",
-        "mono": "V",
-        "size": "sm",
-        "image": "/images/img5.jpg"
-      }
-    ]
-  },
+  "eyebrow": "Lavori selezionati",
+  "titleLine1": "Creati",
+  "titleLine1Em": "per avere impatto.",
+  "titleLine2": "Non per fare scena.",
+  "lead": "Sistemi AI, piattaforme custom, robotica ed esperienze digitali sviluppate e rilasciate in produzione. Utenti reali, metriche concrete, execution veloce. Alcuni progetti sono sotto NDA — chiedici maggiori dettagli in privato.",
+  "items": [
+    {
+      "tag": "Sistemi AI",
+      "title": "Agent AI enterprise per fintech regolamentata",
+      "desc": "Infrastruttura multi-agent RAG su oltre 80k documenti normativi distribuiti in 12 mercati EU.",
+      "mono": "AI",
+      "size": "lg",
+      "image": "/images/img1.jpg"
+    },
+    {
+      "tag": "Piattaforme Custom",
+      "title": "Piattaforma SaaS B2B sviluppata in 6 settimane",
+      "desc": "Dal concept a 1.200 utenti paganti con architettura Next.js + Supabase.",
+      "mono": "CP",
+      "size": "md",
+      "image": "/images/img2.jpg"
+    },
+    {
+      "tag": "App Mobile",
+      "title": "Ecosistema di app mobile multipiattaforma",
+      "desc": "Applicazioni iOS e Android con realtime sync, abbonamenti e funzionalità AI integrate.",
+      "mono": "AP",
+      "size": "sm",
+      "image": "/images/img6.jpg"
+    },
+    {
+      "tag": "Robotica",
+      "title": "Sviluppo e delivery di robot industriali e umanoidi",
+      "desc": "Integrazione di sistemi robotici per eventi, retail, hospitality e ambienti industriali.",
+      "mono": "RB",
+      "size": "tall",
+      "image": "/images/img3.jpg"
+    },
+    {
+      "tag": "Computer Vision",
+      "title": "Sistema AI di visione per linee produttive",
+      "desc": "ROS 2 + edge inference con riduzione del 34% degli scarti di produzione.",
+      "mono": "CV",
+      "size": "md",
+      "image": "/images/img7.jpg"
+    },
+    {
+      "tag": "Eventi & Esperienze",
+      "title": "Esperienze immersive AI per eventi e convention",
+      "desc": "Visual realtime, installazioni interattive e regie AI-driven per conferenze e brand experience.",
+      "mono": "EV",
+      "size": "wide",
+      "image": "/images/img8.jpg"
+    },
+    {
+      "tag": "Growth Infrastructure",
+      "title": "Motore SEO e content generation AI-native",
+      "desc": "Pipeline semantiche e automazioni AI con crescita organica del +420% in 9 mesi.",
+      "mono": "GR",
+      "size": "wide",
+      "image": "/images/img4.jpg"
+    },
+    {
+      "tag": "Media Generativi",
+      "title": "Pipeline AI per video multilingua",
+      "desc": "Oltre 1.000 video al mese con voice cloning, lip sync e localizzazione automatizzata.",
+      "mono": "V",
+      "size": "sm",
+      "image": "/images/img5.jpg"
+    }
+  ]
+},
   "capabilities": {
     "eyebrow": "Capabilities",
     "titleLine1": "Otto discipline.",
@@ -334,7 +358,7 @@
     "membersCount": "{count} membri"
   },
   "hero": {
-    "eyebrow": "Su invito · Ora in 4 città",
+    "eyebrow": "Su invito",
     "mark": "esco — by miutifin",
     "titleLine1": "La città,",
     "titleLine1Em": "letta",

@@ -222,11 +222,11 @@ function Hero() {
           </>
         )}
 
-        <div className="esco-hero-meta">
+        {/*<div className="esco-hero-meta">
           <a href="#login" className="esco-hero-meta-link">
             {t("alreadyInvited")} <strong>{t("openApp")} →</strong>
           </a>
-        </div>
+        </div>*/}
       </div>
     </section>
   );

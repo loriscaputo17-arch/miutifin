@@ -207,12 +207,12 @@ export const ESCO_STYLES = `
     z-index:0;white-space:nowrap;
   }
   .esco-hero-stats{
-    position:absolute;top:96px;right:20%;
+    position:absolute;top:96px;right:10%;
     display:flex;align-items:center;gap:1.4rem;z-index:3;
   }
   @media(max-width:780px){
     .esco-hero-stats{
-      position:relative;top:0;right:0;
+      position:relative;top:0;left:5%;
       margin-bottom:2rem;justify-content:flex-start;
       gap:1rem;flex-wrap:wrap;
     }
@@ -861,7 +861,7 @@ export const ESCO_STYLES = `
 @media(max-width:520px){
   .esco-hero-form{
     flex-direction:column;border-radius:24px;
-    padding:6px;gap:0;background:transparent;
+    padding:6px;gap:1rem;background:transparent;
     border:none;
   }
   .esco-hero-form input{

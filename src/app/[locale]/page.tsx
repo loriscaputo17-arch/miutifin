@@ -29,7 +29,7 @@ const S = `
     --bg-3:#0f0f0f;
     --ink:#f5f5f4;
     --ink-2:rgba(245,245,244,0.62);
-    --ink-3:rgba(245,245,244,0.36);
+    --ink-3:rgba(245,245,244,0.84);
     --ink-4:rgba(245,245,244,0.16);
     --line:rgba(245,245,244,0.08);
     --line-2:rgba(245,245,244,0.04);
@@ -328,7 +328,7 @@ const S = `
   .work-overlay{
     position:absolute;inset:0;z-index:2;display:flex;flex-direction:column;justify-content:flex-end;
     padding:clamp(1.4rem,2.5vw,2rem);
-    background:linear-gradient(180deg,transparent 40%,rgba(5,5,5,0.85) 100%);
+    background:linear-gradient(180deg, transparent 40%, rgb(5 5 5) 100%);
   }
   .work-tag{
     display:inline-flex;align-self:flex-start;align-items:center;gap:6px;

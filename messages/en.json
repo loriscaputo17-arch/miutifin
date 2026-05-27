@@ -106,54 +106,78 @@
     "line3": "In weeks, not quarters."
   },
   "works": {
-    "eyebrow": "Selected work",
-    "titleLine1": "Things",
-    "titleLine1Em": "shipped.",
-    "titleLine2": "Not slide decks.",
-    "lead": "A selection of recent projects. Production code, real users, measured metrics. NDAs limit what we can share publicly — ask us in private.",
-    "items": [
-      {
-        "tag": "AI / Production",
-        "title": "Conversational agent for enterprise fintech",
-        "desc": "RAG over 80k regulatory documents, deployed across 12 EU markets.",
-        "mono": "Ai",
-        "size": "lg",
-        "image": "/images/img1.jpg"
-      },
-      {
-        "tag": "Software",
-        "title": "B2B SaaS platform in 6 weeks",
-        "desc": "From MVP to 1,200 paying users — Next.js + Supabase stack.",
-        "mono": "S",
-        "size": "md",
-        "image": "/images/img2.jpg"
-      },
-      {
-        "tag": "Robotics",
-        "title": "Vision system for industrial line",
-        "desc": "ROS 2 + edge inference. -34% line waste.",
-        "mono": "R",
-        "size": "tall",
-        "image": "/images/img3.jpg"
-      },
-      {
-        "tag": "Growth",
-        "title": "SEO + AI content engine",
-        "desc": "+420% organic traffic in 9 months.",
-        "mono": "G",
-        "size": "wide",
-        "image": "/images/img4.jpg"
-      },
-      {
-        "tag": "Generative",
-        "title": "Multilingual AI video pipeline",
-        "desc": "1,000+ videos per month, voice cloning + lip sync.",
-        "mono": "V",
-        "size": "sm",
-        "image": "/images/img5.jpg"
-      }
-    ]
-  },
+  "eyebrow": "Selected work",
+  "titleLine1": "Built",
+  "titleLine1Em": "for impact.",
+  "titleLine2": "Not for pitch decks.",
+  "lead": "AI systems, platforms, robotics and digital experiences shipped in production. Real users, measurable outcomes, fast execution. Some projects are under NDA — ask us privately for details.",
+  "items": [
+    {
+      "tag": "AI Systems",
+      "title": "Enterprise AI agent for regulated fintech",
+      "desc": "Multi-agent RAG infrastructure on 80k+ regulatory documents across 12 EU markets.",
+      "mono": "AI",
+      "size": "lg",
+      "image": "/images/img1.jpg"
+    },
+    {
+      "tag": "Custom Platforms",
+      "title": "Custom SaaS platform launched in 6 weeks",
+      "desc": "From concept to 1,200 paying users with a lean Next.js + Supabase architecture.",
+      "mono": "CP",
+      "size": "md",
+      "image": "/images/img2.jpg"
+    },
+    {
+      "tag": "Mobile Apps",
+      "title": "Cross-platform mobile app ecosystem",
+      "desc": "Native-feeling iOS and Android apps with realtime sync, subscriptions and AI features.",
+      "mono": "AP",
+      "size": "sm",
+      "image": "/images/img6.jpg"
+    },
+    {
+      "tag": "Robotics",
+      "title": "Industrial and humanoid robotics integration",
+      "desc": "Development, deployment and orchestration of robotic systems for events, retail and industry.",
+      "mono": "RB",
+      "size": "tall",
+      "image": "/images/img3.jpg"
+    },
+    {
+      "tag": "Computer Vision",
+      "title": "AI vision system for manufacturing",
+      "desc": "ROS 2 + edge inference reducing production waste by 34% across production lines.",
+      "mono": "CV",
+      "size": "md",
+      "image": "/images/img7.jpg"
+    },
+    {
+      "tag": "Events & Experiences",
+      "title": "Interactive AI-powered event experiences",
+      "desc": "Realtime visuals, immersive installations and AI-driven stage experiences for conferences and brands.",
+      "mono": "EV",
+      "size": "wide",
+      "image": "/images/img8.jpg"
+    },
+    {
+      "tag": "Growth Infrastructure",
+      "title": "AI-native SEO and content engine",
+      "desc": "Semantic content pipelines driving +420% organic traffic growth in 9 months.",
+      "mono": "GR",
+      "size": "wide",
+      "image": "/images/img4.jpg"
+    },
+    {
+      "tag": "Generative Media",
+      "title": "Multilingual AI video generation pipeline",
+      "desc": "1,000+ videos monthly with voice cloning, lip sync and automated localization.",
+      "mono": "V",
+      "size": "sm",
+      "image": "/images/img5.jpg"
+    }
+  ]
+},
   "capabilities": {
     "eyebrow": "Capabilities",
     "titleLine1": "Eight disciplines.",
@@ -334,7 +358,7 @@
     "membersCount": "{count} members"
   },
   "hero": {
-    "eyebrow": "By invitation · Now in 4 cities",
+    "eyebrow": "By invitation",
     "mark": "esco — by miutifin",
     "titleLine1": "The city,",
     "titleLine1Em": "read",
