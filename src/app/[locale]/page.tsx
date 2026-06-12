@@ -159,7 +159,7 @@ const S = `
 
   .hero-headline{
     font-family:var(--f-serif);font-weight:400;
-    font-size:clamp(3.2rem,11vw,10rem);
+    font-size:clamp(3.2rem,8vw,10rem);
     line-height:0.88;letter-spacing:-0.025em;
     color:var(--ink);
   }
@@ -849,11 +849,6 @@ function Hero() {
         <div className="hero-orb b" />
       </motion.div>
       <div className="hero-fade" />
-
-      <div className="hero-top">
-        <span className="hero-pulse" />
-        <span className="hero-top-text">{t("topText")}</span>
-      </div>
 
       <motion.div className="hero-inner" style={{ opacity }}>
         <h1 className="hero-headline">
