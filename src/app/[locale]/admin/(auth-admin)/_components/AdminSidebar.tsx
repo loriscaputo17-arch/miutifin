@@ -125,7 +125,8 @@ const NAV: NavItem[] = [
   { label: "Places", href: "/admin/places", section: "content" },
   { label: "Events", href: "/admin/events", section: "content" },
   { label: "Journeys", href: "/admin/journeys", section: "content" },
-  { label: "Bulk Import", href: "/admin/events/bulk-import", section: "content" },
+  { label: "Bulk Import Events", href: "/admin/events/bulk-import", section: "content" },
+  { label: "Bulk Import Places", href: "/admin/places/bulk-import", section: "content" },
 ];
 
 export function AdminSidebar({ locale }: { locale: string }) {

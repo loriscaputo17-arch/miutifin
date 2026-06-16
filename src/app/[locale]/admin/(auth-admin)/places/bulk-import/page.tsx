@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useEffect, FormEvent } from "react";
-import { useRouter, useParams } from "next/navigation";
+import { useParams } from "next/navigation";
 import Link from "next/link";
 import { createSupabaseBrowserClient } from "@/lib/supabaseClient";
 
@@ -50,6 +50,9 @@ const STYLES = `
   .bi-copy:hover{text-decoration:underline}
   .bi-toast{position:fixed;bottom:24px;left:50%;transform:translateX(-50%);background:#1a1815;color:#fff;padding:14px 24px;border-radius:100px;font-size:13px;font-weight:500;box-shadow:0 8px 32px rgba(0,0,0,0.2);z-index:100}
   .bi-toast.err{background:#b8392f}
+  .bi-cat-table{margin-top:12px;font-size:11px;font-family:Menlo,monospace;color:rgba(26,24,21,0.65)}
+  .bi-cat-table div{padding:3px 0;border-bottom:1px solid rgba(26,24,21,0.04)}
+  .bi-cat-table strong{color:#1a1815;display:inline-block;min-width:100px}
 `;
 
 interface City {
@@ -58,9 +61,10 @@ interface City {
   slug: string;
 }
 
-interface Place {
+interface Category {
   id: string;
   name: string;
+  slug: string;
 }
 
 interface ImportResult {
@@ -73,68 +77,80 @@ interface ImportResult {
 
 const SAMPLE_JSON = `[
   {
-    "title": "DJ Set Marco Carola",
-    "slug": "marco-carola-hi-2026-07-22",
-    "description": "Una notte di techno con Marco Carola. Set di 4 ore al main floor.",
-    "venue_name": "Hï Ibiza",
-    "start_at": "2026-07-22 23:00:00+02",
-    "end_at": "2026-07-23 06:00:00+02",
-    "price_min": 60,
-    "price_max": 120,
-    "popularity": 85,
-    "ticket_url": "https://hiibiza.com/event/marco-carola"
+    "name": "Al Baretto al Baglioni",
+    "slug": "al-baretto-al-baglioni-milano",
+    "description": "Pranzo classico in Quadrilatero, atmosfera anni '70 mai uscita di moda. Crowd di avvocati, editori e signore di Brera. Chiedi il tavolo dietro vicino alla finestra: la vista è migliore e il rumore minore.",
+    "address": "Via Senato 7, Milano",
+    "lat": 45.4708,
+    "lng": 9.2003,
+    "price_level": 4,
+    "popularity": 78,
+    "website_url": "https://baglionihotels.com/baretto",
+    "phone": "+390277076611",
+    "instagram_handle": "albarettomilano"
   },
   {
-    "title": "Black Coffee All Night",
-    "slug": "black-coffee-hi-2026-08-05",
-    "description": "Black Coffee con set extended, dalle 23 alle 6. Sound deep house tribale.",
-    "venue_name": "Hï Ibiza",
-    "start_at": "2026-08-05 23:00:00+02",
-    "end_at": "2026-08-06 06:00:00+02",
-    "price_min": 70,
-    "price_max": 130,
-    "popularity": 88,
-    "ticket_url": "https://hiibiza.com/event/black-coffee"
+    "name": "Pavé",
+    "slug": "pave-milano",
+    "description": "Croissant ai pistacchi di Bronte, caffè che vale la fila. Vai prima delle 10 o dopo le 11: in mezzo è un campo di battaglia di milanesi creativi che lavorano da remoto.",
+    "address": "Via Felice Casati 27, Milano",
+    "lat": 45.4810,
+    "lng": 9.2050,
+    "price_level": 2,
+    "popularity": 82,
+    "instagram_handle": "pavemilano"
   }
 ]`;
 
-const CHATGPT_PROMPT = `Sei un assistente di data-extraction per ESCO, una city-companion editoriale. Dato un input (line-up di un club, locandina, lista artisti, URL del calendario di un locale), genera un array JSON di eventi pronto per il bulk import.
+const CHATGPT_PROMPT = `Sei un assistente di data-extraction per ESCO, una city-companion editoriale. Dato un input (lista di ristoranti, bar, locali, attività), genera un array JSON di places pronto per il bulk import.
 
 OUTPUT: solo JSON array, niente markdown, niente spiegazioni.
 
-CAMPI per ogni event:
-- title (text, obbligatorio): nome evento concise. NO all-caps. Es. "DJ Set Marco Carola"
-- slug (text, obbligatorio): lowercase, hyphenated, include la data. Es. "marco-carola-hi-2026-07-22"
-- description (text, 80-200 parole): voce editoriale ESCO (Cereal/Monocle style). Sensoriale, asciutto, con almeno 1 tip pratico ("arriva alle 23 prima del cambio set"). NO "iconico", "esperienza unica", "imperdibile".
-- venue_name (text, obbligatorio): "Hï Ibiza", "Bar Basso", ecc.
-- start_at (timestamp ISO con timezone): es. "2026-07-22 23:00:00+02" (Italia/Spagna estate +02, inverno +01)
-- end_at (timestamp ISO o null): per club, dalle 23 alle 6 successive. Per concerti, ~2-3 ore dopo.
-- price_min (numero): 0 per free, intero in euro
-- price_max (numero o null): null se prezzo unico
-- popularity (0-100): DJ famoso mondiale 85-95, locale 50-70, niche 30-50
-- ticket_url (URL o null): link biglietti
+CAMPI per ogni place:
+- name (text, obbligatorio): nome del locale, no all-caps. Es. "Al Baretto al Baglioni"
+- slug (text, obbligatorio): lowercase, hyphenated, include la città. Es. "al-baretto-milano"
+- description (text, 60-150 parole): voce editoriale ESCO (Cereal/Monocle style). Sensoriale, asciutto, con almeno 1 tip pratico ("chiedi il tavolo dietro", "arriva prima delle 19"). NO "iconico", "esperienza unica", "imperdibile", "must-try".
+- address (text): indirizzo pieno con città
+- lat, lng (numeri): coordinate approssimate
+- price_level (1-4): 1 = economico, 2 = medio, 3 = medio-alto, 4 = alto
+- popularity (0-100): famoso internazionale 85-95, conosciuto locale 60-80, nicchia 40-60
 - website_url (URL o null)
+- phone (testo o null, formato +39...)
+- instagram_handle (testo senza @, o null)
+- booking_url (URL o null)
 - booking_email (email o null)
 
 RULES:
-1. Output ONLY JSON array. No \`\`\`json fence.
-2. Apostrofi nelle descrizioni: escapali con \\' (es. "L\\'estate")
-3. Se l'input ha 30 eventi, output deve avere 30 oggetti.
-4. Date sempre ISO 8601 con timezone.
-5. Niente "city_id", "place_id", "category_id" → li inietta il sistema dopo.
+1. Output ONLY JSON array. No markdown fence.
+2. URL sempre come plain string "https://..." MAI come markdown link [text](url).
+3. Niente "city_id" o "category_id" → li inietta il sistema dopo (selezioni nel form).
+4. Se non sai un campo, mettilo null (senza virgolette).
 
-Pronto. Mandami il line-up.`;
+Pronto. Mandami la lista.`;
 
-export default function BulkImportEventsPage() {
-  const router = useRouter();
+// Pulisce markdown links e altri artifact di ChatGPT che rompono il JSON
+function sanitizeChatGptJson(raw: string): string {
+  let cleaned = raw.trim();
+  cleaned = cleaned.replace(/^```(?:json)?\s*/gm, "").replace(/```\s*$/gm, "");
+  cleaned = cleaned.replace(/%22/g, '"').replace(/%2C/g, ',').replace(/%3A/g, ':');
+  cleaned = cleaned.replace(/"([a-z_]+)":\s*"\[(https?:\/\/[^"\s,\]]+)/g, '"$1":"$2"');
+  cleaned = cleaned.replace(/"([a-z_]+)\]\([^)]*\)":/g, '"$1":');
+  cleaned = cleaned.replace(/\]\([^)]*\)/g, '');
+  cleaned = cleaned.replace(/"\[(https?:\/\/[^"]+)"/g, '"$1"');
+  cleaned = cleaned.replace(/,\s*,/g, ',');
+  cleaned = cleaned.replace(/,\s*([}\]])/g, '$1');
+  return cleaned;
+}
+
+export default function BulkImportPlacesPage() {
   const params = useParams();
   const locale = (params?.locale as string) || "en";
   const sb = createSupabaseBrowserClient();
 
   const [cities, setCities] = useState<City[]>([]);
-  const [places, setPlaces] = useState<Place[]>([]);
+  const [categories, setCategories] = useState<Category[]>([]);
   const [cityId, setCityId] = useState<string>("");
-  const [placeId, setPlaceId] = useState<string>("");
+  const [categoryId, setCategoryId] = useState<string>("");
   const [jsonInput, setJsonInput] = useState<string>("");
   const [loading, setLoading] = useState(false);
   const [result, setResult] = useState<ImportResult | null>(null);
@@ -157,107 +173,59 @@ export default function BulkImportEventsPage() {
     })();
   }, []);
 
-  // Carica places quando cambia città
+  // Carica categorie (type = 'place')
   useEffect(() => {
-    if (!cityId) {
-      setPlaces([]);
-      setPlaceId("");
-      return;
-    }
     (async () => {
       const { data } = await sb
-        .from("places")
-        .select("id, name")
-        .eq("city_id", cityId)
+        .from("categories")
+        .select("id, name, slug")
+        .eq("type", "place")
         .order("name");
-      if (data) setPlaces(data);
+      if (data) setCategories(data);
     })();
-  }, [cityId]);
+  }, []);
 
   const handleValidate = () => {
     if (!jsonInput.trim()) return showToast("JSON vuoto", true);
     try {
       const parsed = JSON.parse(sanitizeChatGptJson(jsonInput));
       if (!Array.isArray(parsed)) {
-        showToast("Il JSON deve essere un array di eventi", true);
+        showToast("Il JSON deve essere un array di places", true);
         return;
       }
-      showToast(`✓ JSON valido (${parsed.length} eventi pronti)`);
+      showToast(`✓ JSON valido (${parsed.length} places pronti)`);
     } catch (err: any) {
       showToast(`JSON non valido: ${err.message}`, true);
     }
   };
 
-    // Pulisce markdown links e altri artifact di ChatGPT che rompono il JSON
-function sanitizeChatGptJson(raw: string): string {
-  let cleaned = raw.trim();
-
-  // 1. Rimuove ```json ... ``` se presenti
-  cleaned = cleaned.replace(/^```(?:json)?\s*/gm, "").replace(/```\s*$/gm, "");
-
-  // 2. Sostituisce %22 (encoded quote) con virgolette vere
-  cleaned = cleaned.replace(/%22/g, '"');
-  cleaned = cleaned.replace(/%2C/g, ',');
-  cleaned = cleaned.replace(/%3A/g, ':');
-
-  // 3. Pattern aggressivo: rimuove TUTTI i markdown link wrappers [...](...)  
-  // Estrae solo il primo URL dentro [ ] o tra ( ) e scarta il resto
-  // Esempio: "field":"[url1","other":"x","field2](url2)":null
-  // → spezziamo il pattern in modo iterativo
-  
-  // Step 3a: trova "...":"[URL"... e tronca al primo URL valido
-  // Pattern: cattura "field":"[<URL>" e sostituisce con "field":"<URL>"
-  cleaned = cleaned.replace(
-    /"([a-z_]+)":\s*"\[(https?:\/\/[^"\s,\]]+)/g,
-    '"$1":"$2"'
-  );
-
-  // Step 3b: rimuove residui ](...) dopo un campo "field]":null
-  // Esempio: "booking_email](https://...)":null → "booking_email":null
-  cleaned = cleaned.replace(
-    /"([a-z_]+)\]\([^)]*\)":/g,
-    '"$1":'
-  );
-
-  // Step 3c: rimuove qualsiasi pattern residuo ](url) ancora presente
-  cleaned = cleaned.replace(/\]\([^)]*\)/g, '');
-
-  // Step 3d: rimuove parentesi quadre orfane prima di "https://"
-  cleaned = cleaned.replace(/"\[(https?:\/\/[^"]+)"/g, '"$1"');
-
-  // 4. Pulizia finale: doppie virgole, doppi punti, spazi sbagliati
-  cleaned = cleaned.replace(/,\s*,/g, ',');
-  cleaned = cleaned.replace(/,\s*([}\]])/g, '$1'); // virgola prima di } o ]
-
-  return cleaned;
-}
-
   const handleImport = async (e: FormEvent) => {
     e.preventDefault();
     if (!cityId) return showToast("Seleziona una città", true);
+    if (!categoryId) return showToast("Seleziona una categoria", true);
     if (!jsonInput.trim()) return showToast("Incolla del JSON prima", true);
 
-    let parsedEvents: any[];
+    let parsedPlaces: any[];
     try {
-        const sanitized = sanitizeChatGptJson(jsonInput);
-        parsedEvents = JSON.parse(sanitized);
-      if (!Array.isArray(parsedEvents)) throw new Error("non è un array");
+      const sanitized = sanitizeChatGptJson(jsonInput);
+      parsedPlaces = JSON.parse(sanitized);
+      if (!Array.isArray(parsedPlaces)) throw new Error("non è un array");
     } catch (err: any) {
       return showToast(`JSON non valido: ${err.message}`, true);
     }
 
-    // Inietta city_id e place_id (se selezionato)
-    const enriched = parsedEvents.map((ev) => ({
-      ...ev,
+    // Inietta city_id e category_id
+    const enriched = parsedPlaces.map((p) => ({
+      ...p,
       city_id: cityId,
-      place_id: placeId || ev.place_id || null,
+      category_id: categoryId,
     }));
 
     setLoading(true);
     setResult(null);
 
-    const { data, error } = await sb.rpc("admin_bulk_import_events", {
-      p_events: enriched,
+    const { data, error } = await sb.rpc("admin_bulk_import_places", {
+      p_places: enriched,
     });
 
     setLoading(false);
@@ -269,9 +237,8 @@ function sanitizeChatGptJson(raw: string): string {
 
     const res = data as ImportResult;
     setResult(res);
-    showToast(`✓ Creati ${res.created} eventi, ${res.skipped} skipped`);
+    showToast(`✓ Creati ${res.created} places, ${res.skipped} skipped`);
 
-    // Pulisci textarea se tutto OK e niente skip
     if (res.created > 0 && res.skipped === 0) {
       setJsonInput("");
     }
@@ -292,14 +259,14 @@ function sanitizeChatGptJson(raw: string): string {
       <style>{STYLES}</style>
       <main className="bi">
         <div className="bi-top">
-          <Link href={`/${locale}/admin/events`} className="bi-back">← Back to events</Link>
-          <div className="bi-eyebrow">Events · Bulk import</div>
+          <Link href={`/${locale}/admin/places`} className="bi-back">← Back to places</Link>
+          <div className="bi-eyebrow">Places · Bulk import</div>
           <h1 className="bi-h">
-            Carica <span className="red">in batch.</span>
+            Carica luoghi <span className="red">in batch.</span>
           </h1>
           <p className="bi-sub">
-            Incolla un array JSON di eventi (anche 50 alla volta). 
-            Seleziona la città e opzionalmente il place a cui collegarli. 
+            Incolla un array JSON di places (anche 50 alla volta). 
+            Seleziona la città e la categoria a cui assegnarli. 
             ESCO valida tutto, mostra gli errori, importa quelli validi.
           </p>
         </div>
@@ -323,25 +290,25 @@ function sanitizeChatGptJson(raw: string): string {
                     <option key={c.id} value={c.id}>{c.name}</option>
                   ))}
                 </select>
-                <div className="bi-hint">Tutti gli event nel JSON verranno assegnati a questa città.</div>
+                <div className="bi-hint">Tutti i places nel JSON verranno assegnati a questa città.</div>
               </div>
 
               <div className="bi-field">
-                <label className="bi-label">Linked place (optional)</label>
+                <label className="bi-label">Category <span className="req">*</span></label>
                 <select
                   className="bi-select"
-                  value={placeId}
-                  onChange={(e) => setPlaceId(e.target.value)}
-                  disabled={!cityId}
+                  value={categoryId}
+                  onChange={(e) => setCategoryId(e.target.value)}
+                  required
                 >
-                  <option value="">— Nessun place collegato —</option>
-                  {places.map((p) => (
-                    <option key={p.id} value={p.id}>{p.name}</option>
+                  <option value="">— Seleziona categoria —</option>
+                  {categories.map((c) => (
+                    <option key={c.id} value={c.id}>{c.name}</option>
                   ))}
                 </select>
                 <div className="bi-hint">
-                  Se selezionato, tutti gli event verranno collegati a questo place 
-                  (apparirà in "Upcoming here" sulla pagina del place).
+                  Tutti i places nel JSON verranno assegnati a questa categoria. 
+                  Per importi misti (es. ristoranti + bar), fai 2 import separati.
                 </div>
               </div>
             </div>
@@ -359,7 +326,7 @@ function sanitizeChatGptJson(raw: string): string {
                 <button type="button" className="bi-btn-secondary" onClick={handleValidate} disabled={loading}>
                   Validate
                 </button>
-                <button type="submit" className="bi-btn-primary" disabled={loading || !cityId}>
+                <button type="submit" className="bi-btn-primary" disabled={loading || !cityId || !categoryId}>
                   {loading ? "Importing..." : "Import all"}
                 </button>
               </div>
@@ -393,8 +360,8 @@ function sanitizeChatGptJson(raw: string): string {
             <div className="bi-card">
               <div className="bi-section">ChatGPT prompt</div>
               <p style={{ fontSize: 12, color: "rgba(26,24,21,0.65)", marginBottom: 12, lineHeight: 1.6 }}>
-                Copia il prompt sotto, incollalo in <strong>GPT-4o</strong>, poi mandagli il line-up del club. 
-                ChatGPT ti restituisce JSON pronto da incollare qui a sinistra.
+                Copia il prompt sotto, incollalo in <strong>GPT-4o</strong>, poi mandagli la lista di posti. 
+                Per evitare errori JSON, considera di farti generare il JSON direttamente da Claude.
               </p>
               <div className="bi-prompt-box">{CHATGPT_PROMPT}</div>
               <button type="button" className="bi-copy" onClick={copyPrompt}>
@@ -405,13 +372,27 @@ function sanitizeChatGptJson(raw: string): string {
             <div className="bi-card" style={{ marginTop: 16 }}>
               <div className="bi-section">JSON example</div>
               <p style={{ fontSize: 12, color: "rgba(26,24,21,0.65)", marginBottom: 12, lineHeight: 1.6 }}>
-                Formato esatto dei singoli event. <code>city_id</code> e <code>place_id</code> sono iniettati 
+                Formato esatto dei singoli place. <code>city_id</code> e <code>category_id</code> sono iniettati 
                 automaticamente dai campi sopra.
               </p>
               <div className="bi-prompt-box">{SAMPLE_JSON}</div>
               <button type="button" className="bi-copy" onClick={copyExample}>
                 Copy example →
               </button>
+            </div>
+
+            <div className="bi-card" style={{ marginTop: 16 }}>
+              <div className="bi-section">Categories reference</div>
+              <p style={{ fontSize: 12, color: "rgba(26,24,21,0.65)", marginBottom: 12, lineHeight: 1.6 }}>
+                Le categorie disponibili per i places. Seleziona quella giusta nel form sopra prima di importare.
+              </p>
+              <div className="bi-cat-table">
+                {categories.map((c) => (
+                  <div key={c.id}>
+                    <strong>{c.name}</strong> · {c.slug}
+                  </div>
+                ))}
+              </div>
             </div>
           </div>
         </form>
