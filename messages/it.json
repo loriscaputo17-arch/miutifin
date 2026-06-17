@@ -2,32 +2,32 @@
   "metadata": {
     "title": "Miutifin | Tech Hub – AI, Sviluppo Software, Robotica & Marketing",
     "titleTemplate": "%s | Miutifin",
-    "description": "Miutifin è un tech hub full-stack specializzato in sviluppo AI, software engineering, robotica e marketing AI-driven. Costruiamo integrazioni LLM, web e mobile app, sistemi ROS 2 e strategie di crescita data-driven.",
+    "description": "Miutifin è un tech hub full-stack specializzato in sviluppo AI, software engineering, automazione robotica e marketing AI-driven. Costruiamo integrazioni LLM, app web & mobile, sistemi ROS 2 e strategie di crescita data-driven.",
     "ogTitle": "Miutifin | Tech Agency – AI, Sviluppo Software, Robotica & Marketing",
-    "ogDescription": "Tech agency full-stack. Costruiamo sistemi AI, prodotti software, soluzioni di robotica e gestiamo campagne marketing AI-powered. 120+ progetti consegnati.",
+    "ogDescription": "Tech agency full-stack. Costruiamo sistemi AI, prodotti software, soluzioni robotiche e gestiamo campagne marketing AI-powered. 120+ progetti consegnati.",
     "ogImageAlt": "Miutifin – Tech Agency",
     "twitterTitle": "Miutifin | Tech Agency – AI, Sviluppo Software & Robotica",
     "twitterDescription": "Tech agency full-stack specializzata in AI, software engineering, robotica e marketing AI-driven. 120+ progetti consegnati.",
     "ogLocale": "it_IT",
     "keywords": [
       "tech agency",
-      "agenzia sviluppo software",
+      "agenzia di sviluppo software",
       "sviluppo AI",
       "agenzia intelligenza artificiale",
       "machine learning",
       "integrazione LLM",
       "agenti AI",
-      "robotica automazione",
+      "automazione robotica",
       "ROS 2",
       "computer vision",
-      "marketing AI",
       "AI marketing",
+      "marketing AI",
       "agenzia SEO",
       "growth hacking",
       "supporto startup",
       "sviluppo MVP",
       "sviluppo web app",
-      "sviluppo mobile app",
+      "sviluppo app mobile",
       "video AI",
       "AI generativa",
       "Next.js",
@@ -39,7 +39,7 @@
     ]
   },
   "schema": {
-    "orgDescription": "Miutifin è una tech agency full-stack specializzata in sviluppo AI, software engineering, robotica e marketing AI-driven.",
+    "orgDescription": "Miutifin è una tech agency full-stack specializzata in sviluppo AI, software engineering, automazione robotica e marketing AI-driven.",
     "websiteDescription": "Tech agency full-stack: AI, software engineering, robotica e marketing AI-driven.",
     "services": {
       "softwareDev": {
@@ -55,11 +55,11 @@
         "description": "Sistemi embedded, ROS 2, computer vision e automazione industriale."
       },
       "aiMarketing": {
-        "name": "AI Marketing & SEO",
-        "description": "SEO tecnica, strategia content AI-driven, campagne performance e growth hacking."
+        "name": "Marketing AI & SEO",
+        "description": "SEO tecnico, strategia di contenuti AI-driven, campagne performance e growth hacking."
       },
       "videoAi": {
-        "name": "Video AI & Generative",
+        "name": "Video AI & Generativa",
         "description": "Avatar sintetici, voice cloning, generazione video e pipeline creative AI."
       }
     }
@@ -69,29 +69,18 @@
     "process": "Processo",
     "faq": "FAQ",
     "contact": "Contatti",
-    "cta": "Inizia un progetto",
+    "cta": "Inizia una chiamata",
     "menu": "Menu",
     "language": "Lingua",
     "available": "Disponibili — Q2 2026",
     "replyTime": "Risposta entro 24h"
-  },
-  "hero": {
-    "topText": "Disponibili — Q2 2026",
-    "headlineLine1": "Costruiamo",
-    "headlineLine2": "softwares",
-    "headlineLine2Em": "che",
-    "headlineLine3": "restano.",
-    "subtitle": "Tech agency distribuita in 7 paesi. AI, software, robotica, growth. Senior team — niente intermediari, niente buzzword. Solo progetti che vanno in produzione.",
-    "ctaPrimary": "Inizia un progetto",
-    "ctaSecondary": "Vedi i lavori",
-    "scroll": "scroll"
   },
   "strip": {
     "items": [
       "Production-ready",
       "AI-native",
       "7 paesi",
-      "Senior team",
+      "Team senior",
       "MVP in settimane",
       "Trasparenza radicale",
       "Codice che scala",
@@ -103,650 +92,947 @@
     "line1": "Le agenzie promettono.",
     "line2Pre": "Noi",
     "line2Red": "creiamo.",
-    "line3": "In settimane, non in trimestri."
+    "line3": "In settimane, non trimestri."
   },
-  "works": {
-  "eyebrow": "Lavori selezionati",
-  "titleLine1": "Creati",
-  "titleLine1Em": "per avere impatto.",
-  "titleLine2": "Non per fare scena.",
-  "lead": "Sistemi AI, piattaforme custom, robotica ed esperienze digitali sviluppate e rilasciate in produzione. Utenti reali, metriche concrete, execution veloce. Alcuni progetti sono sotto NDA — chiedici maggiori dettagli in privato.",
-  "items": [
-    {
-      "tag": "Sistemi AI",
-      "title": "Agent AI enterprise per fintech regolamentata",
-      "desc": "Infrastruttura multi-agent RAG su oltre 80k documenti normativi distribuiti in 12 mercati EU.",
-      "mono": "AI",
-      "size": "lg",
-      "image": "/images/img1.jpg"
-    },
-    {
-      "tag": "Piattaforme Custom",
-      "title": "Piattaforma SaaS B2B sviluppata in 6 settimane",
-      "desc": "Dal concept a 1.200 utenti paganti con architettura Next.js + Supabase.",
-      "mono": "CP",
-      "size": "md",
-      "image": "/images/img2.jpg"
-    },
-    {
-      "tag": "App Mobile",
-      "title": "Ecosistema di app mobile multipiattaforma",
-      "desc": "Applicazioni iOS e Android con realtime sync, abbonamenti e funzionalità AI integrate.",
-      "mono": "AP",
-      "size": "sm",
-      "image": "/images/img6.jpg"
-    },
-    {
-      "tag": "Robotica",
-      "title": "Sviluppo e delivery di robot industriali e umanoidi",
-      "desc": "Integrazione di sistemi robotici per eventi, retail, hospitality e ambienti industriali.",
-      "mono": "RB",
-      "size": "tall",
-      "image": "/images/img3.jpg"
-    },
-    {
-      "tag": "Computer Vision",
-      "title": "Sistema AI di visione per linee produttive",
-      "desc": "ROS 2 + edge inference con riduzione del 34% degli scarti di produzione.",
-      "mono": "CV",
-      "size": "md",
-      "image": "/images/img7.jpg"
-    },
-    {
-      "tag": "Eventi & Esperienze",
-      "title": "Esperienze immersive AI per eventi e convention",
-      "desc": "Visual realtime, installazioni interattive e regie AI-driven per conferenze e brand experience.",
-      "mono": "EV",
-      "size": "wide",
-      "image": "/images/img8.jpg"
-    },
-    {
-      "tag": "Growth Infrastructure",
-      "title": "Motore SEO e content generation AI-native",
-      "desc": "Pipeline semantiche e automazioni AI con crescita organica del +420% in 9 mesi.",
-      "mono": "GR",
-      "size": "wide",
-      "image": "/images/img4.jpg"
-    },
-    {
-      "tag": "Media Generativi",
-      "title": "Pipeline AI per video multilingua",
-      "desc": "Oltre 1.000 video al mese con voice cloning, lip sync e localizzazione automatizzata.",
-      "mono": "V",
-      "size": "sm",
-      "image": "/images/img5.jpg"
-    }
-  ]
-},
   "capabilities": {
     "eyebrow": "Capabilities",
     "titleLine1": "Otto discipline.",
-    "titleLine2Em": "Un team unico.",
-    "lead": "Dal codice di produzione alla strategia di crescita, passando per AI, robotica e design. Senior in ogni disciplina — non generalisti che fingono di sapere tutto.",
+    "titleLine2Em": "Un solo team.",
+    "lead": "Dal codice di produzione alla strategia di crescita, AI, robotica e design. Senior in ogni disciplina — non generalisti che fingono di sapere tutto.",
     "items": [
-      { "num": "01", "name": "Software Engineering", "desc": "Web app, mobile, API, architetture cloud-native pensate per scalare — non solo per essere consegnate.", "meta": "Engineering" },
-      { "num": "02", "name": "Artificial Intelligence", "desc": "LLM, agenti autonomi, RAG, fine-tuning, automazione che funziona davvero in produzione.", "meta": "AI / ML" },
-      { "num": "03", "name": "Robotics & Automation", "desc": "Sistemi embedded, ROS 2, computer vision, automazione industriale.", "meta": "Robotics" },
-      { "num": "04", "name": "Video AI & Generative", "desc": "Avatar sintetici, voice cloning, video generation, pipeline creative su scala.", "meta": "Generative" },
-      { "num": "05", "name": "Growth & SEO", "desc": "SEO tecnica, AI content strategy, performance campaigns, growth hacking.", "meta": "Growth" },
-      { "num": "06", "name": "Data & Analytics", "desc": "Pipeline ETL, recommendation engines, predictive analytics, dashboard real-time.", "meta": "Data" },
-      { "num": "07", "name": "Startup Studio", "desc": "MVP in poche settimane, architettura scalabile, mentoring fino al funding round.", "meta": "Ventures" },
+      { "num": "01", "name": "Software Engineering", "desc": "Web app, mobile, API, architetture cloud-native costruite per scalare — non solo per essere consegnate.", "meta": "Engineering" },
+      { "num": "02", "name": "Intelligenza Artificiale", "desc": "LLM, agenti autonomi, RAG, fine-tuning, automazioni che funzionano davvero in produzione.", "meta": "AI / ML" },
+      { "num": "03", "name": "Robotica & Automazione", "desc": "Sistemi embedded, ROS 2, computer vision, automazione industriale.", "meta": "Robotica" },
+      { "num": "04", "name": "Video AI & Generativa", "desc": "Avatar sintetici, voice cloning, generazione video, pipeline creative su larga scala.", "meta": "Generativa" },
+      { "num": "05", "name": "Growth & SEO", "desc": "SEO tecnico, strategia di contenuti AI, campagne performance, growth hacking.", "meta": "Growth" },
+      { "num": "06", "name": "Data & Analytics", "desc": "Pipeline ETL, motori di raccomandazione, analytics predittiva, dashboard real-time.", "meta": "Data" },
+      { "num": "07", "name": "Startup Studio", "desc": "MVP in settimane, architettura scalabile, mentoring fino al round di funding.", "meta": "Ventures" },
       { "num": "08", "name": "Design & UX", "desc": "Interfacce che convertono. Design system, prototipazione rapida, ottimizzazione CRO.", "meta": "Design" }
     ]
   },
-  "stats": {
-    "eyebrow": "I numeri",
-    "titleLine1": "Tre anni.",
-    "titleLine1Em": "Sette paesi.",
-    "titleLine2": "Centoventi progetti.",
-    "items": [
-      { "num": "120+", "label": "Progetti consegnati", "detail": "Da MVP a sistemi enterprise — codice in produzione, non slide deck." },
-      { "num": "7", "label": "Paesi attivi", "detail": "USA, UK, Australia, Germania, Francia, Spagna, Italia. Visione locale, esecuzione globale." },
-      { "num": "98%", "label": "Retention rate", "detail": "Quasi tutti i clienti tornano per un secondo progetto. Il KPI che conta davvero." },
-      { "num": "6×", "label": "ROI medio cliente", "detail": "Misurato a 12 mesi dal lancio. Verificabile, non promesso." }
-    ]
-  },
-  "map": {
-    "eyebrow": "Presenza",
-    "titleLine1": "Locali ovunque.",
-    "titleLine2Em": "Distribuiti by design.",
-    "lead": "Sette paesi su tre continenti. Quando dormi tu, qualcuno del team sta scrivendo codice. Quando ti svegli, hai progress nuovi.",
-    "countries": ["USA", "UK", "Germania", "Francia", "Spagna", "Italia", "Australia"]
-  },
-  "process": {
-    "eyebrow": "Come lavoriamo",
-    "titleLine1": "Trasparenza,",
-    "titleLine2Em": "radicale.",
-    "lead": "Quattro step. Niente buzzword, niente fasi inventate per gonfiare il preventivo. Quello che vedi è quello che paghi.",
-    "items": [
-      { "n": "01", "t": "Discovery call", "d": "30 minuti gratuiti. Analizziamo obiettivi, stack, mercato. Ti diamo una valutazione onesta — anche quando dovremmo dirti di non fare il progetto." },
-      { "n": "02", "t": "Architettura & roadmap", "d": "Documento di architettura, scope, timeline e costi. Fissi. Niente forbici, niente sorprese a metà progetto." },
-      { "n": "03", "t": "Build in sprint", "d": "Sprint settimanali, demo live, feedback continui. Sai sempre dove siamo. Accesso diretto al team via Slack o Discord." },
-      { "n": "04", "t": "Launch & scale", "d": "Monitoraggio, ottimizzazione e nuove feature basate su dati reali. Niente lock-in, niente retainer obbligatori." }
-    ]
-  },
-  "team": {
-    "eyebrow": "Il team",
-    "titleLine1": "Persone",
-    "titleLine1Em": "vere.",
-    "titleLine2": "Non un \"team\" sul sito.",
-    "lead": "Quando ci ingaggi, sai chi sta toccando il tuo codice. Niente outsourcing nascosto, niente subappaltatori invisibili.",
-    "items": [
-      { "name": "Loris", "role": "Founder · Engineering", "mono": "L" },
-      { "name": "Senior #2", "role": "AI · Robotics", "mono": "S" },
-      { "name": "Senior #3", "role": "Design · Strategy", "mono": "S" },
-      { "name": "Senior #4", "role": "Growth · SEO", "mono": "S" },
-      { "name": "Senior #5", "role": "Software · Mobile", "mono": "S" },
-      { "name": "Senior #6", "role": "Data · ML", "mono": "S" }
-    ]
-  },
-  "faq": {
-    "eyebrow": "FAQ",
-    "titleLine1": "Domande",
-    "titleLine2Pre": "che",
-    "titleLine2Em": "contano.",
-    "leadPre": "Niente nella tua mente?",
-    "leadLink": "Scrivici direttamente.",
-    "items": [
-      { "q": "Cosa vi rende diversi dalle altre agenzie?", "a": "Lavori direttamente con i senior che fanno il lavoro — non con account manager che fanno da tramite. Siamo distribuiti in 7 paesi: visione locale dei mercati, costi competitivi, pipeline 24/7 grazie al fuso orario." },
-      { "q": "Quanto tempo per costruire un MVP?", "a": "3–6 settimane per la maggior parte dei progetti. Dopo una discovery call ti diamo una stima precisa — non una forbice fatta per coprirci." },
-      { "q": "Come mantenete pricing competitivo?", "a": "Modello distribuito: senior architect dove ha senso, esecuzione dove costa meno mantenendo qualità. A-player ovunque, mai stagisti che imparano sul tuo budget." },
-      { "q": "Lavorate con startup early-stage?", "a": "È uno dei nostri focus. 40+ founder seguiti dal primo commit fino al funding. Sappiamo cosa cercano gli investor in stack tecnico e team." },
-      { "q": "Come funziona l'onboarding?", "a": "Discovery call gratuita → proposta dettagliata con costi e tempi fissi → primo sprint entro 48h. Niente fatturazione a ore con sorprese a fine mese." },
-      { "q": "Come funziona il supporto post-lancio?", "a": "Monitoring attivo, fix bug critici, ottimizzazione infra, nuove feature basate su dati reali. Piani mensili, nessun lock-in obbligatorio." }
-    ]
-  },
-  "ctaFinal": {
-    "eyebrow": "Pronti a partire",
-    "titleLine1": "Hai un'idea.",
-    "titleLine2Pre": "Noi",
-    "titleLine2Em": "la facciamo esistere.",
-    "subtitle": "Discovery call gratuita. Niente sales team, niente pitch deck. Solo una conversazione diretta sul tuo progetto.",
-    "cta": "Inizia ora"
-  },
-  "contact": {
-    "eyebrow": "Contatti",
-    "titleLine1": "Parliamo del",
-    "titleLine2Em": "tuo progetto.",
-    "subtitle": "Risposta entro 24 ore. Nessun sales team, nessuna sequenza email automatica. Solo persone vere.",
-    "details": {
-      "emailLabel": "Email",
-      "replyLabel": "Risposta",
-      "replyValue": "Entro 24h, garantito",
-      "availabilityLabel": "Disponibilità",
-      "availabilityValue": "Q2 2026 — pochi slot rimasti"
-    },
-    "form": {
-      "nameLabel": "Nome",
-      "namePlaceholder": "Mario Rossi",
-      "companyLabel": "Azienda",
-      "companyPlaceholder": "Opzionale",
-      "emailLabel": "Email",
-      "emailPlaceholder": "mario@azienda.com",
-      "messageLabel": "Raccontaci del tuo progetto",
-      "messagePlaceholder": "A che punto sei? Cosa vuoi costruire o sistemare? Sii diretto.",
-      "submit": "Invia messaggio",
-      "submitting": "Invio…",
-      "privacyPre": "Inviando accetti la nostra",
-      "privacyLink": "privacy policy",
-      "privacyPost": ". Niente spam, niente sequenze di vendita.",
-      "errorGeneric": "Qualcosa è andato storto. Scrivici direttamente via email."
-    },
-    "success": {
-      "title": "Messaggio ricevuto.",
-      "desc": "Risponderemo entro 24 ore con un prossimo passo concreto."
-    }
-  },
   "footer": {
-  "tagline1": "Il futuro",
-  "tagline2": "comincia",
-  "tagline2Highlight": "qui.",
-  "description": "Tech agency globale. Team senior in 7 paesi che consegnano AI, software, robotica, growth e strategia — a prezzi che hanno senso.",
-  "columns": {
-    "services": "Servizi",
-    "company": "Azienda",
-    "contact": "Contattaci"
-  },
-  "services": [
-    "Sviluppo Software",
-    "Intelligenza Artificiale",
-    "Video AI",
-    "SEO & Marketing",
-    "Supporto Startup",
-    "Robotica"
-  ],
-  "company": [
-    { "label": "Chi siamo", "href": "/about" },
-    { "label": "Processo", "href": "#process" },
-    { "label": "Case studies", "href": "#" },
-    { "label": "FAQ", "href": "#faq" },
-    { "label": "Privacy Policy", "href": "/privacy" },
-    { "label": "Termini", "href": "/terms" }
-  ],
-  "info": {
-    "emailLabel": "Email",
-    "presenceLabel": "Presenza",
-    "presenceValue": "US · UK · AU · DE · FR · ES · IT",
-    "responseLabel": "Risposta",
-    "responseValue": "Entro 24h garantito"
-  },
-  "cta": "Inizia ora",
-  "copyright": "Miutifin — Worldwide",
-  "builtWith": "Costruito con",
-  "builtWithSuffix": "e cultura."
-},
-"esco": {
-  "metadata": {
-    "title": "ESCO — La città, scritta per te | by Miutifin",
-    "description": "ESCO non elenca posti. Ti scrive un viaggio attraverso la tua città — dove andare, in che ordine, e perché ogni tappa si adatta alla versione di te di stasera. Rete privata, su invito.",
-    "ogTitle": "ESCO — La città, scritta per te",
-    "ogDescription": "Rete privata che scrive viaggi attraverso la tua città. Su invito. Ora in 4 città europee.",
-    "keywords": ["esco", "miutifin", "city app", "journey", "milano", "private network", "city guide", "rete privata"]
-  },
-  "nav": {
-    "preview": "Anteprima",
-    "access": "Accesso",
-    "cities": "Città",
-    "members": "Membri",
-    "cta": "Richiedi accesso",
-    "menu": "Menu",
-    "journal": "Journal",
-    "press": "Stampa",
-    "back": "Torna a miutifin",
-    "language": "Lingua",
-    "citiesLive": "{count} città attive",
-    "membersCount": "{count} membri"
-  },
-  "hero": {
-    "eyebrow": "Su invito",
-    "mark": "esco — by miutifin",
-    "titleLine1": "La città,",
-    "titleLine1Em": "letta",
-    "titleLine2": "per te.",
-    "subtitle": "ESCO non elenca posti. Ti scrive un viaggio — dove andare, in che ordine, e perché ogni tappa si adatta alla versione di te di stasera.",
-    "ctaPrimary": "Richiedi accesso",
-    "ctaSecondary": "Provala",
-    "stats": {
-      "members": "in lista",
-      "reviewedWeek": "questa settimana",
-      "citiesLive": "città attive"
-    },
-    "placeholder": "tua@email.com",
-"submit": "Richiedi accesso",
-"submitting": "Invio…",
-"success": {
-  "title": "Sei in lista.",
-  "desc": "Approviamo il giovedì. Ti scriviamo presto."
-},
-"alreadyInvited": "Hai già un invito?",
-"openApp": "Apri l'app",
-"tryItLink": "O prova prima la simulazione",
-"hint": "<em>{count} persone</em> in lista questa settimana · approvazioni il giovedì",
-"errors": {
-  "invalidEmail": "Inserisci un'email valida.",
-  "alreadyOnList": "Sei già in lista. Ti contatteremo.",
-  "generic": "Qualcosa è andato storto. Riprova.",
-  "network": "Errore di rete. Riprova tra un momento."
-},
-    "footBlocks": {
-      "privateLabel": "Rete privata",
-      "privateText": "Approvazione su richiesta. Tre inviti per membro.",
-      "platformsLabel": "iOS e Android",
-      "platformsText": "Disponibile dopo l'approvazione.",
-      "madeByLabel": "Fatta da",
-      "madeByText": "Miutifin — Studio tech"
-    }
-  },
-  "intro": {
-    "linePre": "Un amico che conosce la città,",
-    "lineEm": "conosce te,",
-    "linePost": "e risponde in",
-    "lineStrong": "due secondi."
-  },
-  "how": {
-    "label": "Come funziona",
-    "items": [
-      { "n": "01", "title": "Dì a ESCO chi sei stasera", "body": "Solo, in coppia, con amici. Mood, orario, energia. Due tap, niente questionario." },
-      { "n": "02", "title": "Ricevi un viaggio, non una lista", "body": "ESCO ti scrive un piano breve — posti, ordine, e perché ognuno si adatta. Folla, vibe, dresscode, musica. Come un amico che vive lì." },
-      { "n": "03", "title": "Vivilo, modificalo, condividilo", "body": "Cambia rotta a metà serata, prenota direttamente, condividi il viaggio con chi ti accompagna. ESCO ti segue." }
-    ]
-  },
-  "simulator": {
-    "label": "Provala",
-    "titleLine1": "Dicci chi sei",
-    "titleLine1Em": "stasera.",
-    "lead": "Tre tap. ESCO scrive il resto. Questo è solo un assaggio — l'app legge molti più segnali.",
-    "groups": {
-      "who": "Con chi",
-      "when": "Quando",
-      "mood": "Mood"
-    },
-    "options": {
-      "date": "Con lui / lei",
-      "friends": "Con gli amici",
-      "solo": "Solo",
-      "day": "Di giorno",
-      "evening": "Sera",
-      "night": "Notte fonda",
-      "relaxed": "Lento",
-      "energetic": "Energico"
-    },
-    "outputMeta": "ESCO sta scrivendo",
-    "outputFoot": "Questo è un esempio.",
-    "outputFootRest": " L'app vera legge la tua storia di gusti, la folla del momento, il meteo, la musica, il dresscode — e compone un viaggio solo per te.",
-    "samples": {
-      "date-evening-relaxed": { "title": "Una lunga tavola a lume di candela", "body": "Inizia con un bicchiere di orange wine in una piccola enoteca a Isola. Una passeggiata nel parco fino a un ristorante minuscolo dove la cucina è più vecchia dello chef. Chiudete con un digestivo su un balcone bar con due tavoli." },
-      "friends-night-energetic": { "title": "Dal rooftop in giù", "body": "Iniziate da un rooftop a Porta Nuova al tramonto. Scendete in un cocktail bar nei sotterranei di Brera alle 22:30. Atterrate in un club a Lambrate che apre a mezzanotte — house, gente sui venticinque, dresscode permissivo." },
-      "solo-day-relaxed": { "title": "Una mattina che è tua", "body": "Espresso in un bar dove i clienti abituali non alzano lo sguardo. Una camminata lungo il canale prima che arrivino i runner. Una libreria con una stanza nascosta sul retro. Pranzo a un bancone dove mangiare da soli è la norma." },
-      "friends-evening-relaxed": { "title": "La tavolata", "body": "Apericena in un posto con cibo vero, non patatine. Un secondo drink in un bar con un giradischi. Cena tardi in una trattoria che non prende prenotazioni — aspetterete, ma ne vale la pena." },
-      "date-night-energetic": { "title": "La notte, leggermente più veloce", "body": "Cocktail prima di cena in un hotel bar nel centro. Cena in un posto abbastanza rumoroso da farti sentire giovane. Un piccolo club dopo, di quelli dove puoi ancora parlare se vuoi." },
-      "solo-evening-energetic": { "title": "In mezzo agli altri, da solo", "body": "Un live di jazz in un piccolo seminterrato — metà del pubblico è da solo. Una passeggiata fino a un wine bar con un lungo bancone. Chiudi in un negozio di dischi che resta aperto tardi il venerdì." },
-      "date-day-relaxed": { "title": "Il pomeriggio senza fretta", "body": "Brunch in un posto con un cortile. Una passeggiata in un quartiere tranquillo che non conoscete. Caffè in una pasticceria che non cambia da cinquant'anni." },
-      "date-day-energetic": { "title": "La deviazione luminosa", "body": "Bici lungo i Navigli, pranzo all'aperto in un posto con un'unica tavolata. Una mostra nel pomeriggio. Cocktail su una terrazza prima del tramonto." },
-      "friends-day-relaxed": { "title": "Il sabato pomeriggio lento", "body": "Brunch tardivo in una pasticceria con un grande tavolo. Una passeggiata nel quartiere del design, tra due gallerie. Aperitivo prima che tutti tornino a casa." },
-      "friends-day-energetic": { "title": "La luce piena", "body": "Caffè, poi la piscina sul tetto di un hotel che fa entrare i non clienti se chiedi gentilmente. Pranzo in un posto con DJ. Una passeggiata pomeridiana che si trasforma in apericena." },
-      "solo-night-relaxed": { "title": "Le ore tranquille", "body": "Una cena tarda al bancone di un ristorante dove chi mangia da solo è di casa. Una camminata di ritorno per strade più vuote. Un nightcap in un hotel bar." },
-      "solo-night-energetic": { "title": "La notte di cui avevi bisogno", "body": "Un cocktail bar dove il barman parla se vuoi parlare. Un piccolo locale di musica live a mezzanotte — dove venire da soli è normale. Una camminata verso casa più lunga del previsto." }
-    }
-  },
-  "journeysSection": {
-    "label": "Esempi di viaggio",
-    "titleLine1": "Non una lista di posti.",
-    "titleLine1Em": "Un percorso attraverso la città.",
-    "lead": "Viaggi reali composti per momenti reali. Ognuno scritto a partire dai segnali — folla, orario, mood, con chi sei, cosa ti è piaciuto prima.",
-    "items": [
-      {
-        "label": "Venerdì · 19:30 · Milano · con lei",
-        "title": "Il venerdì lento",
-        "body": "Aperitivo su un rooftop tranquillo a Porta Venezia — quello senza fila. Poi una passeggiata nei giardini, cena in un posto che prende prenotazioni solo per telefono. Chiudete con un vinyl bar a due strade di distanza. Niente club. Niente rumore. Solo la città al ritmo giusto.",
-        "tags": ["Coppia", "Lento", "Senza folla"]
-      },
-      {
-        "label": "Sabato · 23:00 · Milano · con amici",
-        "title": "Il sabato lungo",
-        "body": "Iniziate in un cocktail bar nei sotterranei vicino a Brera — abbastanza presto per parlare, abbastanza tardi per sentire la città svegliarsi. Spostatevi a un party in un capannone a Lambrate verso l'una. House, gente sui venticinque, dresscode tutto tranne sneakers bianche. Il taxi a casa è breve.",
-        "tags": ["Gruppo", "Tardi", "Energico"]
-      },
-      {
-        "label": "Domenica · 10:00 · Milano · da solo",
-        "title": "La domenica limpida",
-        "body": "Caffè in un posto che tosta in casa, nascosto dietro Sant'Ambrogio. Una lunga camminata sul Naviglio prima che arrivi la folla del brunch. Una piccola mostra in una galleria privata — sarai l'unico. Pranzo da solo, per scelta, in un posto a cui non importa.",
-        "tags": ["Solo", "Calmo", "Culturale"]
-      }
-    ]
-  },
-  "signal": {
-    "label": "Il segnale",
-    "titleLine1": "Diciotto motivi per cui un posto ti sta",
-    "titleLine1Em": "o non ti sta.",
-    "lead": "ESCO non legge recensioni. Legge pattern. Questi sono i segnali che decidono se un posto entra nel tuo viaggio.",
-    "words": [
-      "densità di folla", "dresscode", "genere musicale", "mix di genere", "livello di rumore",
-      "età media", "fascia di prezzo", "curva di energia", "tempo di attesa", "illuminazione",
-      "ricambio dei tavoli", "vibe del quartiere", "compatibilità meteo", "la tua storia di gusti",
-      "con chi sei", "ora della notte", "distanza", "apertura agli sconosciuti"
-    ],
-    "foot": "Diciotto segnali, pesati diversamente per ogni membro. I tuoi dati danno forma ai",
-    "footEm": "tuoi",
-    "footRest": " viaggi — e solo ai tuoi."
-  },
-  "access": {
-    "label": "Accesso",
-    "titleLine1": "Riservato.",
-    "titleLine1Em": "Non chiuso.",
-    "p1": "ESCO cresce per inviti, non per pubblicità. La rete resta abbastanza piccola perché i consigli restino precisi — e personali.",
-    "p2": "Due modi per entrare. Entrambi onesti. Niente trucchi, niente lotteria.",
-    "items": [
-      { "n": "01", "title": "Richiedi accesso", "body": "Iscriviti alla waitlist. Approviamo a gruppi, di solito entro una o due settimane. Riceverai una mail quando sei dentro." },
-      { "n": "02", "title": "Fatti invitare", "body": "Ogni membro ha tre inviti. Se conosci qualcuno già dentro, chiediglielo. Gli inviti saltano la coda." },
-      { "n": "03", "title": "Una volta dentro", "body": "Ricevi anche tu tre inviti. Usali bene — le persone che porti danno forma ai viaggi che ESCO scrive." }
-    ]
-  },
-  "citiesSection": {
-    "label": "Città",
-    "titleLine1": "Attive in quattro.",
-    "titleLine1Em": "Altre in arrivo.",
-    "lead": "Apriamo una città solo quando ESCO sa leggerla bene. Qualità dei viaggi prima della geografia.",
-    "live": "Attiva",
-    "soon": "In arrivo",
-    "membersSuffix": " membri",
-    "membersTotal": "persone in lista totale"
-  },
-  "faq": {
-    "label": "FAQ",
-    "titleLine1": "Domande",
-    "titleLine1Em": "comuni.",
-    "items": [
-      { "q": "Perché ESCO è solo su invito?", "a": "La qualità dei consigli dipende dalla qualità del segnale. Facciamo crescere la rete lentamente — su invito — così i dati che ESCO impara restano precisi e l'esperienza resta personale." },
-      { "q": "Come faccio a entrare?", "a": "Due modi. Richiedi accesso tramite la waitlist (approviamo a gruppi, di solito entro una o due settimane). Oppure ricevi un invito da qualcuno già dentro — ogni membro ne ha tre." },
-      { "q": "È solo per la nightlife?", "a": "No. ESCO funziona dal caffè della mattina alla notte fonda. Camminate, pranzi, mostre, cene, party. Qualsiasi modo di passare il tempo in città." },
-      { "q": "Come decide ESCO concretamente?", "a": "Legge chi sei, con chi sei, l'orario, il giorno, il meteo, i pattern di folla di ogni posto, la musica, il dresscode, il mix di genere, il livello di rumore, il prezzo. Poi compone un viaggio. Non un risultato di ricerca." },
-      { "q": "I locali pagano per essere consigliati?", "a": "No. ESCO si basa sul segnale, non sulla sponsorizzazione. Se un posto è nel tuo viaggio, è perché ti si addice — non perché ha pagato." },
-      { "q": "E i miei dati?", "a": "Restano tuoi. ESCO ha bisogno di segnali di gusto per funzionare — non della tua identità da vendere. Non facciamo pubblicità e non condividiamo dati con terze parti." }
-    ]
-  },
-  "waitlist": {
-    "label": "Richiedi accesso",
-    "titleLine1": "La città",
-    "titleLine1Em": "ti aspetta.",
-    "subtitle": "Lascia la tua email. Approviamo a gruppi — riceverai una nota quando sei dentro. Niente spam, niente sequenze, niente trucchi di marketing.",
-    "placeholder": "tua@email.com",
-    "submit": "Richiedi accesso",
-    "submitting": "Invio…",
-    "success": "Sei in lista.",
-    "note": "Hai già un invito? Apri l'app — il tuo codice funziona.",
-    "errors": {
-      "invalidEmail": "Inserisci un'email valida.",
-      "alreadyOnList": "Sei già in lista. Ti contatteremo.",
-      "generic": "Qualcosa è andato storto. Riprova o scrivici a esco@miutifin.com.",
-      "network": "Errore di rete. Riprova tra un momento."
-    },
-    "stores": {
-      "label": "Quando sei dentro",
-      "appStoreSmall": "Scarica su",
-      "appStore": "App Store",
-      "playSmall": "Disponibile su",
-      "play": "Google Play"
-    }
-  },
-  "footer": {
-    "manifestoLine1": "Una città è troppo ricca per essere ridotta a una barra di ricerca.",
-    "manifestoEm": "Quindi abbiamo scritto qualcos'altro.",
-    "tag": "Una rete privata per trovare la strada giusta nella tua città. Di Miutifin.",
-    "newsletterLabel": "Storie dalle città",
-    "newsletterPlaceholder": "tua@email.com",
-    "newsletterSubmit": "Iscriviti",
-    "newsletterSubmitting": "…",
-    "newsletterSuccess": "Grazie — ci leggiamo nella tua inbox.",
-    "newsletterErrorGeneric": "Iscrizione non riuscita. Riprova più tardi.",
-    "newsletterErrorNetwork": "Errore di rete.",
+    "tagline1": "Il futuro",
+    "tagline2": "inizia",
+    "tagline2Highlight": "qui.",
+    "description": "Tech agency globale. Team senior in 7 paesi che costruiscono AI, software, robotica, growth e strategia — a prezzi che hanno senso.",
     "columns": {
-      "product": "Prodotto",
-      "network": "Rete",
-      "support": "Supporto"
+      "services": "Servizi",
+      "company": "Azienda",
+      "contact": "Contattaci"
     },
-    "links": {
-      "howItWorks": "Come funziona",
-      "tryIt": "Provala",
-      "journeys": "Viaggi",
-      "signal": "Il segnale",
+    "services": [
+      "Sviluppo Software",
+      "Intelligenza Artificiale",
+      "Video AI",
+      "SEO & Marketing",
+      "Supporto Startup",
+      "Robotica"
+    ],
+    "company": [
+      { "label": "Chi siamo", "href": "/about" },
+      { "label": "Processo", "href": "#process" },
+      { "label": "Case study", "href": "#" },
+      { "label": "FAQ", "href": "#faq" },
+      { "label": "Privacy Policy", "href": "/privacy" },
+      { "label": "Termini", "href": "/terms" }
+    ],
+    "info": {
+      "emailLabel": "Email",
+      "presenceLabel": "Presenza",
+      "presenceValue": "US · UK · AU · DE · FR · ES · IT",
+      "responseLabel": "Risposta",
+      "responseValue": "Entro 24h garantite"
+    },
+    "cta": "Inizia ora",
+    "copyright": "Miutifin — Worldwide",
+    "builtWith": "Costruito con",
+    "builtWithSuffix": "e cultura."
+  },
+  "esco": {
+    "metadata": {
+      "title": "ESCO — La città, scritta per te | by Miutifin",
+      "description": "ESCO non elenca posti. Ti scrive un percorso attraverso la tua città — dove andare, in che ordine, e perché ogni tappa è giusta per la versione di te stasera. Rete privata, su invito.",
+      "ogTitle": "ESCO — La città, scritta per te",
+      "ogDescription": "Rete privata che scrive percorsi attraverso la tua città. Su invito. Ora in 4 città europee.",
+      "keywords": ["esco", "miutifin", "city app", "percorso", "milano", "rete privata", "city guide"]
+    },
+    "nav": {
+      "preview": "Anteprima",
+      "access": "Accesso",
       "cities": "Città",
-      "citiesLive": "{count} attive",
-      "requestAccess": "Richiedi accesso",
-      "inviteSystem": "Sistema di inviti",
-      "members": "Area membri",
+      "members": "Membri",
+      "cta": "Richiedi l'accesso",
+      "menu": "Menu",
       "journal": "Journal",
       "press": "Stampa",
-      "faq": "FAQ",
-      "contact": "Contatti",
-      "privacy": "Privacy",
-      "terms": "Termini",
-      "cookies": "Cookie"
+      "back": "Torna a miutifin",
+      "language": "Lingua",
+      "citiesLive": "{count} città attive",
+      "membersCount": "{count} membri"
     },
-    "status": "Tutti i sistemi normali · 1 città attiva"
-  },
-  "journal": {
-    "eyebrow": "Journal",
-    "titleLine1": "Note dalle",
-    "titleLine1Em": "città.",
-    "lead": "Scritti lunghi su quello che stiamo costruendo, su quello che leggiamo nelle città in cui ESCO apre, e sui principi dietro la crescita della rete.",
-    "metaEntries": "{count} articoli",
-    "metaUpdate": "Aggiornato",
-    "metaUpdateValue": "settimanalmente",
-    "metaAuthor": "Scritti dal team",
-    "articles": [
-      {
-        "date": "28 Apr 2026",
-        "title": "Cosa intendiamo quando diciamo \"un viaggio\"",
-        "excerpt": "Un breve saggio sul perché ESCO non restituisce risultati di ricerca, e perché comporre un percorso in una città è più simile a scrivere che a mappare.",
-        "tag": "Manifesto"
+    "hero": {
+      "eyebrow": "Su invito",
+      "mark": "esco — by miutifin",
+      "titleLine1": "La città,",
+      "titleLine1Em": "scritta",
+      "titleLine2": "per te.",
+      "subtitle": "ESCO non elenca posti. Ti scrive un percorso — dove andare, in che ordine, e perché ogni tappa è giusta per la versione di te stasera.",
+      "ctaPrimary": "Richiedi l'accesso",
+      "ctaSecondary": "Provalo",
+      "stats": {
+        "members": "in lista",
+        "reviewedWeek": "questa settimana",
+        "citiesLive": "città attive"
       },
-      {
-        "date": "14 Apr 2026",
-        "title": "Leggere Milano: una sera tranquilla a Porta Venezia",
-        "excerpt": "Abbiamo seguito uno dei viaggi più apprezzati per un mercoledì sera di primavera. Note su ritmo, luce, il tipo di folla che fa respirare un posto.",
-        "tag": "Sul campo"
+      "placeholder": "tua@email.com",
+      "submit": "Richiedi l'accesso",
+      "submitting": "Invio in corso…",
+      "success": {
+        "title": "Sei in lista.",
+        "desc": "Approviamo il giovedì. Ci sentiamo presto."
       },
-      {
-        "date": "30 Mar 2026",
-        "title": "Diciotto segnali — e quelli che abbiamo scelto di non usare",
-        "excerpt": "Su cosa fa stare un posto a una persona. Perché abbiamo smesso di tracciare alcuni segnali a metà beta, e cosa abbiamo imparato sul gusto.",
-        "tag": "Engineering"
+      "alreadyInvited": "Sei già stato invitato?",
+      "openApp": "Apri l'app",
+      "tryItLink": "Oppure prova prima la simulazione",
+      "hint": "<em>{count} persone</em> in lista questa settimana · approvazioni il giovedì",
+      "errors": {
+        "invalidEmail": "Inserisci un indirizzo email valido.",
+        "alreadyOnList": "Sei già in lista. Ci sentiamo presto.",
+        "generic": "Qualcosa è andato storto. Riprova.",
+        "network": "Errore di rete. Riprova tra un momento."
       },
-      {
-        "date": "12 Mar 2026",
-        "title": "Londra non è New York: modelli di città che non si generalizzano",
-        "excerpt": "Ogni città che ESCO apre ha bisogno di una sua lettura. Come abbiamo calibrato il modello londinese e perché abbiamo rimandato il lancio di sei settimane.",
-        "tag": "Engineering"
-      },
-      {
-        "date": "22 Feb 2026",
-        "title": "Perché tre inviti — non cinque, non dieci",
-        "excerpt": "Il numero di inviti che riceve ogni membro non è arbitrario. È il risultato di tre mesi di test su gruppi iniziali a Milano e Parigi.",
-        "tag": "Rete"
-      },
-      {
-        "date": "04 Feb 2026",
-        "title": "Sul non vendere posizionamenti ai locali",
-        "excerpt": "Una nota onesta sulla tentazione di prendere soldi dai posti che consigliamo, e sul perché abbiamo scelto di non farlo.",
-        "tag": "Manifesto"
+      "footBlocks": {
+        "privateLabel": "Rete privata",
+        "privateText": "Approvati su richiesta. Tre inviti per membro.",
+        "platformsLabel": "iOS & Android",
+        "platformsText": "Disponibile dopo l'approvazione.",
+        "madeByLabel": "Creato da",
+        "madeByText": "Miutifin — Tech studio"
       }
-    ]
-  },
-  "press": {
-    "eyebrow": "Stampa",
-    "titleLine1": "Per chi",
-    "titleLine1Em": "scrive.",
-    "lead": "Comunicati stampa, kit media e contatto diretto col team. Rispondiamo veloci — di solito entro 24 ore.",
-    "side": {
-      "aboutTitle": "Su ESCO",
-      "aboutP1": "ESCO è una rete privata che ti scrive un viaggio attraverso la tua città — posti, ordine e motivi — invece di restituire una lista.",
-      "aboutP2": "Costruita da Miutifin, studio tech. Attiva in 4 città, cresce per inviti.",
-      "contactLabel": "Contatto stampa",
-      "kitTitle": "Media kit",
-      "kitDesc": "Logo, screenshot, foto dei founder, linee guida del brand e copy approvato.",
-      "kitDownload": "Scarica .zip ↓",
-      "kitGuide": "Brand guide ↗"
     },
-    "readFull": "Leggi il comunicato →",
-    "releases": [
-      {
-        "date": "18 Apr 2026",
-        "title": "ESCO apre la waitlist pubblica dopo dodici mesi di beta privata",
-        "body": "Dopo un anno di test su invito tra Milano, Londra, Barcellona e Parigi, ESCO apre una waitlist pubblica. L'approvazione continua a gruppi per preservare la qualità del segnale della rete."
+    "intro": {
+      "linePre": "Un amico che conosce la città,",
+      "lineEm": "che conosce te,",
+      "linePost": "e risponde in",
+      "lineStrong": "due secondi."
+    },
+    "how": {
+      "label": "Come funziona",
+      "items": [
+        { "n": "01", "title": "Dì a ESCO chi sei stasera", "body": "Solo, in coppia, con gli amici. Mood, orario, energia. Due tap, senza questionari." },
+        { "n": "02", "title": "Ricevi un percorso, non una lista", "body": "ESCO ti scrive un piano breve — posti, ordine, perché ognuno è giusto. Folla, vibe, dresscode, musica. Come un amico che vive lì." },
+        { "n": "03", "title": "Vivilo, aggiustalo, condividilo", "body": "Cambia rotta a metà serata, prenota direttamente, condividi il percorso con chi incontri. ESCO ti segue." }
+      ]
+    },
+    "simulator": {
+      "label": "Provalo",
+      "titleLine1": "Dicci chi sei",
+      "titleLine1Em": "stasera.",
+      "lead": "Tre tap. ESCO scrive il resto. Questo è un assaggio — l'app legge molti più segnali.",
+      "groups": {
+        "who": "Chi",
+        "when": "Quando",
+        "mood": "Mood"
       },
-      {
-        "date": "03 Mar 2026",
-        "title": "ESCO supera i 3.500 membri in quattro città europee",
-        "body": "La rete privata ha raggiunto i 3.500 membri a fine Q1 2026. La retention media è all'84% dopo trenta giorni; il 67% dei nuovi membri è entrato per invito invece che dalla waitlist."
+      "options": {
+        "date": "Con lei / lui",
+        "friends": "Con gli amici",
+        "solo": "Da solo",
+        "day": "Di giorno",
+        "evening": "Sera",
+        "night": "Notte tarda",
+        "relaxed": "Lento",
+        "energetic": "Energico"
       },
-      {
-        "date": "15 Gen 2026",
-        "title": "ESCO lancia a Parigi come quarta città attiva",
-        "body": "Dopo Milano, Londra e Barcellona, Parigi diventa la quarta città della rete ESCO. Berlino e Lisbona sono previste per Q3 2026."
-      },
-      {
-        "date": "22 Nov 2025",
-        "title": "ESCO nell'edizione tech annuale di Monocle",
-        "body": "La rivista cartacea ha presentato ESCO nella sua feature annuale dedicata ai progetti tech indipendenti che stanno modellando le città europee."
+      "outputMeta": "ESCO sta scrivendo",
+      "outputFoot": "Questo è un esempio.",
+      "outputFootRest": " L'app vera legge la tua storia di gusti, la folla di oggi, il meteo, la musica, il dresscode — e compone un percorso solo per te.",
+      "samples": {
+        "date-evening-relaxed": { "title": "Una tavolata a lume di candela", "body": "Inizia con un calice di orange wine in una piccola enoteca a Isola. Una camminata nel parco fino a un ristorantino dove la cucina è più vecchia dello chef. Chiudi con un digestivo in un balcony bar con due tavoli." },
+        "friends-night-energetic": { "title": "Dal rooftop in giù", "body": "Si parte da un rooftop a Porta Nuova per l'ora d'oro. Si scende in un cocktail bar nel basement di Brera alle 22:30. Si atterra in un club a Lambrate che apre a mezzanotte — house, gente sui venticinque, dresscode tollerante." },
+        "solo-day-relaxed": { "title": "Una mattina che ti appartiene", "body": "Espresso in un bar dove gli abituali non alzano lo sguardo. Una camminata lungo il naviglio prima che arrivino i runner. Una libreria con una saletta sul retro. Pranzo a un bancone dove mangiare da solo è la norma." },
+        "friends-evening-relaxed": { "title": "La tavolata", "body": "Apericena in un posto con cibo vero, non patatine. Un secondo drink in un bar con il giradischi. Cena tarda in una trattoria che non prende prenotazioni — aspetterete, ma ne vale la pena." },
+        "date-night-energetic": { "title": "La notte, leggermente più veloce", "body": "Cocktail pre-cena in un hotel bar in centro. Cena in un posto abbastanza rumoroso da farti sentire giovane. Un piccolo club dopo, di quelli dove se vuoi puoi ancora parlare." },
+        "solo-evening-energetic": { "title": "Tra gli altri, da solo", "body": "Un set di jazz dal vivo in un basement — la metà del pubblico è solo. Una camminata fino a un wine bar con un bancone lungo. Si chiude in un negozio di dischi che il venerdì resta aperto fino a tardi." },
+        "date-day-relaxed": { "title": "Il pomeriggio senza fretta", "body": "Brunch in un posto con cortile. Una camminata in un quartiere tranquillo che nessuno dei due conosce. Caffè in una pasticceria che non cambia da cinquant'anni." },
+        "date-day-energetic": { "title": "La deviazione luminosa", "body": "Bici lungo i navigli, pranzo all'aperto in un posto con una sola tavolata. Una mostra nel pomeriggio. Cocktail in terrazza prima del tramonto." },
+        "friends-day-relaxed": { "title": "Il sabato pomeriggio lento", "body": "Brunch tardo in una pasticceria con un tavolo grande. Una camminata nel design district con due gallerie da vedere. Aperitivo prima che tutti tornino a casa." },
+        "friends-day-energetic": { "title": "Pieno giorno", "body": "Caffè, poi la piscina rooftop di un hotel che lascia entrare i non-ospiti se chiedi bene. Pranzo in un posto con DJ. Una camminata pomeridiana che si trasforma in apericena." },
+        "solo-night-relaxed": { "title": "Le ore silenziose", "body": "Cena tarda in un ristorante a bancone dove i solo diners sono di casa. Camminata di ritorno per strade più vuote. Un nightcap in un hotel bar." },
+        "solo-night-energetic": { "title": "La notte che ti serviva", "body": "Un cocktail bar dove il bartender parla se vuoi parlare. Un piccolo live music venue a mezzanotte — di quelli dove andare da soli è normale. Una camminata verso casa che dura più del previsto." }
       }
-    ]
-  },
-  "cookies": {
-    "eyebrow": "Cookie",
-    "titleLine1": "Cookie",
-    "titleLine1Em": "policy.",
-    "lead": "Come ESCO usa i cookie e le tecnologie simili. In breve: il meno possibile, solo quello che serve a far funzionare la rete.",
-    "metaUpdated": "Ultimo aggiornamento",
-    "metaUpdatedValue": "28 Aprile 2026",
-    "metaVersion": "Versione",
-    "metaVersionValue": "2.1",
-    "tocLabel": "Sezioni",
-    "sections": {
-      "what": {
-        "title": "Cosa sono i cookie",
-        "p1": "I cookie sono piccoli file di testo che i siti web mettono sul tuo dispositivo per ricordare informazioni su di te e la tua visita. Ci aiutano a far funzionare la rete, capire come viene usata e ricordare le preferenze tra una sessione e l'altra.",
-        "p2": "Usiamo anche tecnologie simili — local storage, session storage e richieste in stile pixel — che trattiamo secondo la stessa policy descritta qui."
+    },
+    "journeysSection": {
+      "label": "Percorsi d'esempio",
+      "titleLine1": "Non una lista di posti.",
+      "titleLine1Em": "Un modo di attraversare la città.",
+      "lead": "Percorsi veri composti per momenti veri. Ognuno scritto a partire dal segnale — folla, orario, mood, con chi sei, cosa ti è piaciuto prima.",
+      "items": [
+        {
+          "label": "Venerdì · 19:30 · Milano · con lei",
+          "title": "Il venerdì lento",
+          "body": "Aperitivo su un rooftop tranquillo a Porta Venezia — quello senza la fila. Poi una camminata breve nei giardini, cena in un posto che prende prenotazioni solo per telefono. Si chiude in un vinyl bar due strade più in là. Niente club. Niente rumore. Solo la città al tempo giusto.",
+          "tags": ["Date", "Ritmo lento", "Senza folla"]
+        },
+        {
+          "label": "Sabato · 23:00 · Milano · con gli amici",
+          "title": "Il lungo sabato",
+          "body": "Partenza in un cocktail bar nel basement vicino Brera — abbastanza presto per parlare, abbastanza tardi per sentire la città svegliarsi. Spostamento a un warehouse party a Lambrate verso l'una. Musica house, gente sui ventottanni, dresscode qualunque cosa tranne le sneakers bianche. Taxi a casa breve.",
+          "tags": ["Gruppo", "Tardi", "Energico"]
+        },
+        {
+          "label": "Domenica · 10:00 · Milano · solo",
+          "title": "La domenica limpida",
+          "body": "Caffè in un posto che tosta in proprio, nascosto dietro Sant'Ambrogio. Una camminata lunga lungo il Naviglio prima che arrivi la folla del brunch. Una piccola mostra in una galleria privata — sarai l'unico. Pranzo da solo, per scelta, in un posto a cui non importa.",
+          "tags": ["Solo", "Calmo", "Culturale"]
+        }
+      ]
+    },
+    "signal": {
+      "label": "Il segnale",
+      "titleLine1": "Diciotto motivi per cui un posto è giusto",
+      "titleLine1Em": "o sbagliato.",
+      "lead": "ESCO non legge recensioni. Legge pattern. Questi sono i segnali che decidono se un posto finisce nel tuo percorso.",
+      "words": [
+        "densità della folla", "dresscode", "genere musicale", "mix di genere", "livello di rumore",
+        "età media", "fascia di prezzo", "curva d'energia", "tempo di coda", "illuminazione",
+        "rotazione dei tavoli", "vibe del quartiere", "compatibilità meteo", "la tua storia di gusti",
+        "con chi sei", "ora della notte", "distanza di spostamento", "apertura agli sconosciuti"
+      ],
+      "foot": "Diciotto segnali, pesati diversamente per ogni membro. I tuoi dati danno forma ai",
+      "footEm": "tuoi",
+      "footRest": " percorsi — e solo a quelli."
+    },
+    "access": {
+      "label": "Accesso",
+      "titleLine1": "Riservato.",
+      "titleLine1Em": "Non chiuso.",
+      "p1": "ESCO cresce su invito, non con la pubblicità. La rete resta abbastanza piccola da mantenere le raccomandazioni precise — e personali.",
+      "p2": "Due modi per entrare. Entrambi onesti. Niente trucchi, niente lotterie.",
+      "items": [
+        { "n": "01", "title": "Richiedi l'accesso", "body": "Iscriviti alla lista d'attesa. Approviamo a gruppi, di solito entro una o due settimane. Ti arriva una mail quando sei dentro." },
+        { "n": "02", "title": "Fatti invitare", "body": "Ogni membro ha tre inviti. Se conosci qualcuno già dentro, chiediglielo. Gli inviti saltano la coda." },
+        { "n": "03", "title": "Quando sei dentro", "body": "Anche tu ricevi tre inviti. Usali bene — le persone che porti danno forma ai percorsi che ESCO scrive." }
+      ]
+    },
+    "citiesSection": {
+      "label": "Città",
+      "titleLine1": "Attivi in quattro.",
+      "titleLine1Em": "Altre in arrivo.",
+      "lead": "Apriamo una città solo quando ESCO riesce a leggerla bene. Qualità dei percorsi prima della geografia.",
+      "live": "Attiva",
+      "soon": "Presto",
+      "membersSuffix": " membri",
+      "membersTotal": "persone in lista in totale"
+    },
+    "faq": {
+      "label": "FAQ",
+      "titleLine1": "Domande",
+      "titleLine1Em": "frequenti.",
+      "items": [
+        { "q": "Perché ESCO è solo su invito?", "a": "La qualità delle raccomandazioni dipende dalla qualità del segnale. Facciamo crescere la rete lentamente — su invito — così i dati da cui ESCO impara restano nitidi e l'esperienza resta personale." },
+        { "q": "Come entro?", "a": "Due modi. Richiedi l'accesso attraverso la lista d'attesa (approviamo a gruppi, di solito entro una o due settimane). Oppure fatti invitare da qualcuno già dentro — ogni membro ne ha tre." },
+        { "q": "È solo per la nightlife?", "a": "No. ESCO funziona dal caffè del mattino a tarda notte. Passeggiate, pranzi, mostre, cene, feste. Qualunque modo di trascorrere il tempo in una città." },
+        { "q": "Come decide ESCO, di preciso?", "a": "Legge chi sei, con chi sei, l'orario, il giorno, il meteo, i pattern di folla di ogni posto, la musica, il dresscode, il mix di genere, il livello di rumore, il prezzo. Poi compone un percorso. Non un risultato di ricerca." },
+        { "q": "I locali pagano per essere inclusi?", "a": "No. ESCO è costruito sul segnale, non sulla sponsorizzazione. Se un posto è nel tuo percorso è perché ti si adatta — non perché ha pagato." },
+        { "q": "E i miei dati?", "a": "Restano tuoi. ESCO ha bisogno di segnali di gusto per funzionare — non della tua identità da vendere. Non facciamo pubblicità e non condividiamo dati con terze parti." }
+      ]
+    },
+    "waitlist": {
+      "label": "Richiedi l'accesso",
+      "titleLine1": "La città",
+      "titleLine1Em": "ti aspetta.",
+      "subtitle": "Lascia la tua email. Approviamo a gruppi — ti arriva una nota quando sei dentro. Niente spam, niente sequenze, niente trucchi di marketing.",
+      "placeholder": "tua@email.com",
+      "submit": "Richiedi l'accesso",
+      "submitting": "Invio in corso…",
+      "success": "Sei in lista.",
+      "note": "Sei già stato invitato? Apri l'app — il tuo codice funziona.",
+      "errors": {
+        "invalidEmail": "Inserisci un indirizzo email valido.",
+        "alreadyOnList": "Sei già in lista. Ci sentiamo presto.",
+        "generic": "Qualcosa è andato storto. Riprova o scrivi a esco@miutifin.com.",
+        "network": "Errore di rete. Riprova tra un momento."
       },
-      "use": {
-        "title": "Come li usiamo",
-        "p1": "ESCO usa i cookie solo per tre scopi:",
-        "items": [
-          "Autenticazione — per tenerti loggato tra pagine e sessioni",
-          "Preferenze — per ricordare la tua città, lingua e qualche scelta di interfaccia",
-          "Analisi anonime — per capire come viene usata la rete, in forma aggregata"
-        ],
-        "p2": "Non usiamo i cookie per costruire profili pubblicitari, fare retargeting sul web o vendere informazioni sul tuo comportamento a terze parti."
+      "stores": {
+        "label": "Quando sei dentro",
+        "appStoreSmall": "Scaricala su",
+        "appStore": "App Store",
+        "playSmall": "Disponibile su",
+        "play": "Google Play"
+      }
+    },
+    "footer": {
+      "manifestoLine1": "Una città è troppo ricca per essere ridotta a una barra di ricerca.",
+      "manifestoEm": "Così abbiamo scritto qualcos'altro.",
+      "tag": "Una rete privata per trovare il modo giusto di attraversare la tua città. By Miutifin.",
+      "newsletterLabel": "Storie dalle città",
+      "newsletterPlaceholder": "tua@email.com",
+      "newsletterSubmit": "Iscriviti",
+      "newsletterSubmitting": "…",
+      "newsletterSuccess": "Grazie — ci vediamo nella tua inbox.",
+      "newsletterErrorGeneric": "Iscrizione fallita. Riprova più tardi.",
+      "newsletterErrorNetwork": "Errore di rete.",
+      "columns": {
+        "product": "Prodotto",
+        "network": "Rete",
+        "support": "Supporto"
       },
-      "types": {
-        "title": "Tipi che usiamo",
-        "headers": { "name": "Nome", "purpose": "Scopo", "duration": "Durata" },
-        "rows": [
-          ["esco_session", "Autenticazione", "30 giorni"],
-          ["esco_prefs", "Preferenze interfaccia", "1 anno"],
-          ["esco_locale", "Lingua e città", "1 anno"],
-          ["_pa_*", "Analisi anonime (Plausible)", "Sessione"]
-        ]
+      "links": {
+        "howItWorks": "Come funziona",
+        "tryIt": "Provalo",
+        "journeys": "Percorsi",
+        "signal": "Il segnale",
+        "cities": "Città",
+        "citiesLive": "{count} attive",
+        "requestAccess": "Richiedi l'accesso",
+        "inviteSystem": "Sistema inviti",
+        "members": "Area membri",
+        "journal": "Journal",
+        "press": "Stampa",
+        "faq": "FAQ",
+        "contact": "Contatti",
+        "privacy": "Privacy",
+        "terms": "Termini",
+        "cookies": "Cookie"
       },
-      "third": {
-        "title": "Terze parti",
-        "p1": "Usiamo un piccolo numero di servizi di terze parti, ognuno con i suoi cookie:",
-        "items": [
-          "Plausible — analisi rispettose della privacy. Non traccia individui né usa cookie cross-site.",
-          "Stripe — solo nelle pagine di pagamento. Necessario per la prevenzione frodi.",
-          "Cloudflare — sicurezza e performance. Imposta un cookie di sessione per identificare il traffico legittimo."
-        ],
-        "p2": "Non usiamo Google Analytics, Facebook Pixel o cookie di network pubblicitari. Mai."
+      "status": "Tutti i sistemi attivi · 1 città in linea"
+    },
+    "journal": {
+      "eyebrow": "Journal",
+      "titleLine1": "Appunti dalle",
+      "titleLine1Em": "città.",
+      "lead": "Scritti lunghi su quello che stiamo costruendo, su quello che leggiamo nelle città che ESCO apre, e sui principi dietro alla crescita della rete.",
+      "metaEntries": "{count} articoli",
+      "metaUpdate": "Aggiornato",
+      "metaUpdateValue": "ogni settimana",
+      "metaAuthor": "Scritto dal team",
+      "articles": [
+        { "date": "28 apr 2026", "title": "Cosa intendiamo quando diciamo 'un percorso'", "excerpt": "Un saggio breve sul perché ESCO non restituisce risultati di ricerca, e perché comporre un cammino in una città è più vicino allo scrivere che al mappare.", "tag": "Manifesto" },
+        { "date": "14 apr 2026", "title": "Leggere Milano: una sera tranquilla a Porta Venezia", "excerpt": "Abbiamo seguito uno dei nostri percorsi con il rating più alto per una sera di mercoledì in primavera. Appunti su tempo, luce, il tipo di folla che fa respirare un posto.", "tag": "Field notes" },
+        { "date": "30 mar 2026", "title": "Diciotto segnali — e quelli che abbiamo scelto di non usare", "excerpt": "Su cosa rende un posto giusto per una persona. Perché abbiamo smesso di tracciare alcuni segnali a metà della beta, e cosa abbiamo imparato sul gusto.", "tag": "Engineering" },
+        { "date": "12 mar 2026", "title": "Londra non è New York: costruire modelli di città che non si generalizzano", "excerpt": "Ogni città che ESCO apre ha bisogno della sua lettura. Un walkthrough su come abbiamo calibrato il modello di Londra e perché abbiamo rimandato il lancio di sei settimane.", "tag": "Engineering" },
+        { "date": "22 feb 2026", "title": "Perché tre inviti — non cinque, non dieci", "excerpt": "Il numero di inviti che riceve ogni membro non è arbitrario. È il risultato di tre mesi di test sulle coorti iniziali a Milano e Parigi.", "tag": "Rete" },
+        { "date": "04 feb 2026", "title": "Sul non vendere il posizionamento dei locali", "excerpt": "Un appunto onesto sulla tentazione di accettare soldi dai posti che raccomandiamo, e perché abbiamo scelto di non farlo.", "tag": "Manifesto" }
+      ]
+    },
+    "press": {
+      "eyebrow": "Stampa",
+      "titleLine1": "Per chi",
+      "titleLine1Em": "scrive.",
+      "lead": "Comunicati stampa, media kit, e una linea diretta con il team. Rispondiamo veloci — di solito entro 24 ore.",
+      "side": {
+        "aboutTitle": "Su ESCO",
+        "aboutP1": "ESCO è una rete privata che ti scrive un percorso attraverso la tua città — posti, ordine e ragioni — invece di restituire una lista.",
+        "aboutP2": "Costruito da Miutifin, un tech studio. Attivo in 4 città, in crescita su invito.",
+        "contactLabel": "Contatto stampa",
+        "kitTitle": "Media kit",
+        "kitDesc": "Loghi, screenshot, foto dei founder, brand guidelines e copy approvati.",
+        "kitDownload": "Scarica .zip ↓",
+        "kitGuide": "Brand guide ↗"
       },
-      "choices": {
-        "title": "Le tue scelte",
-        "p1": "La maggior parte dei browser ti permette di bloccare o cancellare i cookie nelle impostazioni. Bloccare i cookie di autenticazione ti farà uscire e impedirà il funzionamento della rete. Bloccare i cookie di preferenze resetterà le scelte di interfaccia a ogni visita.",
-        "p2": "Bloccare i cookie di analisi non ha effetto sulle funzionalità. Non mostriamo banner di consenso perché usiamo solo cookie essenziali e rispettosi della privacy — ma sei libero di disattivarli in qualsiasi momento dal tuo browser."
-      },
-      "changes": {
-        "title": "Modifiche a questa policy",
-        "p1": "Quando cambiamo come usiamo i cookie, aggiorniamo questa pagina e il numero di versione in alto. Per cambiamenti importanti, lo notificheremo anche ai membri via email prima che la modifica abbia effetto."
-      },
-      "contact": {
-        "title": "Contatto",
-        "p1": "Domande su questa policy o su come gestiamo i dati? Scrivi a"
+      "readFull": "Leggi il comunicato completo →",
+      "releases": [
+        { "date": "18 apr 2026", "title": "ESCO apre la lista d'attesa pubblica dopo dodici mesi di beta privata", "body": "Dopo un anno di test su invito a Milano, Londra, Barcellona e Parigi, ESCO apre una lista d'attesa pubblica. L'approvazione continua a gruppi per preservare la qualità del segnale della rete." },
+        { "date": "03 mar 2026", "title": "ESCO supera i 3.500 membri in quattro città europee", "body": "La rete privata ha raggiunto 3.500 membri alla fine del Q1 2026. La retention media è all'84% dopo trenta giorni; il 67% dei nuovi membri è entrato tramite invito invece che dalla waitlist." },
+        { "date": "15 gen 2026", "title": "ESCO lancia a Parigi come quarta città attiva", "body": "Dopo Milano, Londra e Barcellona, Parigi diventa la quarta città nella rete ESCO. Berlino e Lisbona sono in programma per il Q3 2026." },
+        { "date": "22 nov 2025", "title": "ESCO presente nell'edizione tech annuale di Monocle", "body": "La rivista cartacea ha dedicato un profilo a ESCO nella sua feature annuale sui progetti tecnologici indipendenti che stanno cambiando le città europee." }
+      ]
+    },
+    "cookies": {
+      "eyebrow": "Cookie",
+      "titleLine1": "Cookie",
+      "titleLine1Em": "policy.",
+      "lead": "Come ESCO usa i cookie e tecnologie simili. Versione breve: il meno possibile, solo quello che serve a far funzionare la rete.",
+      "metaUpdated": "Ultimo aggiornamento",
+      "metaUpdatedValue": "28 aprile 2026",
+      "metaVersion": "Versione",
+      "metaVersionValue": "2.1",
+      "tocLabel": "Sezioni",
+      "sections": {
+        "what": {
+          "title": "Cosa sono i cookie",
+          "p1": "I cookie sono piccoli file di testo che i siti web depositano sul tuo dispositivo per ricordare informazioni su di te e sulla tua visita. Ci aiutano a far funzionare la rete, capire come viene usata e ricordare le preferenze tra una sessione e l'altra.",
+          "p2": "Usiamo anche tecnologie simili — local storage, session storage e richieste di tipo pixel — che trattiamo secondo la stessa policy descritta qui."
+        },
+        "use": {
+          "title": "Come li usiamo",
+          "p1": "ESCO usa i cookie solo per tre scopi:",
+          "items": [
+            "Autenticazione — per tenerti loggato tra le pagine e le sessioni",
+            "Preferenze — per ricordare città, lingua e alcune scelte di interfaccia",
+            "Analytics anonime — per capire come viene usata la rete, in forma aggregata"
+          ],
+          "p2": "Non usiamo i cookie per costruire profili pubblicitari, per fare retargeting sul web o per vendere informazioni sul tuo comportamento a terze parti."
+        },
+        "types": {
+          "title": "Tipi che usiamo",
+          "headers": { "name": "Nome", "purpose": "Scopo", "duration": "Durata" },
+          "rows": [
+            ["esco_session", "Autenticazione", "30 giorni"],
+            ["esco_prefs", "Preferenze di interfaccia", "1 anno"],
+            ["esco_locale", "Lingua e città", "1 anno"],
+            ["_pa_*", "Analytics anonime (Plausible)", "Sessione"]
+          ]
+        },
+        "third": {
+          "title": "Terze parti",
+          "p1": "Usiamo un piccolo numero di servizi di terze parti, ognuno con i suoi cookie:",
+          "items": [
+            "Plausible — analytics privacy-friendly. Non traccia individui né usa cookie cross-site.",
+            "Stripe — solo sulle pagine di pagamento. Richiesto per la prevenzione delle frodi.",
+            "Cloudflare — sicurezza e performance. Imposta un cookie di sessione per identificare il traffico legittimo."
+          ],
+          "p2": "Non usiamo Google Analytics, Facebook Pixel o cookie di alcun network pubblicitario. Mai."
+        },
+        "choices": {
+          "title": "Le tue scelte",
+          "p1": "La maggior parte dei browser ti permette di bloccare o cancellare i cookie dalle impostazioni. Bloccare i cookie di autenticazione ti farà uscire e impedirà alla rete di funzionare. Bloccare quelli di preferenza farà ripartire le tue scelte di interfaccia a ogni visita.",
+          "p2": "Bloccare i cookie di analytics non ha alcun effetto sulla funzionalità. Non mostriamo banner di consenso perché usiamo solo cookie essenziali e privacy-preserving — ma sei libero di disattivarli quando vuoi dal browser."
+        },
+        "changes": {
+          "title": "Modifiche a questa policy",
+          "p1": "Quando cambiamo il modo in cui usiamo i cookie, aggiorniamo questa pagina e il numero di versione in alto. Per modifiche significative, avvisiamo i membri via email prima che il cambiamento entri in vigore."
+        },
+        "contact": {
+          "title": "Contatto",
+          "p1": "Domande su questa policy o sul modo in cui trattiamo i dati? Scrivi a"
+        }
       }
     }
-  }
-},
-"escoTeaser": {
-  "eyebrow": "07 — La nostra rete",
-  "titleLine1": "Non solo un'agency.",
-  "titleLine1Em": "Una rete privata.",
-  "titleLine2": "Per chi vive la città.",
-  "description": "ESCO è il nostro progetto interno: una rete su invito che scrive viaggi attraverso la tua città. Non elenca posti. Ti scrive un percorso. Ora attiva in 4 città europee.",
-  "stats": {
-    "members": "membri",
-    "cities": "città attive",
-    "thisWeek": "in lista questa settimana"
   },
-  "cta": "Scopri ESCO",
-  "metaText": "Su invito · Approvazioni il giovedì"
-}
 
+  "hero": {
+    "badge": "Disponibili per Q1 2027 · 2 slot rimasti",
+    "headlineLine1": "Costruiamo prodotti",
+    "headlineLine2": "digitali che",
+    "headlineLine2Em": "muovono",
+    "headlineLine3": "i mercati.",
+    "subtitle": "Miutifin è la software factory che aiuta team enterprise a progettare, costruire e scalare sistemi digitali ad alto impatto in 7 mercati internazionali.",
+    "ctaPrimary": "Prenota una consulenza",
+    "ctaSecondary": "Vedi i case study",
+    "scroll": "Scroll",
+    "trust": {
+      "clients": "Clienti enterprise",
+      "revenue": "Revenue tracciato",
+      "markets": "Mercati attivi",
+      "team": "Persone nel team"
+    }
+  },
+
+  "trustBar": {
+    "label": "Lavoriamo con",
+    "items": [
+      "Fortune 500",
+      "Scale-up Series B+",
+      "PMI manifatturiere",
+      "Banche & Fintech",
+      "Retail & DTC",
+      "Pharma & MedTech"
+    ]
+  },
+
+  "approach": {
+    "eyebrow": "Approccio",
+    "titleLine1": "Pensiero strategico.",
+    "titleLine1Em": "Esecuzione",
+    "titleLine2": "che si misura in revenue.",
+    "lead": "Non vendiamo deliverable, vendiamo risultati. Ogni progetto parte da un obiettivo di business chiaro e termina con metriche verificabili.",
+    "cells": [
+      {
+        "n": "01 · Strategia",
+        "title": "Decisioni",
+        "titleAccent": "basate sui dati",
+        "desc": "Prima di scrivere una riga di codice, validiamo il problema con ricerca, dati e analisi competitiva. Niente progetti costruiti su assunzioni."
+      },
+      {
+        "n": "02 · Esecuzione",
+        "title": "Team senior",
+        "titleAccent": "dedicati",
+        "desc": "Nessun junior nascosto, nessun outsourcing. Lo stesso team senior dal kickoff al lancio, con accesso diretto e meeting settimanali."
+      },
+      {
+        "n": "03 · Risultato",
+        "title": "Pensato per",
+        "titleAccent": "scalare",
+        "desc": "Architetture, codice e processi progettati per crescere con il tuo business. Documentazione, training e handover trasparente."
+      }
+    ]
+  },
+
+  "works": {
+    "eyebrow": "Case Study",
+    "titleLine1": "Selezione di",
+    "titleLine2": "lavori",
+    "titleLine2Em": "recenti.",
+    "lead": "Una selezione di progetti enterprise consegnati negli ultimi 18 mesi. Risultati misurati a 6 mesi dal go-live.",
+    "items": [
+      {
+        "tag": "Fintech",
+        "industry": "Serie B · €120M ARR",
+        "title": "Piattaforma di onboarding KYC",
+        "desc": "Riprogettato il flusso di onboarding multi-step per una neobank europea, riducendo il time-to-account da 11 minuti a meno di 3.",
+        "outcomeMetric": "+340%",
+        "outcome": "conversioni KYC",
+        "mono": "FB",
+        "size": "lg"
+      },
+      {
+        "tag": "Retail",
+        "industry": "DTC · 4 mercati",
+        "title": "Headless commerce su misura",
+        "desc": "Migrazione da Wordpress a piattaforma headless custom, con CMS personalizzato e checkout ottimizzato per il mobile.",
+        "outcomeMetric": "−62%",
+        "outcome": "tempo di caricamento",
+        "mono": "RT",
+        "size": "md"
+      },
+      {
+        "tag": "AI & Data",
+        "industry": "Manifatturiero",
+        "title": "Pipeline ML per quality control",
+        "desc": "Sistema di visione artificiale in produzione, integrato con i sistemi esistenti del cliente.",
+        "outcomeMetric": "€2.4M",
+        "outcome": "risparmiati/anno",
+        "mono": "AI",
+        "size": "sm"
+      },
+      {
+        "tag": "SaaS",
+        "industry": "B2B · 50k+ utenti",
+        "title": "Redesign del workspace prodotto",
+        "desc": "Ridisegno completo dell'esperienza utente per una piattaforma di project management con focus su utenti enterprise.",
+        "outcomeMetric": "+47%",
+        "outcome": "DAU",
+        "mono": "SA",
+        "size": "wide"
+      },
+      {
+        "tag": "Brand",
+        "industry": "Pharma",
+        "title": "Sistema identitario digitale",
+        "desc": "Nuovo design system e sito istituzionale per gruppo farmaceutico quotato, multi-lingua su 12 mercati.",
+        "outcomeMetric": "+118%",
+        "outcome": "lead qualificati",
+        "mono": "PH",
+        "size": "tall"
+      },
+      {
+        "tag": "Consumer App",
+        "industry": "Musica",
+        "title": "Custom music platform",
+        "desc": "Nuovo design system e logiche per la piattaforma di un DJ internazionale per condividere contenuti real-time.",
+        "outcomeMetric": "+118%",
+        "outcome": "lead qualificati",
+        "mono": "BID",
+        "size": "tall"
+      }
+    ]
+  },
+
+  "services": {
+    "eyebrow": "Servizi",
+    "titleLine1": "Sette aree di competenza,",
+    "titleLine2Em": "un solo team integrato.",
+    "lead": "Lavoriamo come un unico team multidisciplinare, non come silos separati. Ogni progetto coinvolge le competenze necessarie in funzione del problema, non dell'org chart.",
+    "deliverablesLabel": "Deliverable",
+    "ctaText": "Hai un'idea o un progetto in mente? Ti rispondiamo entro 24 ore lavorative con una proposta su misura.",
+    "cta": "Richiedi una proposta",
+    "items": [
+      {
+        "num": "01",
+        "name": "Strategy & Discovery",
+        "desc": "Workshop di product strategy, ricerca utente, analisi competitiva e definizione di roadmap basate su KPI misurabili.",
+        "deliverables": [
+          "Discovery report",
+          "Roadmap prioritizzata",
+          "Business case"
+        ]
+      },
+      {
+        "num": "02",
+        "name": "Product Design",
+        "desc": "Design system scalabili, prototipi interattivi e flussi UX validati con test su utenti reali prima dello sviluppo.",
+        "deliverables": [
+          "Design system",
+          "Prototipi Figma",
+          "Test usability"
+        ]
+      },
+      {
+        "num": "03",
+        "name": "Product Engineering",
+        "desc": "Sviluppo full-stack di applicazioni web e mobile con stack moderni (Next.js, TypeScript, Postgres), CI/CD e monitoring.",
+        "deliverables": [
+          "Codice production-ready",
+          "CI/CD pipeline",
+          "Documentazione tecnica"
+        ]
+      },
+      {
+        "num": "04",
+        "name": "AI & Data",
+        "desc": "Soluzioni di machine learning applicate (computer vision, NLP, sistemi di raccomandazione) e infrastrutture dati scalabili.",
+        "deliverables": [
+          "Modelli custom",
+          "Data pipeline",
+          "Dashboard analitiche"
+        ]
+      },
+      {
+        "num": "05",
+        "name": "Brand & Identity",
+        "desc": "Posizionamento di brand, identità visive coerenti su tutti i touchpoint digitali e linee guida per scalare il brand nel tempo.",
+        "deliverables": [
+          "Brand book",
+          "Identità visiva",
+          "Asset library"
+        ]
+      },
+      {
+        "num": "06",
+        "name": "Growth & Performance",
+        "desc": "Programmi di acquisition multi-canale, ottimizzazione conversione e infrastrutture di marketing analytics integrate.",
+        "deliverables": [
+          "Growth roadmap",
+          "Setup analytics",
+          "A/B testing framework"
+        ]
+      },
+      {
+        "num": "07",
+        "name": "Robotics",
+        "desc": "Sviluppo di modelli nativi per addestrare robot umanoidi a compiere azioni personalizzate nell'ambiente aziendale e imparare dai data lake reali.",
+        "deliverables": [
+          "Modelli custom",
+          "Robot umanoidi",
+          "Azioni personalizzate"
+        ]
+      }
+    ]
+  },
+
+  "stats": {
+    "eyebrow": "Numeri",
+    "titleLine1": "Sette anni,",
+    "titleLine1Em": "risultati",
+    "titleLine2": "che possiamo dimostrare.",
+    "items": [
+      {
+        "num": "120+",
+        "label": "Progetti consegnati",
+        "detail": "Tra applicazioni web, mobile, sistemi AI e piattaforme di e-commerce."
+      },
+      {
+        "num": "€10M+",
+        "label": "Revenue generato",
+        "detail": "Impatto economico tracciabile sui prodotti che abbiamo costruito per i clienti."
+      },
+      {
+        "num": "94%",
+        "label": "Tasso di retention",
+        "detail": "Dei clienti enterprise che ci hanno scelto, il 94% torna per un secondo progetto."
+      },
+      {
+        "num": "15",
+        "label": "Persone nel team",
+        "detail": "Designer, ingegneri, strategist e PM senior, tutti in-house, niente outsourcing."
+      }
+    ]
+  },
+
+  "map": {
+    "eyebrow": "Presenza",
+    "titleLine1": "Sette mercati,",
+    "titleLine2Em": "una sola sede operativa.",
+    "lead": "Operiamo da Milano servendo clienti in Europa, Nord America e APAC. Lavoriamo nei fusi orari del cliente con team disponibili durante le loro ore di business.",
+    "countries": ["USA", "UK", "Germania", "Francia", "Spagna", "Italia", "Australia"]
+  },
+
+  "process": {
+    "eyebrow": "Processo",
+    "titleLine1": "Dal kickoff al lancio,",
+    "titleLine2Em": "trasparente in ogni fase.",
+    "lead": "Un metodo collaudato che riduce il rischio per il cliente. Ogni fase ha durata, output e criteri di passaggio chiari.",
+    "durationLabel": "Durata: ",
+    "outputLabel": "Output: ",
+    "items": [
+      {
+        "n": "01",
+        "t": "Discovery & Strategy",
+        "d": "Workshop iniziali, ricerca con stakeholder e utenti, analisi competitiva e definizione di obiettivi misurabili.",
+        "duration": "1–2 settimane",
+        "output": "Discovery report + roadmap"
+      },
+      {
+        "n": "02",
+        "t": "Design & Prototyping",
+        "d": "Concept di design system, wireframe ad alta fedeltà, prototipi interattivi e validazione con utenti reali.",
+        "duration": "3–4 settimane",
+        "output": "Prototipi Figma + design system"
+      },
+      {
+        "n": "03",
+        "t": "Build & Iterate",
+        "d": "Sviluppo in sprint di 2 settimane con demo settimanali, integrazione continua e ambienti di staging accessibili.",
+        "duration": "8–16 settimane",
+        "output": "Codice production-ready"
+      },
+      {
+        "n": "04",
+        "t": "Launch & Scale",
+        "d": "Go-live coordinato, monitoring, training del team interno e iterazioni basate sui primi dati di produzione.",
+        "duration": "Ongoing",
+        "output": "Lancio + supporto 90 giorni"
+      }
+    ]
+  },
+
+  "team": {
+    "eyebrow": "Team",
+    "titleLine1": "Quindici persone,",
+    "titleLine2Em": "zero outsourcing.",
+    "lead": "Un team senior multidisciplinare con esperienza media di oltre 8 anni in agenzie di primo livello e prodotti di scala internazionale.",
+    "footerText": "Tutti i nostri team member sono in-house, senza freelance occulti o outsourcing offshore. Quando lavori con noi, sai esattamente chi sta costruendo il tuo prodotto.",
+    "cta": "Conosci il team",
+    "members": [
+      { "name": "Marco Bianchi", "role": "Founder & CEO", "mono": "MB" },
+      { "name": "Sofia Romano", "role": "Co-founder & CTO", "mono": "SR" },
+      { "name": "Luca Ferrari", "role": "Head of Design", "mono": "LF" },
+      { "name": "Elena Conti", "role": "Director of Strategy", "mono": "EC" },
+      { "name": "Davide Marino", "role": "Director of Engineering", "mono": "DM" },
+      { "name": "Giulia Esposito", "role": "Director of Product", "mono": "GE" },
+      { "name": "Alessandro Greco", "role": "Director of Growth", "mono": "AG" },
+      { "name": "Chiara Galli", "role": "Senior Product Designer", "mono": "CG" },
+      { "name": "Matteo Rizzo", "role": "Senior Full-stack Engineer", "mono": "MR" },
+      { "name": "Francesca Lombardi", "role": "Senior UX Researcher", "mono": "FL" },
+      { "name": "Andrea Costa", "role": "Senior Brand Designer", "mono": "AC" },
+      { "name": "Valentina Moretti", "role": "Senior Product Manager", "mono": "VM" },
+      { "name": "Roberto Santoro", "role": "ML Engineer", "mono": "RS" },
+      { "name": "Beatrice Vitale", "role": "DevOps Engineer", "mono": "BV" },
+      { "name": "Federico Barbieri", "role": "Strategist", "mono": "FB" }
+    ]
+  },
+
+  "faq": {
+    "eyebrow": "Domande",
+    "titleLine1": "Le domande che",
+    "titleLine2Pre": "ci fanno",
+    "titleLine2Em": "più spesso.",
+    "leadPre": "Non trovi la risposta che cercavi?",
+    "leadLink": "Scrivici direttamente →",
+    "items": [
+      {
+        "q": "Qual è il vostro modello di ingaggio tipico?",
+        "a": "Lavoriamo principalmente in due modalità: progetti a forfait con scope e budget definiti (ideali per lanci di prodotto), o team dedicati in retainer mensile (per evoluzioni continue di prodotti esistenti). In entrambi i casi forniamo stime accurate dopo una fase iniziale di discovery."
+      },
+      {
+        "q": "Qual è il budget minimo per iniziare?",
+        "a": "Il budget tipico per un progetto enterprise parte da €60K per fasi di discovery + design, e da €150K per progetti completi di sviluppo. Per impegni in retainer, partiamo da €25K/mese per team dedicati di 2–3 persone."
+      },
+      {
+        "q": "Quanto dura un progetto tipico?",
+        "a": "Un MVP completo (discovery + design + sviluppo + lancio) si completa tipicamente in 12–20 settimane. Progetti enterprise più articolati possono estendersi su 6–9 mesi. Forniamo una roadmap dettagliata con milestone già nella fase di proposta."
+      },
+      {
+        "q": "Lavorate con clienti fuori dall'Italia?",
+        "a": "Sì. Circa il 60% del nostro fatturato viene da clienti internazionali (Europa, UK, USA, Australia). Il team è abituato a lavorare in inglese e su fusi orari diversi, con meeting calendarizzati durante le ore di business del cliente."
+      },
+      {
+        "q": "Firmate NDA e accordi di IP transfer?",
+        "a": "Sì, e lo facciamo sempre prima di entrare nei dettagli del progetto. Tutto il codice, il design e gli asset prodotti diventano di proprietà del cliente alla consegna, con documentazione completa e accesso ai repository."
+      },
+      {
+        "q": "Cosa succede dopo il lancio?",
+        "a": "Includiamo sempre 90 giorni di supporto post-lancio nelle nostre proposte: hotfix, performance tuning e training del team interno. Dopo, molti clienti scelgono di continuare con un retainer mensile per evoluzioni continue."
+      }
+    ]
+  },
+
+  "ctaFinal": {
+    "eyebrow": "Iniziamo",
+    "titleLine1": "Hai un'idea?",
+    "titleLine2Pre": "Costruiamola",
+    "titleLine2Em": "insieme.",
+    "subtitle": "Una call di 30 minuti, gratuita e senza impegno. Ti aiutiamo a inquadrare il problema, anche se non finiremo per lavorare insieme.",
+    "ctaPrimary": "Prenota una discovery call",
+    "ctaSecondary": "Vedi i case study",
+    "note": "Risposta entro 24 ore lavorative"
+  },
+
+  "contact": {
+    "eyebrow": "Contatti",
+    "titleLine1": "Raccontaci",
+    "titleLine2Em": "il tuo progetto.",
+    "subtitle": "Più dettagli ci dai sul tuo progetto, più precisa sarà la nostra risposta. Tutti i dati sono trattati con confidenzialità.",
+    "details": {
+      "emailLabel": "Email",
+      "replyLabel": "Risposta tipica",
+      "replyValue": "Entro 24 ore lavorative",
+      "availabilityLabel": "Slot disponibili",
+      "availabilityValue": "2 progetti per Q1 2027"
+    },
+    "form": {
+      "nameLabel": "Nome e cognome",
+      "namePlaceholder": "Mario Rossi",
+      "companyLabel": "Azienda",
+      "companyPlaceholder": "Acme Inc.",
+      "emailLabel": "Email aziendale",
+      "emailPlaceholder": "mario@acme.com",
+      "projectTypeLabel": "Tipo di progetto",
+      "projectTypePlaceholder": "Seleziona un'opzione",
+      "projectTypes": [
+        "Nuovo prodotto / MVP",
+        "Evoluzione prodotto esistente",
+        "Redesign / Rebrand",
+        "Progetto AI / Data",
+        "Consulenza strategica",
+        "Altro"
+      ],
+      "budgetLabel": "Budget indicativo",
+      "budgetPlaceholder": "Seleziona un range",
+      "budgetRanges": [
+        "Sotto €50K",
+        "€50K – €150K",
+        "€150K – €500K",
+        "Oltre €500K",
+        "Da definire insieme"
+      ],
+      "timelineLabel": "Quando vorresti iniziare?",
+      "timelinePlaceholder": "Seleziona una tempistica",
+      "timelines": [
+        "Il prima possibile",
+        "Entro 1–3 mesi",
+        "Entro 6 mesi",
+        "Sto ancora valutando"
+      ],
+      "messageLabel": "Raccontaci di più",
+      "messagePlaceholder": "Obiettivi, contesto, vincoli, qualunque cosa ci aiuti a capire il progetto…",
+      "privacyPre": "Inviando questo form accetti la nostra ",
+      "privacyLink": "privacy policy",
+      "privacyPost": ". Nessun marketing automatizzato, solo la nostra risposta diretta.",
+      "submit": "Invia richiesta",
+      "submitting": "Invio in corso…",
+      "errorGeneric": "Qualcosa è andato storto. Riprova o scrivici direttamente a miutifin.ask@gmail.com"
+    },
+    "success": {
+      "title": "Richiesta ricevuta.",
+      "desc": "Ti risponderemo entro 24 ore lavorative all'indirizzo che ci hai fornito."
+    }
+  },
+
+  "escoTeaser": {
+    "titleLine1Em": "esco",
+    "titleLine2": "il nostro prodotto nativo.",
+    "description": "Una piattaforma social location-based che unisce community e scoperta della città, sviluppata in-house.",
+    "stats": {
+      "members": "Membri",
+      "cities": "Città attive",
+      "thisWeek": "Nuovi questa settimana"
+    },
+    "cta": "Scopri esco",
+    "metaText": "In beta dal 2026"
+  },
+
+  "expertise": {
+    "eyebrow": "Competenze",
+    "titleLine1": "Un solo team.",
+    "titleLine2Pre": "Tutte le competenze",
+    "titleLine2Em": "che ti servono.",
+    "lead": "Dalla strategia di prodotto al codice in produzione, dalla regia visiva all'analisi dati. Stack completo, senza buchi e senza dipendere da fornitori esterni.",
+    "metaBar": [
+      { "n": "120+", "l": "Anni di esperienza combinata" },
+      { "n": "5", "l": "Lingue parlate" },
+      { "n": "30+", "l": "Certificazioni tecniche" },
+      { "n": "100%", "l": "In-house, zero outsourcing" }
+    ],
+    "clusters": [
+      {
+        "num": "01",
+        "name": "Strategy & Product",
+        "skills": [
+          "Product strategy",
+          "Business case modeling",
+          "Ricerca utente",
+          "Analisi competitiva",
+          "Product roadmapping",
+          "Workshop con stakeholder",
+          "Definizione KPI",
+          "Discovery report"
+        ]
+      },
+      {
+        "num": "02",
+        "name": "Design & UX",
+        "skills": [
+          "Design system",
+          "Interaction design",
+          "UI design",
+          "Information architecture",
+          "Prototipazione (Figma)",
+          "Usability testing",
+          "Motion design",
+          "Accessibilità (WCAG)"
+        ]
+      },
+      {
+        "num": "03",
+        "name": "Software Engineering",
+        "skills": [
+          "React, Next.js, Vue",
+          "TypeScript",
+          "Node.js, Python, Go",
+          "PostgreSQL, MongoDB, Redis",
+          "AWS, GCP, Vercel",
+          "React Native, Flutter",
+          "REST & GraphQL API",
+          "CI/CD & DevOps"
+        ]
+      },
+      {
+        "num": "04",
+        "name": "AI & Data",
+        "skills": [
+          "LLM integration (OpenAI, Anthropic)",
+          "RAG pipelines",
+          "Computer vision",
+          "NLP & text mining",
+          "Recommendation system",
+          "ETL & data warehousing",
+          "MLOps",
+          "Real-time analytics"
+        ]
+      },
+      {
+        "num": "05",
+        "name": "Brand & Identity",
+        "skills": [
+          "Brand strategy",
+          "Identità visiva",
+          "Naming",
+          "Brand book",
+          "Copywriting",
+          "Tono di voce",
+          "Asset library",
+          "Linee guida multilingua"
+        ]
+      },
+      {
+        "num": "06",
+        "name": "Growth & Performance",
+        "skills": [
+          "SEO tecnico & content",
+          "Performance marketing",
+          "A/B testing & CRO",
+          "Marketing analytics",
+          "Email automation",
+          "Attribution modeling",
+          "Paid social (Meta, LinkedIn)",
+          "Programmatic advertising"
+        ]
+      }
+    ],
+    "footerText": "Tutte le competenze in-house, esperienza media di 8+ anni. Quando lavori con noi non hai bisogno di altri fornitori — abbiamo già tutto.",
+    "cta": "Parla con il team"
+  }
 }
