@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect, useCallback } from "react";
+import { useState, useEffect, useCallback, useMemo } from "react";
 import Link from "next/link";
 import { useParams, useRouter } from "next/navigation";
 import {
@@ -8,12 +8,14 @@ import {
   updateDraftPayload,
   publishDraft,
   rejectDraft,
+  listPlacesByCity,
   type DraftRow,
+  type PlaceLite,
 } from "@/lib/contentOs";
 
 const STYLES = `
   .rv{padding:40px 32px 80px;max-width:1200px;margin:0 auto}
-  .rv-back{margin-right: 1rem;font-size:12px;color:rgba(26,24,21,0.55);text-decoration:none;display:inline-flex;align-items:center;gap:6px;margin-bottom:16px;font-weight:500}
+  .rv-back{font-size:12px;color:rgba(26,24,21,0.55);text-decoration:none;display:inline-flex;align-items:center;gap:6px;margin-bottom:16px;font-weight:500}
   .rv-back:hover{color:#dc2626}
   .rv-eyebrow{display:inline-flex;align-items:center;gap:10px;font-size:11px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:rgba(26,24,21,0.42);margin-bottom:12px}
   .rv-eyebrow::before{content:'';width:6px;height:6px;border-radius:50%;background:#dc2626}
@@ -48,6 +50,18 @@ const STYLES = `
   .rv-status.review{color:#dc2626;border-color:rgba(220,38,38,0.30)}
   .rv-status.published{color:#3d5e2f;border-color:rgba(92,138,71,0.30)}
   .rv-status.rejected{color:rgba(26,24,21,0.55);border-color:rgba(26,24,21,0.20)}
+  .rv-place-current{display:flex;align-items:center;justify-content:space-between;padding:12px 14px;background:rgba(92,138,71,0.08);border:1px solid rgba(92,138,71,0.25);border-radius:10px;margin-bottom:10px}
+  .rv-place-current-name{font-size:13px;font-weight:600;color:#3d5e2f;letter-spacing:-0.2px}
+  .rv-place-current-unlink{background:transparent;border:none;color:#b8392f;font-size:11px;font-weight:600;cursor:pointer;font-family:inherit;padding:4px 8px}
+  .rv-place-current-unlink:hover{text-decoration:underline}
+  .rv-place-search{width:100%;padding:10px 14px;border:1px solid rgba(26,24,21,0.10);border-radius:10px;font-size:13px;background:#fafaf7;font-family:inherit;color:#1a1815;outline:none;transition:all .15s;margin-bottom:8px}
+  .rv-place-search:focus{border-color:#dc2626;background:#fff}
+  .rv-place-list{max-height:240px;overflow-y:auto;border:1px solid rgba(26,24,21,0.08);border-radius:10px;background:#fafaf7}
+  .rv-place-item{padding:10px 14px;font-size:12px;color:#1a1815;cursor:pointer;border-bottom:1px solid rgba(26,24,21,0.05);transition:background .1s;display:flex;justify-content:space-between;align-items:center;gap:8px}
+  .rv-place-item:last-child{border-bottom:none}
+  .rv-place-item:hover{background:#fff;color:#dc2626}
+  .rv-place-item-slug{font-family:Menlo,monospace;font-size:10px;color:rgba(26,24,21,0.42)}
+  .rv-place-empty{padding:14px;font-size:12px;color:rgba(26,24,21,0.42);font-style:italic;text-align:center}
   .rv-toast{position:fixed;bottom:24px;left:50%;transform:translateX(-50%);background:#1a1815;color:#fff;padding:14px 24px;border-radius:100px;font-size:13px;font-weight:500;box-shadow:0 8px 32px rgba(0,0,0,0.2);z-index:100;animation:toast-in .3s ease}
   .rv-toast.err{background:#b8392f}
   .rv-toast.ok{background:#3d5e2f}
@@ -68,6 +82,10 @@ export default function DraftReviewPage() {
   const [busy, setBusy] = useState(false);
   const [toast, setToast] = useState<{ msg: string; kind?: "err" | "ok" } | null>(null);
 
+  // place picker (events only)
+  const [places, setPlaces] = useState<PlaceLite[]>([]);
+  const [placeSearch, setPlaceSearch] = useState("");
+
   const showToast = (msg: string, kind?: "err" | "ok") => {
     setToast({ msg, kind });
     setTimeout(() => setToast(null), 3500);
@@ -80,6 +98,14 @@ export default function DraftReviewPage() {
       setDraft(d);
       setPayloadText(JSON.stringify(d.payload, null, 2));
       setDirty(false);
+      if (d.kind === "event" && d.city_id) {
+        try {
+          const ps = await listPlacesByCity(d.city_id);
+          setPlaces(ps);
+        } catch {
+          setPlaces([]);
+        }
+      }
     } catch (err: any) {
       showToast(err?.message || "Failed to load", "err");
     } finally {
@@ -89,23 +115,61 @@ export default function DraftReviewPage() {
 
   useEffect(() => { load(); }, [load]);
 
+  const parsedPayload = useMemo(() => {
+    try { return JSON.parse(payloadText); } catch { return null; }
+  }, [payloadText]);
+
+  const linkedPlace = useMemo(() => {
+    if (!parsedPayload || draft?.kind !== "event") return null;
+    const pid = parsedPayload.place_id;
+    if (!pid) return null;
+    return places.find((p) => p.id === pid) || { id: pid, name: "(place sconosciuto)", slug: "" };
+  }, [parsedPayload, places, draft]);
+
+  const filteredPlaces = useMemo(() => {
+    const q = placeSearch.trim().toLowerCase();
+    if (!q) return places.slice(0, 30);
+    return places
+      .filter((p) =>
+        p.name.toLowerCase().includes(q) || p.slug.toLowerCase().includes(q),
+      )
+      .slice(0, 30);
+  }, [places, placeSearch]);
+
   const onPayloadChange = (val: string) => {
     setPayloadText(val);
     setDirty(true);
   };
 
+  const linkPlace = (place: PlaceLite) => {
+    if (!parsedPayload) {
+      showToast("Payload JSON non valido, sistema prima", "err");
+      return;
+    }
+    const updated = { ...parsedPayload, place_id: place.id, venue_name: place.name };
+    setPayloadText(JSON.stringify(updated, null, 2));
+    setDirty(true);
+    setPlaceSearch("");
+    showToast(`Collegato a ${place.name}`, "ok");
+  };
+
+  const unlinkPlace = () => {
+    if (!parsedPayload) return;
+    const updated = { ...parsedPayload };
+    delete updated.place_id;
+    setPayloadText(JSON.stringify(updated, null, 2));
+    setDirty(true);
+  };
+
   const handleSave = async () => {
     if (!draft) return;
-    let parsed: Record<string, any>;
-    try {
-      parsed = JSON.parse(payloadText);
-    } catch (e: any) {
-      showToast(`JSON non valido: ${e.message}`, "err");
+    if (!parsedPayload) {
+      showToast(`JSON non valido`, "err");
       return;
     }
     setBusy(true);
     try {
-      await updateDraftPayload(draft.id, parsed);
+      await updateDraftPayload(draft.id, parsedPayload);
       showToast("Salvato", "ok");
       setDirty(false);
       load();
@@ -233,6 +297,55 @@ export default function DraftReviewPage() {
             {cover && (
               <div className="rv-cover">
                 <img src={cover} alt="cover" />
+              </div>
+            )}
+
+            {draft.kind === "event" && (
+              <div className="rv-card" style={{ marginBottom: 14 }}>
+                <div className="rv-section">Linked place</div>
+                {linkedPlace ? (
+                  <div className="rv-place-current">
+                    <div className="rv-place-current-name">↳ {linkedPlace.name}</div>
+                    <button
+                      type="button"
+                      className="rv-place-current-unlink"
+                      onClick={unlinkPlace}
+                    >
+                      Unlink
+                    </button>
+                  </div>
+                ) : (
+                  <>
+                    <input
+                      className="rv-place-search"
+                      type="text"
+                      value={placeSearch}
+                      onChange={(e) => setPlaceSearch(e.target.value)}
+                      placeholder={`Cerca tra ${places.length} places...`}
+                    />
+                    <div className="rv-place-list">
+                      {filteredPlaces.length === 0 ? (
+                        <div className="rv-place-empty">
+                          Nessun place trovato. Crea prima il venue da{" "}
+                          <Link href={`/${locale}/admin/places/new`} style={{ color: "#dc2626" }}>
+                            /admin/places/new
+                          </Link>.
+                        </div>
+                      ) : (
+                        filteredPlaces.map((p) => (
+                          <div
+                            key={p.id}
+                            className="rv-place-item"
+                            onClick={() => linkPlace(p)}
+                          >
+                            <span>{p.name}</span>
+                            <span className="rv-place-item-slug">{p.slug}</span>
+                          </div>
+                        ))
+                      )}
+                    </div>
+                  </>
+                )}
               </div>
             )}
 

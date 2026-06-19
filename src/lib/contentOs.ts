@@ -211,3 +211,27 @@ export async function triggerWorker(): Promise<void> {
     // silent fail — pg_cron will pick up the job within 60s anyway
   }
 }
+
+/* ─────────────────────────────────────── places lookup */
+
+export interface PlaceLite {
+  id: string;
+  name: string;
+  slug: string;
+}
+
+/**
+ * Lightweight list of places for a city, used by the draft review picker
+ * to link events to existing venues.
+ */
+export async function listPlacesByCity(cityId: string): Promise<PlaceLite[]> {
+  const sb = createSupabaseBrowserClient();
+  const { data, error } = await sb
+    .from("places")
+    .select("id, name, slug")
+    .eq("city_id", cityId)
+    .order("name")
+    .limit(500);
+  if (error) throw error;
+  return (data as PlaceLite[]) ?? [];
+}
