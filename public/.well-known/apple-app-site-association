@@ -12,6 +12,7 @@
         "appID": "4ZZKR3BX3H.com.miutifin.esco",
 
         "paths": [
+          "/invite/*",
 
           "/journey/*",
 
