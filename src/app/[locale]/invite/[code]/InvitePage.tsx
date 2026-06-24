@@ -5,7 +5,7 @@ import { useEffect, useState } from "react";
 const STYLES = `
   *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
   body{font-family:'Inter',system-ui,sans-serif;background:#f5f0e8;color:#1a1815;-webkit-font-smoothing:antialiased;min-height:100vh}
-  .inv{min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:32px 24px;text-align:center}
+  .inv{background:#f5f0e8;min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:32px 24px;text-align:center}
   .inv-card{max-width:480px;width:100%}
   
   .inv-eyebrow{display:inline-flex;align-items:center;gap:10px;font-size:11px;font-weight:700;letter-spacing:.22em;text-transform:uppercase;color:rgba(26,24,21,0.45);margin-bottom:32px}
