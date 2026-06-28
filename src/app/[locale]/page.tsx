@@ -143,6 +143,7 @@ const S = `
     display:flex;flex-direction:column;justify-content:flex-end;
     padding:0;overflow:hidden;
     background:var(--bg);
+        padding-top: 15rem;
   }
   .hero-media{
     position:absolute;inset:0;z-index:0;
