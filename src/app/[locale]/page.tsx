@@ -431,7 +431,15 @@ const S = `
     display:grid;grid-template-columns:1fr 1.4fr;gap:4rem;
     margin-bottom:5rem;align-items:end;
   }
-  @media(max-width:900px){.svc-head{grid-template-columns:1fr;gap:2rem}}
+  @media(max-width:900px){
+
+  .svc{width:95%}
+
+  .proc{width:95%}
+  
+  .svc-head{grid-template-columns:1fr;gap:2rem}
+  
+  }
   .svc-list{border-top:1px solid var(--line)}
   .svc-row{
     display:grid;grid-template-columns:60px 1.2fr 2fr 1fr;
