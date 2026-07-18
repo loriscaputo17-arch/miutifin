@@ -133,7 +133,7 @@ export default async function LocaleLayout({
     },
     hasOfferCatalog: {
       "@type": "OfferCatalog",
-      name: "Tech Agency Services",
+      name: "Software Factory Services",
       itemListElement: [
         "softwareDev",
         "ai",

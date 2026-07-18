@@ -1,16 +1,16 @@
 {
   "metadata": {
-    "title": "Miutifin | Tech Hub – AI, Software Development, Robotics & Marketing",
+    "title": "Miutifin | Software Factory – AI, Software Development, Robotics & Marketing",
     "titleTemplate": "%s | Miutifin",
-    "description": "Miutifin is a full-stack tech hub specialising in AI development, software engineering, robotics automation, and AI-driven marketing. We build LLM integrations, web & mobile apps, ROS 2 systems, and data-driven growth strategies.",
-    "ogTitle": "Miutifin | Tech Agency – AI, Software Development, Robotics & Marketing",
-    "ogDescription": "Full-stack tech agency. We build AI systems, software products, robotics solutions and run AI-powered marketing campaigns. 120+ projects delivered.",
-    "ogImageAlt": "Miutifin – Tech Agency",
-    "twitterTitle": "Miutifin | Tech Agency – AI, Software Development & Robotics",
-    "twitterDescription": "Full-stack tech agency specialising in AI, software engineering, robotics and AI-driven marketing. 120+ projects delivered.",
+    "description": "Miutifin is a full-stack software factory specialising in AI development, software engineering, robotics automation, and AI-driven marketing. We build LLM integrations, web & mobile apps, ROS 2 systems, and data-driven growth strategies.",
+    "ogTitle": "Miutifin | Software Factory – AI, Software Development, Robotics & Marketing",
+    "ogDescription": "Full-stack software factory. We build AI systems, software products, robotics solutions and run AI-powered marketing campaigns. 120+ projects delivered.",
+    "ogImageAlt": "Miutifin – Software Factory",
+    "twitterTitle": "Miutifin | Software Factory – AI, Software Development & Robotics",
+    "twitterDescription": "Full-stack software factory specialising in AI, software engineering, robotics and AI-driven marketing. 120+ projects delivered.",
     "ogLocale": "en_US",
     "keywords": [
-      "tech agency",
+      "software factory",
       "software development agency",
       "AI development",
       "artificial intelligence agency",
@@ -39,8 +39,8 @@
     ]
   },
   "schema": {
-    "orgDescription": "Miutifin is a full-stack tech agency specialising in AI development, software engineering, robotics automation, and AI-driven marketing.",
-    "websiteDescription": "Full-stack tech agency: AI, software engineering, robotics and AI-driven marketing.",
+    "orgDescription": "Miutifin is a full-stack software factory specialising in AI development, software engineering, robotics automation, and AI-driven marketing.",
+    "websiteDescription": "Full-stack software factory: AI, software engineering, robotics and AI-driven marketing.",
     "services": {
       "softwareDev": {
         "name": "Software Development",
@@ -72,7 +72,7 @@
     "cta": "Schedule a call",
     "menu": "Menu",
     "language": "Language",
-    "available": "Available — Q2 2026",
+    "available": "Available — Q1 2027",
     "replyTime": "Reply within 24h"
   },
   "strip": {
@@ -114,7 +114,7 @@
     "tagline1": "The future",
     "tagline2": "starts",
     "tagline2Highlight": "here.",
-    "description": "Global tech agency. Senior teams in 7 countries delivering AI, software, robotics, growth and strategy — at prices that make sense.",
+    "description": "Global software factory. Senior teams in 7 countries delivering AI, software, robotics, growth and strategy — at prices that make sense.",
     "columns": {
       "services": "Services",
       "company": "Company",
@@ -508,7 +508,7 @@
     "headlineLine2": "products that",
     "headlineLine2Em": "move",
     "headlineLine3": "markets.",
-    "subtitle": "Miutifin is the software studio that helps enterprise teams design, build and scale high-impact digital systems across 7 international markets.",
+    "subtitle": "Miutifin is the software factory that helps enterprise teams design, build and scale high-impact digital systems across 7 international markets.",
     "ctaPrimary": "Schedule a consultation",
     "ctaSecondary": "See case studies",
     "scroll": "Scroll",
@@ -622,8 +622,8 @@
         "industry": "Music",
         "title": "Custom music platform",
         "desc": "New design system and logic for a platform of an international DJ for sharing real-time content.",
-        "outcomeMetric": "+118%",
-        "outcome": "qualified leads",
+        "outcomeMetric": "+63%",
+        "outcome": "shared streams",
         "mono": "BID",
         "size": "tall"
       }
@@ -714,7 +714,7 @@
 
   "stats": {
     "eyebrow": "Numbers",
-    "titleLine1": "Seven years,",
+    "titleLine1": "Six years,",
     "titleLine1Em": "results",
     "titleLine2": "we can prove.",
     "items": [
@@ -725,7 +725,7 @@
       },
       {
         "num": "€10M+",
-        "label": "Revenue generated",
+        "label": "Revenue tracked",
         "detail": "Traceable economic impact on the products we've built for our clients."
       },
       {
@@ -865,6 +865,16 @@
     "titleLine1": "Tell us about",
     "titleLine2Em": "your project.",
     "subtitle": "The more detail you share about your project, the sharper our reply will be. Everything you send is treated with full confidentiality.",
+    "stickyCta": "Book a call",
+    "reassure": {
+      "title": "Why reach out",
+      "items": [
+        "Reply within 24 business hours",
+        "We sign an NDA before any sensitive conversation",
+        "No automated marketing — just our direct reply",
+        "2 slots available for Q1 2027"
+      ]
+    },
     "details": {
       "emailLabel": "Email",
       "replyLabel": "Typical reply",
@@ -879,6 +889,11 @@
       "companyPlaceholder": "Acme Inc.",
       "emailLabel": "Work email",
       "emailPlaceholder": "jane@acme.com",
+      "phoneLabel": "Phone",
+      "phonePlaceholder": "+1 555 123 4567",
+      "websiteLabel": "Company website",
+      "websitePlaceholder": "acme.com",
+      "optional": "optional",
       "projectTypeLabel": "Project type",
       "projectTypePlaceholder": "Select an option",
       "projectTypes": [
@@ -908,9 +923,23 @@
       ],
       "messageLabel": "Tell us more",
       "messagePlaceholder": "Objectives, context, constraints — anything that helps us understand the project…",
+      "messageHint": "Minimum 5 characters",
       "privacyPre": "By submitting this form you accept our ",
       "privacyLink": "privacy policy",
       "privacyPost": ". No automated marketing — just our direct reply.",
+      "consentLabel": "I have read and accept the ",
+      "freeEmailWarning": "Please use your work email if possible.",
+      "errors": {
+        "name": "Enter your full name (min 2 characters).",
+        "company": "Enter your company name (min 2 characters).",
+        "emailRequired": "Email is required.",
+        "emailInvalid": "Enter a valid email address.",
+        "phone": "Invalid phone number.",
+        "website": "Enter a valid URL (e.g. acme.com).",
+        "projectType": "Select a project type.",
+        "message": "Tell us more: at least 5 characters.",
+        "consent": "You must accept the privacy policy to submit."
+      },
       "submit": "Send request",
       "submitting": "Sending…",
       "errorGeneric": "Something went wrong. Try again or write to us directly at miutifin.ask@gmail.com"

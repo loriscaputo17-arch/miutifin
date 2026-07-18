@@ -1,16 +1,16 @@
 {
   "metadata": {
-    "title": "Miutifin | Tech Hub – AI, Sviluppo Software, Robotica & Marketing",
+    "title": "Miutifin | Software Factory – AI, Sviluppo Software, Robotica & Marketing",
     "titleTemplate": "%s | Miutifin",
-    "description": "Miutifin è un tech hub full-stack specializzato in sviluppo AI, software engineering, automazione robotica e marketing AI-driven. Costruiamo integrazioni LLM, app web & mobile, sistemi ROS 2 e strategie di crescita data-driven.",
-    "ogTitle": "Miutifin | Tech Agency – AI, Sviluppo Software, Robotica & Marketing",
-    "ogDescription": "Tech agency full-stack. Costruiamo sistemi AI, prodotti software, soluzioni robotiche e gestiamo campagne marketing AI-powered. 120+ progetti consegnati.",
-    "ogImageAlt": "Miutifin – Tech Agency",
-    "twitterTitle": "Miutifin | Tech Agency – AI, Sviluppo Software & Robotica",
-    "twitterDescription": "Tech agency full-stack specializzata in AI, software engineering, robotica e marketing AI-driven. 120+ progetti consegnati.",
+    "description": "Miutifin è una software factory full-stack specializzata in sviluppo AI, software engineering, automazione robotica e marketing AI-driven. Costruiamo integrazioni LLM, app web & mobile, sistemi ROS 2 e strategie di crescita data-driven.",
+    "ogTitle": "Miutifin | Software Factory – AI, Sviluppo Software, Robotica & Marketing",
+    "ogDescription": "Software factory full-stack. Costruiamo sistemi AI, prodotti software, soluzioni robotiche e gestiamo campagne marketing AI-powered. 120+ progetti consegnati.",
+    "ogImageAlt": "Miutifin – Software Factory",
+    "twitterTitle": "Miutifin | Software Factory – AI, Sviluppo Software & Robotica",
+    "twitterDescription": "Software factory full-stack specializzata in AI, software engineering, robotica e marketing AI-driven. 120+ progetti consegnati.",
     "ogLocale": "it_IT",
     "keywords": [
-      "tech agency",
+      "software factory",
       "agenzia di sviluppo software",
       "sviluppo AI",
       "agenzia intelligenza artificiale",
@@ -39,8 +39,8 @@
     ]
   },
   "schema": {
-    "orgDescription": "Miutifin è una tech agency full-stack specializzata in sviluppo AI, software engineering, automazione robotica e marketing AI-driven.",
-    "websiteDescription": "Tech agency full-stack: AI, software engineering, robotica e marketing AI-driven.",
+    "orgDescription": "Miutifin è una software factory full-stack specializzata in sviluppo AI, software engineering, automazione robotica e marketing AI-driven.",
+    "websiteDescription": "Software factory full-stack: AI, software engineering, robotica e marketing AI-driven.",
     "services": {
       "softwareDev": {
         "name": "Sviluppo Software",
@@ -72,7 +72,7 @@
     "cta": "Inizia una chiamata",
     "menu": "Menu",
     "language": "Lingua",
-    "available": "Disponibili — Q2 2026",
+    "available": "Disponibili — Q1 2027",
     "replyTime": "Risposta entro 24h"
   },
   "strip": {
@@ -114,7 +114,7 @@
     "tagline1": "Il futuro",
     "tagline2": "inizia",
     "tagline2Highlight": "qui.",
-    "description": "Tech agency globale. Team senior in 7 paesi che costruiscono AI, software, robotica, growth e strategia — a prezzi che hanno senso.",
+    "description": "Software factory globale. Team senior in 7 paesi che costruiscono AI, software, robotica, growth e strategia — a prezzi che hanno senso.",
     "columns": {
       "services": "Servizi",
       "company": "Azienda",
@@ -622,8 +622,8 @@
         "industry": "Musica",
         "title": "Custom music platform",
         "desc": "Nuovo design system e logiche per la piattaforma di un DJ internazionale per condividere contenuti real-time.",
-        "outcomeMetric": "+118%",
-        "outcome": "lead qualificati",
+        "outcomeMetric": "+63%",
+        "outcome": "stream condivisi",
         "mono": "BID",
         "size": "tall"
       }
@@ -714,7 +714,7 @@
 
   "stats": {
     "eyebrow": "Numeri",
-    "titleLine1": "Sette anni,",
+    "titleLine1": "Sei anni,",
     "titleLine1Em": "risultati",
     "titleLine2": "che possiamo dimostrare.",
     "items": [
@@ -725,7 +725,7 @@
       },
       {
         "num": "€10M+",
-        "label": "Revenue generato",
+        "label": "Revenue tracciato",
         "detail": "Impatto economico tracciabile sui prodotti che abbiamo costruito per i clienti."
       },
       {
@@ -865,6 +865,16 @@
     "titleLine1": "Raccontaci",
     "titleLine2Em": "il tuo progetto.",
     "subtitle": "Più dettagli ci dai sul tuo progetto, più precisa sarà la nostra risposta. Tutti i dati sono trattati con confidenzialità.",
+    "stickyCta": "Prenota una call",
+    "reassure": {
+      "title": "Perché scriverci",
+      "items": [
+        "Risposta entro 24 ore lavorative",
+        "Firmiamo NDA prima di ogni conversazione sensibile",
+        "Nessun marketing automatizzato, solo la nostra risposta diretta",
+        "2 slot disponibili per Q1 2027"
+      ]
+    },
     "details": {
       "emailLabel": "Email",
       "replyLabel": "Risposta tipica",
@@ -879,6 +889,11 @@
       "companyPlaceholder": "Acme Inc.",
       "emailLabel": "Email aziendale",
       "emailPlaceholder": "mario@acme.com",
+      "phoneLabel": "Telefono",
+      "phonePlaceholder": "+39 333 123 4567",
+      "websiteLabel": "Sito web azienda",
+      "websitePlaceholder": "acme.com",
+      "optional": "facoltativo",
       "projectTypeLabel": "Tipo di progetto",
       "projectTypePlaceholder": "Seleziona un'opzione",
       "projectTypes": [
@@ -908,9 +923,23 @@
       ],
       "messageLabel": "Raccontaci di più",
       "messagePlaceholder": "Obiettivi, contesto, vincoli, qualunque cosa ci aiuti a capire il progetto…",
+      "messageHint": "Minimo 5 caratteri",
       "privacyPre": "Inviando questo form accetti la nostra ",
       "privacyLink": "privacy policy",
       "privacyPost": ". Nessun marketing automatizzato, solo la nostra risposta diretta.",
+      "consentLabel": "Ho letto e accetto la ",
+      "freeEmailWarning": "Usa la tua email aziendale se possibile.",
+      "errors": {
+        "name": "Inserisci nome e cognome (min 2 caratteri).",
+        "company": "Inserisci il nome dell'azienda (min 2 caratteri).",
+        "emailRequired": "L'email è obbligatoria.",
+        "emailInvalid": "Inserisci un indirizzo email valido.",
+        "phone": "Numero di telefono non valido.",
+        "website": "Inserisci un URL valido (es. acme.com).",
+        "projectType": "Seleziona un tipo di progetto.",
+        "message": "Raccontaci di più: almeno 5 caratteri.",
+        "consent": "Devi accettare la privacy policy per inviare."
+      },
       "submit": "Invia richiesta",
       "submitting": "Invio in corso…",
       "errorGeneric": "Qualcosa è andato storto. Riprova o scrivici direttamente a miutifin.ask@gmail.com"

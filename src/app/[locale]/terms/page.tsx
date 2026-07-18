@@ -893,7 +893,7 @@ export default function TermsPage() {
               <h2 className="text-xl font-medium text-white mb-4">1. Summary in plain language</h2>
               <p>Before the legal version: this is what matters.</p>
               <ul className="mt-4 space-y-2 list-disc list-inside marker:text-red-500">
-                <li><strong>Miutifin</strong> is a tech agency that builds software. <strong>ESCO</strong> is our private network for city experiences — invitation-only.</li>
+                <li><strong>Miutifin</strong> is a software factory that builds software products. <strong>ESCO</strong> is our private network for city experiences — invitation-only.</li>
                 <li>By using either, you agree to use them lawfully and respectfully.</li>
                 <li>If you're invited to ESCO, you get <strong>three invites</strong> of your own. Don't sell them or use them in bad faith.</li>
                 <li>ESCO recommendations are AI-curated suggestions, not guarantees. Venues are independent third parties — they aren't run by us.</li>

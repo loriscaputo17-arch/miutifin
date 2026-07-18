@@ -3,6 +3,7 @@
 import { useState, useEffect, useTransition } from "react";
 import { useLocale, useTranslations } from "next-intl";
 import { useRouter, usePathname } from "@/i18n/navigation";
+import { SocialLinks } from "@/components/homepage/SocialIcons";
 
 const S = `
   @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
@@ -187,6 +188,12 @@ const S = `
     transition:all .2s;
   }
   .mob-cta:hover{background:#ef4444}
+  .mob-social{display:flex;gap:16px;align-items:center}
+  .mob-social a{
+    color:rgba(255,255,255,0.45);display:inline-flex;align-items:center;justify-content:center;
+    transition:color .2s,transform .2s;
+  }
+  .mob-social a:hover{color:var(--r);transform:scale(1.1)}
   .mob-foot-info{
     display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:8px;
     padding-top:.7rem;
@@ -329,6 +336,7 @@ export function Navbar() {
           <a href="#contact" onClick={() => setOpen(false)} className="mob-cta">
             {t("cta")} →
           </a>
+          <SocialLinks className="mob-social" size={22} />
           <div className="mob-foot-info">
             <span><span className="dot" />{t("available")}</span>
             <span>{t("replyTime")}</span>

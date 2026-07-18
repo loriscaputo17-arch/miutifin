@@ -51,7 +51,7 @@ const MILESTONES = [
   { year: "2022", event: "7 countries", desc: "From Bangkork to Monaco. Real teams, real timezone coverage. Not contractors — collaborators with skin in the game." },
   { year: "2023", event: "100+ projects", desc: "Software, AI, robotics, video generation, SEO. Startups, enterprises, university research labs. The portfolio spoke for itself." },
   { year: "2024", event: "AI-native rebrand", desc: "The agency didn't just adopt AI — it became it. Every workflow, every product, every client engagement touched by intelligence." },
-  { year: "2025", icon: "◈", event: "Now", desc: "120+ projects, 7 countries, 98% retention. A community of the world's best builders, obsessed with what comes next." },
+  { year: "2025", icon: "◈", event: "Now", desc: "120+ projects, 7 countries, 94% retention. A community of the world's best builders, obsessed with what comes next." },
 ];
 
 const PILLARS = [

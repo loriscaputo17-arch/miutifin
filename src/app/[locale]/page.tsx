@@ -4,6 +4,7 @@ import React, { useEffect, useRef, useState } from "react";
 import { motion, useScroll, useTransform, AnimatePresence } from "framer-motion";
 import { useTranslations, useLocale } from "next-intl";
 import { createSupabaseBrowserClient } from "@/lib/supabaseClient";
+import { SocialLinks } from "@/components/homepage/SocialIcons";
 import { Navbar } from "@/components/homepage/Navbar";
 import { Footer } from "@/components/homepage/Footer";
 import { MiutifinLoader } from "@/components/homepage/Loader";
@@ -780,6 +781,67 @@ const S = `
     font-size:22px;color:var(--r);
   }
 
+  /* --- form: optional tag, validation, counter, consent --- */
+  .form-label .opt{color:var(--ink-4);margin-left:5px;font-weight:600;text-transform:none;letter-spacing:0;font-size:9.5px}
+  .form-input.err,.form-ta.err,.form-sel.err{border-color:#ef4444;background:rgba(239,68,68,0.04);box-shadow:0 0 0 3px rgba(239,68,68,0.07)}
+  .form-err{font-size:11.5px;color:#ef4444;line-height:1.45;margin:0}
+  .form-warn{font-size:11.5px;color:#f59e0b;line-height:1.45;margin:0}
+  .form-meta{display:flex;align-items:center;justify-content:space-between;gap:12px}
+  .form-hint{font-size:11.5px;color:var(--ink-4)}
+  .form-counter{font-size:11.5px;color:var(--ink-4);font-variant-numeric:tabular-nums;white-space:nowrap}
+  .form-counter.bad{color:#f59e0b}
+  .form-consent{display:flex;align-items:flex-start;gap:10px;cursor:pointer;font-size:12.5px;color:var(--ink-2);line-height:1.5;letter-spacing:-0.005em;text-transform:none}
+  .form-consent input{
+    appearance:none;-webkit-appearance:none;flex-shrink:0;margin-top:1px;
+    width:18px;height:18px;border-radius:5px;border:1px solid var(--line);
+    background:rgba(245,245,244,0.02);cursor:pointer;transition:all .2s;position:relative;
+  }
+  .form-consent input:checked{background:var(--r);border-color:var(--r)}
+  .form-consent input:checked::after{content:'✓';position:absolute;inset:0;display:flex;align-items:center;justify-content:center;color:#fff;font-size:12px;font-weight:700}
+  .form-consent input:focus-visible{outline:none;box-shadow:0 0 0 3px rgba(220,38,38,0.18)}
+  .form-consent a{color:var(--ink);text-decoration:underline;text-underline-offset:2px}
+  .form-consent a:hover{color:var(--r)}
+  .form-consent.err input{border-color:#ef4444}
+  .form-spinner{
+    width:14px;height:14px;border-radius:50%;display:inline-block;margin-right:8px;vertical-align:-2px;
+    border:2px solid rgba(255,255,255,0.35);border-top-color:#fff;animation:form-spin .7s linear infinite;
+  }
+  @keyframes form-spin{to{transform:rotate(360deg)}}
+
+  /* --- contact side: reassurance list + social --- */
+  .contact-reassure{list-style:none;margin:1.8rem 0 0;padding:0;display:flex;flex-direction:column;gap:.7rem}
+  .contact-reassure li{display:flex;align-items:flex-start;gap:10px;font-size:13px;color:var(--ink-2);line-height:1.5;letter-spacing:-0.005em}
+  .contact-reassure .ck{
+    flex-shrink:0;margin-top:1px;width:17px;height:17px;border-radius:50%;
+    background:rgba(220,38,38,0.08);border:1px solid var(--r-line);color:var(--r);
+    display:flex;align-items:center;justify-content:center;font-size:9px;font-weight:700;
+  }
+  .contact-social{display:flex;gap:12px;margin-top:2rem}
+  .contact-social a{
+    color:var(--ink-3);display:inline-flex;align-items:center;justify-content:center;
+    transition:color .2s,transform .2s;
+  }
+  .contact-social a:hover{color:var(--r);transform:scale(1.1)}
+
+  /* --- sticky mobile CTA --- */
+  .sticky-cta{display:none}
+  @media(max-width:768px){
+    .sticky-cta{
+      display:flex;position:fixed;left:0;right:0;bottom:0;z-index:150;
+      padding:10px 14px calc(10px + env(safe-area-inset-bottom,0px));
+      background:rgba(8,8,8,0.92);border-top:1px solid var(--line);
+      backdrop-filter:blur(18px) saturate(180%);-webkit-backdrop-filter:blur(18px) saturate(180%);
+      transition:transform .35s cubic-bezier(.4,0,.2,1),opacity .35s;
+    }
+    .sticky-cta.hidden{transform:translateY(120%);opacity:0;pointer-events:none}
+    .sticky-cta a{
+      flex:1;display:flex;align-items:center;justify-content:center;gap:7px;
+      padding:14px 20px;border-radius:12px;background:var(--r);color:#fff;
+      font-family:var(--f-sans);font-size:14.5px;font-weight:700;letter-spacing:-0.01em;
+      box-shadow:0 4px 24px rgba(220,38,38,0.28);
+    }
+  }
+
   /* ============================================================
      ESCO TEASER — UNCHANGED per request
      ============================================================ */
@@ -1036,7 +1098,7 @@ function Hero() {
           transition={{ duration: 0.8, delay: 0.8 }}
         >
           <div className="hero-trust-cell">
-            <div className="hero-trust-n">120<span className="red">+</span></div>
+            <div className="hero-trust-n">40<span className="red">+</span></div>
             <div className="hero-trust-l">{t("trust.clients")}</div>
           </div>
           <div className="hero-trust-cell">
@@ -1664,48 +1726,138 @@ type ContactForm = {
   name: string;
   company: string;
   email: string;
+  phone: string;
   projectType: string;
   budget: string;
   timeline: string;
+  website: string;
   message: string;
+  consent: boolean;
 };
+
+type FieldKey = keyof ContactForm;
+type FieldErrors = Partial<Record<FieldKey, string>>;
+
+const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+const PHONE_RE = /^[\d\s+()-]{6,}$/;
+const URL_RE = /^(https?:\/\/)?([\w-]+\.)+[\w-]{2,}(\/\S*)?$/i;
+const FREE_EMAIL_DOMAINS = [
+  "gmail.com", "googlemail.com", "hotmail.com", "hotmail.it",
+  "yahoo.com", "yahoo.it", "outlook.com", "outlook.it",
+  "icloud.com", "live.com", "libero.it",
+];
+const MSG_MIN = 5;
+// Fields validated on submit, in focus order
+const VALIDATED: FieldKey[] = ["name", "company", "email", "phone", "projectType", "website", "message", "consent"];
 
 function Contact() {
   const t = useTranslations("contact");
   const [sent, setSent] = useState(false);
   const [loading, setLoading] = useState(false);
   const [err, setErr] = useState<string | null>(null);
+  const [errors, setErrors] = useState<FieldErrors>({});
+  const [touched, setTouched] = useState<Partial<Record<FieldKey, boolean>>>({});
   const [form, setForm] = useState<ContactForm>({
-    name: "", company: "", email: "",
+    name: "", company: "", email: "", phone: "",
     projectType: "", budget: "", timeline: "",
-    message: ""
+    website: "", message: "", consent: false,
   });
-
-  const set = (k: keyof ContactForm) =>
-    (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) =>
-      setForm(f => ({ ...f, [k]: e.target.value }));
+  const fieldRefs = useRef<Partial<Record<FieldKey, HTMLElement | null>>>({});
 
   const projectTypes = t.raw("form.projectTypes") as string[];
   const budgetRanges = t.raw("form.budgetRanges") as string[];
   const timelines = t.raw("form.timelines") as string[];
+  const reassure = t.raw("reassure.items") as string[];
+
+  const validateField = (k: FieldKey, f: ContactForm): string | undefined => {
+    switch (k) {
+      case "name":
+        return f.name.trim().length < 2 ? t("form.errors.name") : undefined;
+      case "company":
+        return f.company.trim().length < 2 ? t("form.errors.company") : undefined;
+      case "email":
+        if (!f.email.trim()) return t("form.errors.emailRequired");
+        return EMAIL_RE.test(f.email.trim()) ? undefined : t("form.errors.emailInvalid");
+      case "phone":
+        return f.phone.trim() && !PHONE_RE.test(f.phone.trim()) ? t("form.errors.phone") : undefined;
+      case "website":
+        return f.website.trim() && !URL_RE.test(f.website.trim()) ? t("form.errors.website") : undefined;
+      case "projectType":
+        return !f.projectType ? t("form.errors.projectType") : undefined;
+      case "message":
+        return f.message.trim().length < MSG_MIN ? t("form.errors.message") : undefined;
+      case "consent":
+        return !f.consent ? t("form.errors.consent") : undefined;
+      default:
+        return undefined;
+    }
+  };
+
+  // Update a field; live-revalidate only once the field has been touched.
+  const setField = (k: FieldKey, value: string | boolean) => {
+    const next = { ...form, [k]: value };
+    setForm(next);
+    if (touched[k]) setErrors(e => ({ ...e, [k]: validateField(k, next) }));
+  };
+
+  const onBlur = (k: FieldKey) => {
+    setTouched(prev => ({ ...prev, [k]: true }));
+    setErrors(e => ({ ...e, [k]: validateField(k, form) }));
+  };
+
+  const emailDomain = form.email.trim().toLowerCase().split("@")[1] || "";
+  const showFreeEmailWarning =
+    EMAIL_RE.test(form.email.trim()) && FREE_EMAIL_DOMAINS.includes(emailDomain);
+
+  const msgLen = form.message.trim().length;
 
   const submit = async (e: React.FormEvent) => {
     e.preventDefault();
-    setLoading(true); setErr(null);
-    const sb = createSupabaseBrowserClient();
-    const { error } = await sb.from("contact_leads").insert({
-      name: form.name,
-      company: form.company || null,
-      email: form.email,
-      project_type: form.projectType || null,
-      budget: form.budget || null,
-      timeline: form.timeline || null,
-      message: form.message,
-    });
-    setLoading(false);
-    if (error) setErr(t("form.errorGeneric"));
-    else setSent(true);
+    const nextErrors: FieldErrors = {};
+    for (const k of VALIDATED) {
+      const msg = validateField(k, form);
+      if (msg) nextErrors[k] = msg;
+    }
+    setErrors(nextErrors);
+    setTouched(VALIDATED.reduce((a, k) => ({ ...a, [k]: true }), {}));
+
+    const firstError = VALIDATED.find(k => nextErrors[k]);
+    if (firstError) {
+      fieldRefs.current[firstError]?.focus?.();
+      return;
+    }
+
+    setLoading(true);
+    setErr(null);
+    const rawSite = form.website.trim();
+    const website = rawSite
+      ? (/^https?:\/\//i.test(rawSite) ? rawSite : `https://${rawSite}`)
+      : null;
+    try {
+      const sb = createSupabaseBrowserClient();
+      const { error } = await sb.from("contact_leads").insert({
+        name: form.name.trim(),
+        company: form.company.trim() || null,
+        email: form.email.trim(),
+        phone: form.phone.trim() || null,
+        website,
+        project_type: form.projectType || null,
+        budget: form.budget || null,
+        timeline: form.timeline || null,
+        message: form.message.trim(),
+      });
+      if (error) setErr(t("form.errorGeneric"));
+      else setSent(true);
+    } catch {
+      setErr(t("form.errorGeneric"));
+    } finally {
+      setLoading(false);
+    }
   };
+
+  const cls = (base: string, k: FieldKey) => (touched[k] && errors[k] ? `${base} err` : base);
+  const fieldErr = (k: FieldKey) =>
+    touched[k] && errors[k] ? <p className="form-err" role="alert">{errors[k]}</p> : null;
 
   return (
     <section className="contact" id="contact">
@@ -1718,6 +1870,13 @@ function Contact() {
               <span className="accent" style={{ color: "var(--r)" }}>{t("titleLine2Em")}</span>
             </h2>
             <p>{t("subtitle")}</p>
+
+            <ul className="contact-reassure">
+              {reassure.map((item, i) => (
+                <li key={i}><span className="ck" aria-hidden>✓</span>{item}</li>
+              ))}
+            </ul>
+
             <div className="contact-detail">
               <div className="contact-detail-i">
                 <div className="l">{t("details.emailLabel")}</div>
@@ -1732,6 +1891,8 @@ function Contact() {
                 <div className="v">{t("details.availabilityValue")}</div>
               </div>
             </div>
+
+            <SocialLinks className="contact-social" size={20} />
           </div>
 
           <AnimatePresence mode="wait">
@@ -1755,6 +1916,7 @@ function Contact() {
               <motion.form
                 key="form"
                 onSubmit={submit}
+                noValidate
                 className="form"
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
@@ -1763,50 +1925,133 @@ function Contact() {
                 <div className="form-row">
                   <div className="form-field">
                     <label className="form-label">{t("form.nameLabel")}<span className="req">*</span></label>
-                    <input type="text" required value={form.name} onChange={set("name")} placeholder={t("form.namePlaceholder")} className="form-input" />
+                    <input
+                      ref={el => { fieldRefs.current.name = el; }}
+                      type="text" value={form.name}
+                      onChange={e => setField("name", e.target.value)} onBlur={() => onBlur("name")}
+                      placeholder={t("form.namePlaceholder")} className={cls("form-input", "name")}
+                      aria-invalid={!!(touched.name && errors.name)}
+                    />
+                    {fieldErr("name")}
                   </div>
                   <div className="form-field">
                     <label className="form-label">{t("form.companyLabel")}<span className="req">*</span></label>
-                    <input type="text" required value={form.company} onChange={set("company")} placeholder={t("form.companyPlaceholder")} className="form-input" />
+                    <input
+                      ref={el => { fieldRefs.current.company = el; }}
+                      type="text" value={form.company}
+                      onChange={e => setField("company", e.target.value)} onBlur={() => onBlur("company")}
+                      placeholder={t("form.companyPlaceholder")} className={cls("form-input", "company")}
+                      aria-invalid={!!(touched.company && errors.company)}
+                    />
+                    {fieldErr("company")}
                   </div>
                 </div>
+
                 <div className="form-field">
                   <label className="form-label">{t("form.emailLabel")}<span className="req">*</span></label>
-                  <input type="email" required value={form.email} onChange={set("email")} placeholder={t("form.emailPlaceholder")} className="form-input" />
+                  <input
+                    ref={el => { fieldRefs.current.email = el; }}
+                    type="email" value={form.email}
+                    onChange={e => setField("email", e.target.value)} onBlur={() => onBlur("email")}
+                    placeholder={t("form.emailPlaceholder")} className={cls("form-input", "email")}
+                    aria-invalid={!!(touched.email && errors.email)}
+                  />
+                  {fieldErr("email")}
+                  {showFreeEmailWarning && !fieldErr("email") && (
+                    <p className="form-warn">{t("form.freeEmailWarning")}</p>
+                  )}
                 </div>
+
+                <div className="form-field">
+                  <label className="form-label">{t("form.phoneLabel")}<span className="opt">({t("form.optional")})</span></label>
+                  <input
+                    ref={el => { fieldRefs.current.phone = el; }}
+                    type="tel" value={form.phone}
+                    onChange={e => setField("phone", e.target.value)} onBlur={() => onBlur("phone")}
+                    placeholder={t("form.phonePlaceholder")} className={cls("form-input", "phone")}
+                    aria-invalid={!!(touched.phone && errors.phone)}
+                  />
+                  {fieldErr("phone")}
+                </div>
+
                 <div className="form-row">
                   <div className="form-field">
                     <label className="form-label">{t("form.projectTypeLabel")}<span className="req">*</span></label>
-                    <select required value={form.projectType} onChange={set("projectType")} className="form-sel">
+                    <select
+                      ref={el => { fieldRefs.current.projectType = el; }}
+                      value={form.projectType}
+                      onChange={e => setField("projectType", e.target.value)} onBlur={() => onBlur("projectType")}
+                      className={cls("form-sel", "projectType")}
+                      aria-invalid={!!(touched.projectType && errors.projectType)}
+                    >
                       <option value="">{t("form.projectTypePlaceholder")}</option>
                       {projectTypes.map((p, i) => <option key={i} value={p}>{p}</option>)}
                     </select>
+                    {fieldErr("projectType")}
                   </div>
                   <div className="form-field">
-                    <label className="form-label">{t("form.budgetLabel")}</label>
-                    <select value={form.budget} onChange={set("budget")} className="form-sel">
+                    <label className="form-label">{t("form.budgetLabel")}<span className="opt">({t("form.optional")})</span></label>
+                    <select value={form.budget} onChange={e => setField("budget", e.target.value)} className="form-sel">
                       <option value="">{t("form.budgetPlaceholder")}</option>
                       {budgetRanges.map((b, i) => <option key={i} value={b}>{b}</option>)}
                     </select>
                   </div>
                 </div>
+
                 <div className="form-field">
-                  <label className="form-label">{t("form.timelineLabel")}</label>
-                  <select value={form.timeline} onChange={set("timeline")} className="form-sel">
+                  <label className="form-label">{t("form.timelineLabel")}<span className="opt">({t("form.optional")})</span></label>
+                  <select value={form.timeline} onChange={e => setField("timeline", e.target.value)} className="form-sel">
                     <option value="">{t("form.timelinePlaceholder")}</option>
                     {timelines.map((tl, i) => <option key={i} value={tl}>{tl}</option>)}
                   </select>
                 </div>
+
+                <div className="form-field">
+                  <label className="form-label">{t("form.websiteLabel")}<span className="opt">({t("form.optional")})</span></label>
+                  <input
+                    ref={el => { fieldRefs.current.website = el; }}
+                    type="text" inputMode="url" value={form.website}
+                    onChange={e => setField("website", e.target.value)} onBlur={() => onBlur("website")}
+                    placeholder={t("form.websitePlaceholder")} className={cls("form-input", "website")}
+                    aria-invalid={!!(touched.website && errors.website)}
+                  />
+                  {fieldErr("website")}
+                </div>
+
                 <div className="form-field">
                   <label className="form-label">{t("form.messageLabel")}<span className="req">*</span></label>
-                  <textarea required rows={5} value={form.message} onChange={set("message")} placeholder={t("form.messagePlaceholder")} className="form-ta" />
+                  <textarea
+                    ref={el => { fieldRefs.current.message = el; }}
+                    rows={5} value={form.message}
+                    onChange={e => setField("message", e.target.value)} onBlur={() => onBlur("message")}
+                    placeholder={t("form.messagePlaceholder")} className={cls("form-ta", "message")}
+                    aria-invalid={!!(touched.message && errors.message)}
+                  />
+                  <div className="form-meta">
+                    {fieldErr("message") || <span className="form-hint">{t("form.messageHint")}</span>}
+                    <span className={`form-counter${msgLen < MSG_MIN ? " bad" : ""}`}>{msgLen}/{MSG_MIN}</span>
+                  </div>
                 </div>
-                {err && <p style={{ fontSize: 12, color: "#ef4444", marginBottom: 12 }}>{err}</p>}
-                <p className="form-privacy">
-                  {t("form.privacyPre")} <a href="/privacy">{t("form.privacyLink")}</a>{t("form.privacyPost")}
-                </p>
+
+                <div className="form-field">
+                  <label className={cls("form-consent", "consent")}>
+                    <input
+                      ref={el => { fieldRefs.current.consent = el; }}
+                      type="checkbox" checked={form.consent}
+                      onChange={e => setField("consent", e.target.checked)} onBlur={() => onBlur("consent")}
+                      aria-invalid={!!(touched.consent && errors.consent)}
+                    />
+                    <span>{t("form.consentLabel")}<a href="/privacy" target="_blank" rel="noopener noreferrer">{t("form.privacyLink")}</a>.</span>
+                  </label>
+                  {fieldErr("consent")}
+                </div>
+
+                {err && <p className="form-err" role="alert" style={{ marginBottom: 12 }}>{err}</p>}
+
                 <button type="submit" disabled={loading} className="form-submit">
-                  {loading ? t("form.submitting") : `${t("form.submit")} →`}
+                  {loading
+                    ? <><span className="form-spinner" aria-hidden />{t("form.submitting")}</>
+                    : `${t("form.submit")} →`}
                 </button>
               </motion.form>
             )}
@@ -1893,6 +2138,30 @@ function EscoTeaser() {
 }
 
 /* ============================================================
+   STICKY MOBILE CTA — scrolls to the contact form
+   ============================================================ */
+function StickyMobileCta() {
+  const t = useTranslations("contact");
+  // Hide the bar once the contact section is on screen so it never covers the form.
+  const [atContact, setAtContact] = useState(false);
+  useEffect(() => {
+    const el = document.getElementById("contact");
+    if (!el) return;
+    const io = new IntersectionObserver(
+      ([entry]) => setAtContact(entry.isIntersecting),
+      { rootMargin: "0px 0px -40% 0px" }
+    );
+    io.observe(el);
+    return () => io.disconnect();
+  }, []);
+  return (
+    <div className={`sticky-cta${atContact ? " hidden" : ""}`} aria-hidden={atContact}>
+      <a href="#contact" tabIndex={atContact ? -1 : 0}>{t("stickyCta")} →</a>
+    </div>
+  );
+}
+
+/* ============================================================
    PAGE
    ============================================================ */
 export default function AgencyLanding() {
@@ -1918,6 +2187,7 @@ export default function AgencyLanding() {
         <Contact />
         <Footer />
       </main>
+      <StickyMobileCta />
     </>
   );
 }

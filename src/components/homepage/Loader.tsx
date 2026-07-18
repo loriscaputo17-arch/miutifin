@@ -257,7 +257,7 @@ export function MiutifinLoader() {
       <style>{MIUTIFIN_LOADER_STYLES}</style>
       <div className={`miutifin-loader ${fading ? "fade-out" : ""}`} aria-hidden="true">
         <div className="miutifin-loader-tag">
-          <span>v 1.0 · Q2 2026</span>
+          <span>Q1 2027</span>
         </div>
 
         <div className="miutifin-loader-stage">

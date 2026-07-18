@@ -1,6 +1,7 @@
 "use client";
 
 import { useTranslations } from "next-intl";
+import { SocialLinks } from "@/components/homepage/SocialIcons";
 
 const S = `
   /* FOOTER */
@@ -25,8 +26,8 @@ const S = `
   .f-ci-v a{color:rgba(255,255,255,0.55);transition:color .2s}
   .f-ci-v a:hover{color:#fff}
   .f-social{display:flex;gap:7px;margin-top:1.3rem}
-  .f-social a{width:28px;height:28px;border-radius:6px;border:1px solid rgba(255,255,255,0.06);display:flex;align-items:center;justify-content:center;font-size:11px;color:rgba(255,255,255,0.25);font-weight:700;transition:all .2s}
-  .f-social a:hover{border-color:rgba(220,38,38,0.26);color:var(--r);background:rgba(220,38,38,0.04)}
+  .f-social a{width:30px;height:30px;border-radius:7px;border:1px solid rgba(255,255,255,0.06);display:flex;align-items:center;justify-content:center;color:rgba(255,255,255,0.35);transition:all .2s}
+  .f-social a:hover{border-color:rgba(220,38,38,0.26);color:var(--r);background:rgba(220,38,38,0.04);transform:scale(1.1)}
   .f-bottom{padding-top:1.3rem;display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:10px}
   .f-copy{font-size:11px;color:rgba(255,255,255,0.13);letter-spacing:-0.01em}
   .f-built{font-size:11px;color:rgba(255,255,255,0.1);display:flex;align-items:center;gap:5px}
@@ -64,10 +65,7 @@ export function Footer() {
                 {t("tagline2")} <span>{t("tagline2Highlight")}</span>
               </p>
               <p className="f-brand-desc">{t("description")}</p>
-              <div className="f-social">
-                <a href="https://www.linkedin.com/company/miutifin" title="LinkedIn">in</a>
-                <a href="https://www.instagram.com/miutifinglobal" title="Instagram">ig</a>
-              </div>
+              <SocialLinks className="f-social" size={16} />
             </div>
 
             {/* Services */}
