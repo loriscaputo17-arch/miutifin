@@ -235,3 +235,29 @@ export async function listPlacesByCity(cityId: string): Promise<PlaceLite[]> {
   if (error) throw error;
   return (data as PlaceLite[]) ?? [];
 }
+
+/**
+ * Global place search by name/slug across ALL cities, used by the draft
+ * review picker so events can be linked to a venue regardless of city.
+ */
+export async function searchPlaces(query: string, limit = 30): Promise<PlaceLite[]> {
+  const sb = createSupabaseBrowserClient();
+  let q = sb.from("places").select("id, name, slug").order("name").limit(limit);
+  const term = query.trim().replace(/[%,]/g, " ");
+  if (term) q = q.or(`name.ilike.%${term}%,slug.ilike.%${term}%`);
+  const { data, error } = await q;
+  if (error) throw error;
+  return (data as PlaceLite[]) ?? [];
+}
+
+/** Fetch a single place by id (city-independent), for resolving a linked venue. */
+export async function getPlaceById(id: string): Promise<PlaceLite | null> {
+  const sb = createSupabaseBrowserClient();
+  const { data, error } = await sb
+    .from("places")
+    .select("id, name, slug")
+    .eq("id", id)
+    .maybeSingle();
+  if (error) throw error;
+  return (data as PlaceLite) ?? null;
+}

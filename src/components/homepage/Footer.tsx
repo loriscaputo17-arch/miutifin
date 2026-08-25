@@ -1,133 +1,114 @@
 "use client";
 
-import { useTranslations } from "next-intl";
+import { useLocale } from "next-intl";
 import { SocialLinks } from "@/components/homepage/SocialIcons";
+import { useCopy } from "@/components/homepage/content";
 
 const S = `
-  /* FOOTER */
-  .footer{border-top:1px solid var(--b);padding:clamp(3rem,6vw,5rem) clamp(1rem,5vw,3rem) clamp(1.3rem,3vw,2rem)}
-  .footer-inner{max-width:70vw;margin:0 auto}
-  @media(max-width:780px){.footer-inner{max-width:95vw;}}
+.mf-foot{border-top:1px solid var(--mf-line);background:var(--mf-bg);overflow:hidden}
+.mf-foot-grid{
+  display:grid;grid-template-columns:1.6fr 1fr 1fr 1.2fr;gap:clamp(2rem,5vw,4rem);
+  padding:clamp(3.5rem,6vw,5rem) 0 clamp(2.5rem,5vw,3.5rem);
+}
+@media(max-width:860px){.mf-foot-grid{grid-template-columns:1fr 1fr;row-gap:2.5rem}}
+@media(max-width:520px){.mf-foot-grid{grid-template-columns:1fr}}
 
-  .footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1.2fr;gap:clamp(2rem,5vw,4rem);padding-bottom:2.8rem;border-bottom:1px solid var(--b)}
-  @media(max-width:860px){.footer-grid{grid-template-columns:1fr 1fr}}
-  @media(max-width:520px){.footer-grid{grid-template-columns:1fr}}
-  .f-brand-tag{font-size:1.45rem;font-weight:800;letter-spacing:-0.04em;color:#fff;line-height:1.15;margin:1.1rem 0 .85rem}
-  .f-brand-tag span{color:var(--r)}
-  .f-brand-desc{font-size:13px;color:rgba(255,255,255,0.24);line-height:1.8;max-width:270px}
-  .f-col-title{font-size:10px;font-weight:700;letter-spacing:.15em;text-transform:uppercase;color:rgba(255,255,255,0.16);margin-bottom:1rem}
-  .f-links{list-style:none;display:flex;flex-direction:column;gap:8px}
-  .f-links a{font-size:13px;color:rgba(255,255,255,0.28);transition:color .2s;letter-spacing:-0.01em}
-  .f-links a:hover{color:#fff}
-  .f-ci{display:flex;align-items:flex-start;gap:9px;margin-bottom:11px}
-  .f-ci-icon{width:26px;height:26px;border-radius:6px;background:rgba(220,38,38,0.05);border:1px solid rgba(220,38,38,0.1);display:flex;align-items:center;justify-content:center;font-size:10px;flex-shrink:0;margin-top:1px;color:var(--r)}
-  .f-ci-l{font-size:10px;color:rgba(255,255,255,0.2);margin-bottom:2px;font-weight:600;letter-spacing:.05em;text-transform:uppercase}
-  .f-ci-v{font-size:13px;color:rgba(255,255,255,0.55);letter-spacing:-0.01em}
-  .f-ci-v a{color:rgba(255,255,255,0.55);transition:color .2s}
-  .f-ci-v a:hover{color:#fff}
-  .f-social{display:flex;gap:7px;margin-top:1.3rem}
-  .f-social a{width:30px;height:30px;border-radius:7px;border:1px solid rgba(255,255,255,0.06);display:flex;align-items:center;justify-content:center;color:rgba(255,255,255,0.35);transition:all .2s}
-  .f-social a:hover{border-color:rgba(220,38,38,0.26);color:var(--r);background:rgba(220,38,38,0.04);transform:scale(1.1)}
-  .f-bottom{padding-top:1.3rem;display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:10px}
-  .f-copy{font-size:11px;color:rgba(255,255,255,0.13);letter-spacing:-0.01em}
-  .f-built{font-size:11px;color:rgba(255,255,255,0.1);display:flex;align-items:center;gap:5px}
-  .f-built span{color:var(--r);font-size:9px}
-  .btn-r{border-radius: 100px;}
+.mf-foot-logo{display:flex;align-items:center;gap:11px}
+.mf-foot-logo-box{
+  width:40px;height:40px;border-radius:11px;background:var(--mf-bg-3);border:1px solid var(--mf-line);
+  display:flex;align-items:center;justify-content:center;overflow:hidden;flex-shrink:0;
+}
+.mf-foot-logo-box img{width:24px;height:24px;object-fit:contain}
+.mf-foot-logo-name{font-family:var(--mf-fd);font-size:22px;font-weight:600;letter-spacing:-.035em;color:var(--mf-ink)}
+.mf-foot-logo-name b{color:var(--mf-red-b);font-weight:600}
 
-  .nav-logo-box{width:30px;height:30px;border-radius:7px;background:var(--rg);border:1px solid rgba(220,38,38,0.28);display:flex;align-items:center;justify-content:center;overflow:hidden}
-  .nav-logo-box img{width:18px;height:14px;object-fit:contain}
+.mf-foot-tag{font-size:15.5px;color:var(--mf-mut);line-height:1.6;max-width:30ch;margin:1.2rem 0 1.6rem;letter-spacing:-.01em}
+.mf-foot-social{display:flex;gap:12px}
+.mf-foot-social a{
+  width:38px;height:38px;border:1px solid var(--mf-line);border-radius:10px;
+  display:flex;align-items:center;justify-content:center;color:var(--mf-mut);
+  transition:border-color .18s ease,color .18s ease;
+}
+.mf-foot-social a:hover{border-color:var(--mf-line-3);color:var(--mf-ink)}
+
+.mf-foot-h{
+  font-family:var(--mf-fm);font-size:11.5px;letter-spacing:.14em;text-transform:uppercase;
+  color:var(--mf-mut-2);margin-bottom:1.1rem;
+}
+.mf-foot-links{display:flex;flex-direction:column;gap:12px}
+.mf-foot-links a{font-size:15.5px;color:var(--mf-mut);transition:color .18s ease;letter-spacing:-.01em}
+.mf-foot-links a:hover{color:var(--mf-ink)}
+.mf-foot-val{font-size:15.5px;color:var(--mf-ink-2);letter-spacing:-.01em}
+.mf-foot-val a:hover{color:var(--mf-red-b)}
+.mf-foot-val + .mf-foot-h{margin-top:1.5rem}
+
+.mf-foot-bottom{
+  display:flex;align-items:center;justify-content:space-between;gap:1rem;flex-wrap:wrap;
+  padding:1.4rem 0;border-top:1px solid var(--mf-line);
+  font-family:var(--mf-fm);font-size:12px;letter-spacing:.04em;color:var(--mf-mut-2);
+}
+.mf-foot-bottom .mf-dot{width:6px;height:6px;border-radius:50%;background:#22c55e;display:inline-block;margin-right:7px}
+
+.mf-foot-mark{
+  font-family:var(--mf-fd);font-weight:600;
+  font-size:clamp(4rem,17vw,15rem);line-height:.78;letter-spacing:-.055em;
+  color:rgba(247,247,245,0.05);
+  margin-bottom:-.14em;user-select:none;pointer-events:none;white-space:nowrap;
+}
+.mf-foot-mark b{color:rgba(255,95,82,0.14);font-weight:600}
 `;
 
-type CompanyLink = { label: string; href: string };
-
 export function Footer() {
-  const t = useTranslations("footer");
-  const services = t.raw("services") as string[];
-  const company = t.raw("company") as CompanyLink[];
+  const locale = useLocale();
+  const c = useCopy(locale);
 
   return (
     <>
       <style>{S}</style>
-
-      <footer className="footer">
-        <div className="footer-inner">
-          <div className="footer-grid">
-            {/* Brand */}
+      <footer className="mf-foot">
+        <div className="mf-wrap">
+          <div className="mf-foot-grid">
             <div>
-              <div style={{ display: "flex", alignItems: "center", gap: 9 }}>
-                <div className="nav-logo-box">
-                  <img src="/logo_small_trasparent.png" alt="miutifin" />
-                </div>
-                <span style={{ fontWeight: 800, fontSize: 14, letterSpacing: "-0.02em" }}>miutifin</span>
+              <div className="mf-foot-logo">
+                <span className="mf-foot-logo-box"><img src="/logo_small_trasparent.png" alt="" /></span>
+                <span className="mf-foot-logo-name">miutifin<b>.</b></span>
               </div>
-              <p className="f-brand-tag">
-                {t("tagline1")}<br />
-                {t("tagline2")} <span>{t("tagline2Highlight")}</span>
-              </p>
-              <p className="f-brand-desc">{t("description")}</p>
-              <SocialLinks className="f-social" size={16} />
+              <p className="mf-foot-tag">{c.footer.tagline}</p>
+              <SocialLinks className="mf-foot-social" size={19} />
             </div>
 
-            {/* Services */}
             <div>
-              <h4 className="f-col-title">{t("columns.services")}</h4>
-              <ul className="f-links">
-                {services.map(s => (
-                  <li key={s}><a href="#services">{s}</a></li>
-                ))}
+              <div className="mf-foot-h">{c.footer.colProduct}</div>
+              <ul className="mf-foot-links">
+                {c.footer.product.map(l => <li key={l.href}><a href={l.href}>{l.label}</a></li>)}
               </ul>
             </div>
 
-            {/* Company */}
             <div>
-              <h4 className="f-col-title">{t("columns.company")}</h4>
-              <ul className="f-links">
-                {company.map(x => (
-                  <li key={x.label}><a href={x.href}>{x.label}</a></li>
-                ))}
+              <div className="mf-foot-h">{c.footer.colCompany}</div>
+              <ul className="mf-foot-links">
+                {c.footer.company.map(l => <li key={l.href}><a href={l.href}>{l.label}</a></li>)}
               </ul>
             </div>
 
-            {/* Contact */}
             <div>
-              <h4 className="f-col-title">{t("columns.contact")}</h4>
-              <div className="f-ci">
-                <div className="f-ci-icon">@</div>
-                <div>
-                  <div className="f-ci-l">{t("info.emailLabel")}</div>
-                  <div className="f-ci-v">
-                    <a href="mailto:miutifin.ask@gmail.com">miutifin.ask@gmail.com</a>
-                  </div>
-                </div>
+              <div className="mf-foot-h">{c.contact.emailLabel}</div>
+              <div className="mf-foot-val">
+                <a href={`mailto:${c.contact.email}`}>{c.contact.email}</a>
               </div>
-              <div className="f-ci">
-                <div className="f-ci-icon">◎</div>
-                <div>
-                  <div className="f-ci-l">{t("info.presenceLabel")}</div>
-                  <div className="f-ci-v">{t("info.presenceValue")}</div>
-                </div>
-              </div>
-              <div className="f-ci">
-                <div className="f-ci-icon">⬡</div>
-                <div>
-                  <div className="f-ci-l">{t("info.responseLabel")}</div>
-                  <div className="f-ci-v">{t("info.responseValue")}</div>
-                </div>
-              </div>
-              <div style={{ marginTop: "1.3rem" }}>
-                <a href="#contact" className="btn-r" style={{ fontSize: 13, padding: "9px 18px" }}>
-                  {t("cta")} →
-                </a>
-              </div>
+              <div className="mf-foot-h">{c.contact.whereLabel}</div>
+              <div className="mf-foot-val">{c.contact.where}</div>
+              <div className="mf-foot-h">{c.footer.responseLabel}</div>
+              <div className="mf-foot-val">{c.footer.responseValue}</div>
             </div>
           </div>
 
-          <div className="f-bottom">
-            <p className="f-copy">© {new Date().getFullYear()} {t("copyright")}</p>
-            <p className="f-built">
-              {t("builtWith")} <span>♥</span> {t("builtWithSuffix")}
-            </p>
+          <div className="mf-foot-bottom">
+            <span><span className="mf-dot" />{c.footer.status}</span>
+            <span>© {new Date().getFullYear()} miutifin — {c.footer.rights}</span>
           </div>
+
+          <div className="mf-foot-mark" aria-hidden>miutifin<b>.</b></div>
         </div>
       </footer>
     </>

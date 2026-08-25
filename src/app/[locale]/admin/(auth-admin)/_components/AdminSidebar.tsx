@@ -8,7 +8,7 @@ import { createSupabaseBrowserClient } from "@/lib/supabaseClient";
 const STYLES = `
   /* ---------- defaults: desktop layout ---------- */
   .sb{
-    width:260px;
+    width:200px;
     min-height:100vh;
     background:#1a1815;
     padding:32px 16px 24px;

@@ -16,7 +16,8 @@ const STYLES = `
   .frm-eyebrow{
     display:inline-flex;align-items:center;gap:10px;
     font-size:11px;font-weight:700;letter-spacing:.2em;
-    text-transform:uppercase;color:rgba(26,24,21,0.42);margin-bottom:12px;
+    text-transform:uppercase;color:rgba(26,24,21,0.42);margin-bottom:0;
+    margin-left: 1rem;
   }
   .frm-eyebrow::before{content:'';width:6px;height:6px;border-radius:50%;background:#dc2626}
   .frm-h{font-family:Georgia,serif;font-style:italic;font-size:48px;line-height:1;letter-spacing:-1.5px;color:#1a1815}

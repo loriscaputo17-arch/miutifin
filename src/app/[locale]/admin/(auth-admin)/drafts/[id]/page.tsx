@@ -9,6 +9,8 @@ import {
   publishDraft,
   rejectDraft,
   listPlacesByCity,
+  searchPlaces,
+  getPlaceById,
   type DraftRow,
   type PlaceLite,
 } from "@/lib/contentOs";
@@ -83,8 +85,10 @@ export default function DraftReviewPage() {
   const [toast, setToast] = useState<{ msg: string; kind?: "err" | "ok" } | null>(null);
 
   // place picker (events only)
-  const [places, setPlaces] = useState<PlaceLite[]>([]);
+  const [places, setPlaces] = useState<PlaceLite[]>([]); // city places (initial list)
+  const [searchResults, setSearchResults] = useState<PlaceLite[]>([]); // global search
   const [placeSearch, setPlaceSearch] = useState("");
+  const [placeCache, setPlaceCache] = useState<Record<string, PlaceLite>>({}); // id -> place, for name resolution
 
   const showToast = (msg: string, kind?: "err" | "ok") => {
     setToast({ msg, kind });
@@ -98,12 +102,25 @@ export default function DraftReviewPage() {
       setDraft(d);
       setPayloadText(JSON.stringify(d.payload, null, 2));
       setDirty(false);
-      if (d.kind === "event" && d.city_id) {
+      if (d.kind === "event") {
         try {
-          const ps = await listPlacesByCity(d.city_id);
+          const ps = d.city_id ? await listPlacesByCity(d.city_id) : [];
           setPlaces(ps);
+          setPlaceCache((c) => {
+            const next = { ...c };
+            for (const p of ps) next[p.id] = p;
+            return next;
+          });
         } catch {
           setPlaces([]);
+        }
+        // resolve the currently linked place even if it belongs to another city
+        const linkedId = (d.payload as any)?.place_id as string | undefined;
+        if (linkedId) {
+          try {
+            const p = await getPlaceById(linkedId);
+            if (p) setPlaceCache((c) => ({ ...c, [p.id]: p }));
+          } catch { /* keep fallback name */ }
         }
       }
     } catch (err: any) {
@@ -115,6 +132,28 @@ export default function DraftReviewPage() {
 
   useEffect(() => { load(); }, [load]);
 
+  // Global place search (across all cities), debounced, when the box has text.
+  useEffect(() => {
+    const q = placeSearch.trim();
+    if (!q) { setSearchResults([]); return; }
+    let cancelled = false;
+    const t = setTimeout(async () => {
+      try {
+        const res = await searchPlaces(q);
+        if (cancelled) return;
+        setSearchResults(res);
+        setPlaceCache((c) => {
+          const next = { ...c };
+          for (const p of res) next[p.id] = p;
+          return next;
+        });
+      } catch {
+        if (!cancelled) setSearchResults([]);
+      }
+    }, 250);
+    return () => { cancelled = true; clearTimeout(t); };
+  }, [placeSearch]);
+
   const parsedPayload = useMemo(() => {
     try { return JSON.parse(payloadText); } catch { return null; }
   }, [payloadText]);
@@ -123,18 +162,20 @@ export default function DraftReviewPage() {
     if (!parsedPayload || draft?.kind !== "event") return null;
     const pid = parsedPayload.place_id;
     if (!pid) return null;
-    return places.find((p) => p.id === pid) || { id: pid, name: "(place sconosciuto)", slug: "" };
-  }, [parsedPayload, places, draft]);
+    return (
+      placeCache[pid] ||
+      places.find((p) => p.id === pid) || {
+        id: pid,
+        name: parsedPayload.venue_name || "(place sconosciuto)",
+        slug: "",
+      }
+    );
+  }, [parsedPayload, places, placeCache, draft]);
 
   const filteredPlaces = useMemo(() => {
-    const q = placeSearch.trim().toLowerCase();
-    if (!q) return places.slice(0, 30);
-    return places
-      .filter((p) =>
-        p.name.toLowerCase().includes(q) || p.slug.toLowerCase().includes(q),
-      )
-      .slice(0, 30);
-  }, [places, placeSearch]);
+    if (placeSearch.trim()) return searchResults;
+    return places.slice(0, 30);
+  }, [places, searchResults, placeSearch]);
 
   const onPayloadChange = (val: string) => {
     setPayloadText(val);
@@ -150,6 +191,7 @@ export default function DraftReviewPage() {
     setPayloadText(JSON.stringify(updated, null, 2));
     setDirty(true);
     setPlaceSearch("");
+    setPlaceCache((c) => ({ ...c, [place.id]: place }));
     showToast(`Collegato a ${place.name}`, "ok");
   };
 
@@ -321,7 +363,7 @@ export default function DraftReviewPage() {
                       type="text"
                       value={placeSearch}
                       onChange={(e) => setPlaceSearch(e.target.value)}
-                      placeholder={`Cerca tra ${places.length} places...`}
+                      placeholder="Cerca tra tutti i places (ogni città)..."
                     />
                     <div className="rv-place-list">
                       {filteredPlaces.length === 0 ? (
