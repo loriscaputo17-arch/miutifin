@@ -1,41 +1,24 @@
 {
   "metadata": {
-    "title": "Miutifin | Software Factory – AI, Sviluppo Software, Robotica & Marketing",
+    "title": "Miutifin — Software house AI, robotica e prodotto | Milano",
     "titleTemplate": "%s | Miutifin",
-    "description": "Miutifin è una software factory full-stack specializzata in sviluppo AI, software engineering, automazione robotica e marketing AI-driven. Costruiamo integrazioni LLM, app web & mobile, sistemi ROS 2 e strategie di crescita data-driven.",
-    "ogTitle": "Miutifin | Software Factory – AI, Sviluppo Software, Robotica & Marketing",
-    "ogDescription": "Software factory full-stack. Costruiamo sistemi AI, prodotti software, soluzioni robotiche e gestiamo campagne marketing AI-powered. 120+ progetti consegnati.",
-    "ogImageAlt": "Miutifin – Software Factory",
-    "twitterTitle": "Miutifin | Software Factory – AI, Sviluppo Software & Robotica",
-    "twitterDescription": "Software factory full-stack specializzata in AI, software engineering, robotica e marketing AI-driven. 120+ progetti consegnati.",
+    "description": "Software house e collettivo di ingegneri a Milano. Costruiamo AI, prodotti digitali, robotica e sistemi dati per aziende italiane ed europee.",
+    "ogTitle": "Miutifin — Software house a Milano",
+    "ogDescription": "Ingegneri che costruiscono AI, prodotti digitali e robotica per le aziende italiane. Da Milano, per l'Italia e per l'Europa.",
+    "ogImageAlt": "Miutifin — software house e collettivo di ingegneri, Milano",
     "ogLocale": "it_IT",
+    "siteName": "Miutifin",
+    "twitterTitle": "Miutifin — Software house AI e robotica, Milano",
+    "twitterDescription": "AI, prodotti digitali, robotica e dati. Un collettivo di ingegneri con base a Milano.",
     "keywords": [
-      "software factory",
-      "agenzia di sviluppo software",
+      "software house Milano",
       "sviluppo AI",
       "agenzia intelligenza artificiale",
-      "machine learning",
       "integrazione LLM",
-      "agenti AI",
-      "automazione robotica",
-      "ROS 2",
-      "computer vision",
-      "AI marketing",
-      "marketing AI",
-      "agenzia SEO",
-      "growth hacking",
-      "supporto startup",
-      "sviluppo MVP",
-      "sviluppo web app",
-      "sviluppo app mobile",
-      "video AI",
-      "AI generativa",
-      "Next.js",
-      "React",
-      "Python",
-      "OpenAI",
-      "Anthropic",
-      "strategia digitale"
+      "robotica",
+      "sviluppo app",
+      "consulenza software",
+      "machine learning"
     ]
   },
   "schema": {
@@ -150,11 +133,23 @@
   },
   "esco": {
     "metadata": {
-      "title": "ESCO — La città, scritta per te | by Miutifin",
-      "description": "ESCO non elenca posti. Ti scrive un percorso attraverso la tua città — dove andare, in che ordine, e perché ogni tappa è giusta per la versione di te stasera. Rete privata, su invito.",
-      "ogTitle": "ESCO — La città, scritta per te",
-      "ogDescription": "Rete privata che scrive percorsi attraverso la tua città. Su invito. Ora in 4 città europee.",
-      "keywords": ["esco", "miutifin", "city app", "percorso", "milano", "rete privata", "city guide"]
+      "title": "ESCO — Cosa fare oggi, vicino a te | Beta a Milano",
+    "description": "Tre esperienze scelte per te ogni giorno: mostre, sport, teatro, posti dove mangiare. Vicino a dove sei, per l'ora in cui hai tempo.",
+    "ogTitle": "ESCO — Cosa fare oggi, vicino a te",
+    "ogDescription": "Tre esperienze al giorno scelte per te. Niente feed infinito. Beta privata a Milano.",
+    "ogImageAlt": "ESCO — tre esperienze scelte per te, oggi a Milano",
+    "ogLocale": "it_IT",
+    "siteName": "ESCO",
+    "twitterTitle": "ESCO — Cosa fare oggi, vicino a te",
+    "twitterDescription": "Tre esperienze al giorno scelte per te. Beta privata a Milano.",
+    "keywords": [
+      "cosa fare a Milano",
+      "eventi Milano",
+      "app esperienze",
+      "mostre Milano",
+      "uscire a Milano",
+      "city guide"
+    ]
     },
     "nav": {
       "preview": "Anteprima",

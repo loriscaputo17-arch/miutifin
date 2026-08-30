@@ -63,6 +63,11 @@ interface Place {
   name: string;
 }
 
+interface Cat {
+  id: string;
+  name: string;
+}
+
 interface ImportResult {
   ok: boolean;
   created: number;
@@ -73,57 +78,82 @@ interface ImportResult {
 
 const SAMPLE_JSON = `[
   {
-    "title": "DJ Set Marco Carola",
-    "slug": "marco-carola-hi-2026-07-22",
-    "description": "Una notte di techno con Marco Carola. Set di 4 ore al main floor.",
-    "venue_name": "Hï Ibiza",
-    "start_at": "2026-07-22 23:00:00+02",
-    "end_at": "2026-07-23 06:00:00+02",
-    "price_min": 60,
-    "price_max": 120,
-    "popularity": 85,
-    "ticket_url": "https://hiibiza.com/event/marco-carola"
+    "title": "DJ set di Marco Carola",
+    "slug": "marco-carola-2026-09-22",
+    "description": "Set lungo di techno al main floor. Si entra dalle 23, il cambio arriva verso l'una.",
+    "venue_name": "Volt Club",
+    "start_at": "2026-09-22T23:00:00+02:00",
+    "end_at": "2026-09-23T05:00:00+02:00",
+    "time_confirmed": true,
+    "is_ongoing": false,
+    "price_min": 25,
+    "price_max": null,
+    "ticket_url": "https://voltclub.it/eventi/marco-carola"
   },
   {
-    "title": "Black Coffee All Night",
-    "slug": "black-coffee-hi-2026-08-05",
-    "description": "Black Coffee con set extended, dalle 23 alle 6. Sound deep house tribale.",
-    "venue_name": "Hï Ibiza",
-    "start_at": "2026-08-05 23:00:00+02",
-    "end_at": "2026-08-06 06:00:00+02",
-    "price_min": 70,
-    "price_max": 130,
-    "popularity": 88,
-    "ticket_url": "https://hiibiza.com/event/black-coffee"
+    "title": "Francesco Clemente. In Between",
+    "slug": "clemente-in-between",
+    "description": "La mostra attraversa la pittura di Clemente dagli anni Settanta a oggi.",
+    "venue_name": "Triennale Milano",
+    "start_at": "2026-05-29T10:00:00+02:00",
+    "end_at": "2026-10-04T20:00:00+02:00",
+    "time_confirmed": false,
+    "is_ongoing": true,
+    "price_min": 15,
+    "price_max": null,
+    "ticket_url": null
   }
 ]`;
 
-const CHATGPT_PROMPT = `Sei un assistente di data-extraction per ESCO, una city-companion editoriale. Dato un input (line-up di un club, locandina, lista artisti, URL del calendario di un locale), genera un array JSON di eventi pronto per il bulk import.
+const CHATGPT_PROMPT = `Sei un assistente di data-extraction per ESCO, city companion editoriale.
+Dato un input (line-up, locandina, calendario di un locale), produci un array
+JSON di eventi pronto per l'import.
 
-OUTPUT: solo JSON array, niente markdown, niente spiegazioni.
+FORMATO
+Solo un array JSON. Puoi racchiuderlo in un blocco di codice, ma niente testo
+prima o dopo. Nessun link markdown da nessuna parte, nemmeno dentro le
+stringhe: gli URL vanno scritti nudi.
 
-CAMPI per ogni event:
-- title (text, obbligatorio): nome evento concise. NO all-caps. Es. "DJ Set Marco Carola"
-- slug (text, obbligatorio): lowercase, hyphenated, include la data. Es. "marco-carola-hi-2026-07-22"
-- description (text, 80-200 parole): voce editoriale ESCO (Cereal/Monocle style). Sensoriale, asciutto, con almeno 1 tip pratico ("arriva alle 23 prima del cambio set"). NO "iconico", "esperienza unica", "imperdibile".
-- venue_name (text, obbligatorio): "Hï Ibiza", "Bar Basso", ecc.
-- start_at (timestamp ISO con timezone): es. "2026-07-22 23:00:00+02" (Italia/Spagna estate +02, inverno +01)
-- end_at (timestamp ISO o null): per club, dalle 23 alle 6 successive. Per concerti, ~2-3 ore dopo.
-- price_min (numero): 0 per free, intero in euro
-- price_max (numero o null): null se prezzo unico
-- popularity (0-100): DJ famoso mondiale 85-95, locale 50-70, niche 30-50
-- ticket_url (URL o null): link biglietti
-- website_url (URL o null)
-- booking_email (email o null)
+CAMPI
+- title (obbligatorio): nome dell'evento, non tutto maiuscolo
+- slug (obbligatorio): minuscolo, con trattini, con la data. "marco-carola-2026-07-22"
+- description (60-150 parole): asciutta, concreta, seconda persona singolare.
+  Un dettaglio pratico se lo ricavi dall'input. Vietate: iconico, imperdibile,
+  esperienza unica, nel cuore di.
+  NON INVENTARE: se dell'evento sai solo nome, data e artisti, scrivi due righe.
+- venue_name (obbligatorio): il nome del locale come compare nell'input
+- start_at: ISO con fuso, "2026-09-22T23:00:00+02:00".
+  Italia: +02:00 da marzo a ottobre, +01:00 il resto dell'anno
+- end_at: ISO o null
+- time_confirmed (true/false): true SOLO se l'ora era scritta nell'input.
+  Se l'hai dedotta o e' una convenzione, false.
+- is_ongoing (true/false): true per mostre e rassegne che durano nel tempo,
+  e allora start_at e end_at sono il primo e l'ultimo giorno.
+  false per un evento che accade una volta.
+- price_min: numero, 0 se gratuito, null se non indicato
+- price_max: numero o null
+- ticket_url, website_url, booking_email: solo se presenti nell'input
+- popularity: 0-100 SOLO se l'input dice qualcosa sulla scala dell'evento.
+  Altrimenti ometti il campo: un numero inventato falsa l'ordinamento del feed.
 
-RULES:
-1. Output ONLY JSON array. No \`\`\`json fence.
-2. Apostrofi nelle descrizioni: escapali con \\' (es. "L\\'estate")
-3. Se l'input ha 30 eventi, output deve avere 30 oggetti.
-4. Date sempre ISO 8601 con timezone.
-5. Niente "city_id", "place_id", "category_id" → li inietta il sistema dopo.
+REGOLE
+1. Un oggetto per ogni evento dell'input. Trenta eventi, trenta oggetti.
+2. Non aggiungere fatti che nell'input non ci sono.
+3. Niente city_id, place_id, category_id: li mette il sistema.
+4. Gli apostrofi NON si escapano: "L'estate" e' gia' JSON valido.
 
-Pronto. Mandami il line-up.`;
+Mandami il line-up.`;
+
+/* Con il prompt corretto restano da togliere solo due cose: il blocco di
+   codice e gli eventuali link markdown. Le regex aggressive di prima
+   cancellavano ]( ) ovunque, anche dentro descrizioni legittime. */
+function sanitizeChatGptJson(raw: string): string {
+  let s = raw.trim();
+  s = s.replace(/^```(?:json)?\s*/i, "").replace(/```\s*$/i, "");
+  s = s.replace(/\[([^\]]*)\]\((https?:\/\/[^)]+)\)/g, "$2");
+  s = s.replace(/,\s*([}\]])/g, "$1");
+  return s.trim();
+}
 
 export default function BulkImportEventsPage() {
   const router = useRouter();
@@ -133,8 +163,10 @@ export default function BulkImportEventsPage() {
 
   const [cities, setCities] = useState<City[]>([]);
   const [places, setPlaces] = useState<Place[]>([]);
+  const [cats, setCats] = useState<Cat[]>([]);
   const [cityId, setCityId] = useState<string>("");
   const [placeId, setPlaceId] = useState<string>("");
+  const [categoryId, setCategoryId] = useState<string>("");
   const [jsonInput, setJsonInput] = useState<string>("");
   const [loading, setLoading] = useState(false);
   const [result, setResult] = useState<ImportResult | null>(null);
@@ -154,6 +186,15 @@ export default function BulkImportEventsPage() {
         .eq("is_active", true)
         .order("name");
       if (data) setCities(data);
+      // La categoria non arriva dal JSON: il prompt dice giustamente
+      // all'LLM di non inventarla, ma poi nessuno la metteva e gli eventi
+      // finivano fuori dai filtri e neutri nel ranking del feed.
+      const { data: k } = await sb
+        .from("categories")
+        .select("id, name")
+        .eq("type", "event")
+        .order("name");
+      if (k) setCats(k as Cat[]);
     })();
   }, []);
 
@@ -188,53 +229,10 @@ export default function BulkImportEventsPage() {
     }
   };
 
-    // Pulisce markdown links e altri artifact di ChatGPT che rompono il JSON
-function sanitizeChatGptJson(raw: string): string {
-  let cleaned = raw.trim();
-
-  // 1. Rimuove ```json ... ``` se presenti
-  cleaned = cleaned.replace(/^```(?:json)?\s*/gm, "").replace(/```\s*$/gm, "");
-
-  // 2. Sostituisce %22 (encoded quote) con virgolette vere
-  cleaned = cleaned.replace(/%22/g, '"');
-  cleaned = cleaned.replace(/%2C/g, ',');
-  cleaned = cleaned.replace(/%3A/g, ':');
-
-  // 3. Pattern aggressivo: rimuove TUTTI i markdown link wrappers [...](...)  
-  // Estrae solo il primo URL dentro [ ] o tra ( ) e scarta il resto
-  // Esempio: "field":"[url1","other":"x","field2](url2)":null
-  // → spezziamo il pattern in modo iterativo
-  
-  // Step 3a: trova "...":"[URL"... e tronca al primo URL valido
-  // Pattern: cattura "field":"[<URL>" e sostituisce con "field":"<URL>"
-  cleaned = cleaned.replace(
-    /"([a-z_]+)":\s*"\[(https?:\/\/[^"\s,\]]+)/g,
-    '"$1":"$2"'
-  );
-
-  // Step 3b: rimuove residui ](...) dopo un campo "field]":null
-  // Esempio: "booking_email](https://...)":null → "booking_email":null
-  cleaned = cleaned.replace(
-    /"([a-z_]+)\]\([^)]*\)":/g,
-    '"$1":'
-  );
-
-  // Step 3c: rimuove qualsiasi pattern residuo ](url) ancora presente
-  cleaned = cleaned.replace(/\]\([^)]*\)/g, '');
-
-  // Step 3d: rimuove parentesi quadre orfane prima di "https://"
-  cleaned = cleaned.replace(/"\[(https?:\/\/[^"]+)"/g, '"$1"');
-
-  // 4. Pulizia finale: doppie virgole, doppi punti, spazi sbagliati
-  cleaned = cleaned.replace(/,\s*,/g, ',');
-  cleaned = cleaned.replace(/,\s*([}\]])/g, '$1'); // virgola prima di } o ]
-
-  return cleaned;
-}
-
   const handleImport = async (e: FormEvent) => {
     e.preventDefault();
     if (!cityId) return showToast("Seleziona una città", true);
+    if (!categoryId) return showToast("Scegli la categoria", true);
     if (!jsonInput.trim()) return showToast("Incolla del JSON prima", true);
 
     let parsedEvents: any[];
@@ -251,6 +249,7 @@ function sanitizeChatGptJson(raw: string): string {
       ...ev,
       city_id: cityId,
       place_id: placeId || ev.place_id || null,
+      category_id: categoryId,
     }));
 
     setLoading(true);
@@ -298,9 +297,10 @@ function sanitizeChatGptJson(raw: string): string {
             Carica <span className="red">in batch.</span>
           </h1>
           <p className="bi-sub">
-            Incolla un array JSON di eventi (anche 50 alla volta). 
-            Seleziona la città e opzionalmente il place a cui collegarli. 
-            ESCO valida tutto, mostra gli errori, importa quelli validi.
+            Incolla un array JSON di eventi, anche cinquanta alla volta.
+            Attenzione: qui gli event finiscono <strong>direttamente in tabella</strong>,
+            senza passare dalla review. Per il materiale grezzo — flyer, testi, link —
+            usa invece l&apos;ingest, che crea un draft da approvare.
           </p>
         </div>
 
@@ -324,6 +324,25 @@ function sanitizeChatGptJson(raw: string): string {
                   ))}
                 </select>
                 <div className="bi-hint">Tutti gli event nel JSON verranno assegnati a questa città.</div>
+              </div>
+
+              <div className="bi-field">
+                <label className="bi-label">Categoria <span className="req">*</span></label>
+                <select
+                  className="bi-select"
+                  value={categoryId}
+                  onChange={(e) => setCategoryId(e.target.value)}
+                  required
+                >
+                  <option value="">— Seleziona categoria —</option>
+                  {cats.map((c) => (
+                    <option key={c.id} value={c.id}>{c.name}</option>
+                  ))}
+                </select>
+                <div className="bi-hint">
+                  Vale per tutti gli event del JSON. Senza, restano fuori dai filtri
+                  e il feed non sa se proporli di giorno o di notte.
+                </div>
               </div>
 
               <div className="bi-field">
@@ -359,7 +378,7 @@ function sanitizeChatGptJson(raw: string): string {
                 <button type="button" className="bi-btn-secondary" onClick={handleValidate} disabled={loading}>
                   Validate
                 </button>
-                <button type="submit" className="bi-btn-primary" disabled={loading || !cityId}>
+                <button type="submit" className="bi-btn-primary" disabled={loading || !cityId || !categoryId}>
                   {loading ? "Importing..." : "Import all"}
                 </button>
               </div>
@@ -393,8 +412,8 @@ function sanitizeChatGptJson(raw: string): string {
             <div className="bi-card">
               <div className="bi-section">ChatGPT prompt</div>
               <p style={{ fontSize: 12, color: "rgba(26,24,21,0.65)", marginBottom: 12, lineHeight: 1.6 }}>
-                Copia il prompt sotto, incollalo in <strong>GPT-4o</strong>, poi mandagli il line-up del club. 
-                ChatGPT ti restituisce JSON pronto da incollare qui a sinistra.
+                Copia il prompt, incollalo nel modello che preferisci, poi mandagli
+                il line-up. Ti restituisce il JSON da incollare qui a sinistra.
               </p>
               <div className="bi-prompt-box">{CHATGPT_PROMPT}</div>
               <button type="button" className="bi-copy" onClick={copyPrompt}>
@@ -405,8 +424,10 @@ function sanitizeChatGptJson(raw: string): string {
             <div className="bi-card" style={{ marginTop: 16 }}>
               <div className="bi-section">JSON example</div>
               <p style={{ fontSize: 12, color: "rgba(26,24,21,0.65)", marginBottom: 12, lineHeight: 1.6 }}>
-                Formato esatto dei singoli event. <code>city_id</code> e <code>place_id</code> sono iniettati 
-                automaticamente dai campi sopra.
+                Formato dei singoli event. <code>city_id</code>, <code>place_id</code> e
+                <code>category_id</code> vengono iniettati dai campi qui a sinistra.
+                Il secondo esempio è una mostra: <code>is_ongoing</code> la fa comparire
+                nel feed tutti i giorni fra le due date, invece che solo il primo.
               </p>
               <div className="bi-prompt-box">{SAMPLE_JSON}</div>
               <button type="button" className="bi-copy" onClick={copyExample}>

@@ -1,30 +1,26 @@
 import type { MetadataRoute } from "next";
+import { SITE_URL, LOCALES } from "@/lib/seo";
+
+/* Le pagine che esistono davvero. Aggiungine una solo quando e' online:
+   una sitemap che elenca 404 fa perdere fiducia al crawler. */
+const PAGES = [
+  { path: "", priority: 1.0, changeFrequency: "weekly" as const },
+  { path: "esco", priority: 0.9, changeFrequency: "weekly" as const },
+  { path: "privacy", priority: 0.3, changeFrequency: "yearly" as const },
+  { path: "terms", priority: 0.3, changeFrequency: "yearly" as const },
+];
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const baseUrl = "https://miutifin.com";
-  const lastModified = new Date();
-
-  const routes = [
-    "",
-    "/esco",
-    "/esco/journal",
-    "/esco/press",
-    "/esco/cookies",
-    "/esco/privacy",
-    "/esco/terms",
-  ];
-
-  const locales = ["it", "en"];
-
-  return routes.flatMap((route) =>
-    locales.map((locale) => ({
-      url: `${baseUrl}/${locale}${route}`,
-      lastModified,
-      changeFrequency: "weekly" as const,
-      priority: route === "" ? 1.0 : route === "/esco" ? 0.9 : 0.6,
+  const now = new Date();
+  return LOCALES.flatMap(locale =>
+    PAGES.map(p => ({
+      url: p.path ? `${SITE_URL}/${locale}/${p.path}` : `${SITE_URL}/${locale}`,
+      lastModified: now,
+      changeFrequency: p.changeFrequency,
+      priority: p.priority,
       alternates: {
         languages: Object.fromEntries(
-          locales.map((l) => [l, `${baseUrl}/${l}${route}`])
+          LOCALES.map(l => [l, p.path ? `${SITE_URL}/${l}/${p.path}` : `${SITE_URL}/${l}`])
         ),
       },
     }))

@@ -27,18 +27,20 @@ const STYLES = `
   .ing-tab.active{background:#dc2626;color:#fff;border-color:#dc2626}
   .ing-card{background:#fff;border:1px solid rgba(26,24,21,0.08);border-radius:18px;padding:28px}
   .ing-grid{display:grid;grid-template-columns:1fr;gap:20px}
+  .ing-row{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+  @media(max-width:640px){.ing-row{grid-template-columns:1fr}}
   .ing-field{display:flex;flex-direction:column;gap:6px}
   .ing-label{font-size:11px;font-weight:600;color:rgba(26,24,21,0.65);letter-spacing:-0.1px}
   .ing-label .req{color:#dc2626}
   .ing-input,.ing-select,.ing-textarea{padding:11px 14px;border:1px solid rgba(26,24,21,0.10);border-radius:10px;font-size:13px;background:#fafaf7;font-family:inherit;color:#1a1815;letter-spacing:-0.1px;transition:all .15s;width:100%}
   .ing-input:focus,.ing-select:focus,.ing-textarea:focus{outline:none;border-color:#dc2626;background:#fff}
   .ing-textarea{min-height:220px;resize:vertical;line-height:1.5;font-family:Menlo,Monaco,'Courier New',monospace}
-  .ing-hint{font-size:11px;color:rgba(26,24,21,0.42);font-style:italic;margin-top:2px;line-height:1.55}
   .ing-drop{display:block;border:2px dashed rgba(26,24,21,0.15);border-radius:14px;padding:48px 20px;text-align:center;cursor:pointer;transition:all .15s;background:#fafaf7}
   .ing-drop:hover,.ing-drop.over{border-color:#dc2626;background:rgba(220,38,38,0.03)}
   .ing-drop-icon{font-family:Georgia,serif;font-style:italic;font-size:36px;color:rgba(26,24,21,0.25);margin-bottom:8px}
   .ing-drop-text{font-size:14px;color:rgba(26,24,21,0.65);margin-bottom:4px}
   .ing-drop-hint{font-size:11px;color:rgba(26,24,21,0.42);font-style:italic}
+  .ing-hint{font-size:11px;color:rgba(26,24,21,0.42);font-style:italic;margin-top:2px;line-height:1.55}
   .ing-preview-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(120px,1fr));gap:10px}
   .ing-preview-item{position:relative;background:#fafaf7;border:1px solid rgba(26,24,21,0.08);border-radius:10px;overflow:hidden;aspect-ratio:1}
   .ing-preview-item img{display:block;width:100%;height:100%;object-fit:cover}
@@ -47,6 +49,8 @@ const STYLES = `
   .ing-preview-add{display:flex;align-items:center;justify-content:center;background:#fafaf7;border:2px dashed rgba(26,24,21,0.15);border-radius:10px;aspect-ratio:1;cursor:pointer;color:rgba(26,24,21,0.42);font-family:Georgia,serif;font-style:italic;font-size:28px;transition:all .15s}
   .ing-preview-add:hover{border-color:#dc2626;color:#dc2626}
   .ing-count{font-size:11px;font-weight:600;color:#dc2626;letter-spacing:.05em;text-transform:uppercase;margin-top:8px}
+  .ing-paste{margin-top:10px;font-size:11px;color:rgba(26,24,21,0.42);font-style:italic;display:flex;align-items:center;gap:6px}
+  .ing-paste kbd{font-family:Menlo,monospace;font-style:normal;background:#fafaf7;border:1px solid rgba(26,24,21,0.12);border-bottom-width:2px;border-radius:5px;padding:1px 5px;font-size:10px;color:#1a1815}
   .ing-actions{display:flex;justify-content:flex-end;gap:12px;margin-top:24px;flex-wrap:wrap}
   .ing-btn-primary{background:#dc2626;color:#fff;border:none;padding:14px 28px;border-radius:100px;font-size:13px;font-weight:600;cursor:pointer;letter-spacing:-0.2px;font-family:inherit;transition:all .15s}
   .ing-btn-primary:hover:not(:disabled){background:#ef4444}
@@ -65,10 +69,13 @@ const STYLES = `
 `;
 
 interface City { id: string; name: string; slug: string; }
+interface Cat { id: string; name: string; type: string; }
 type Mode = "image" | "text" | "url";
 
 const MAX_FILES = 30;
 const MAX_FILE_SIZE = 10 * 1024 * 1024;
+const RICORDA_CITTA = "esco.ingest.city";
+const RICORDA_CAT = "esco.ingest.cat";
 
 export default function IngestPage() {
   const params = useParams();
@@ -77,7 +84,9 @@ export default function IngestPage() {
 
   const [mode, setMode] = useState<Mode>("image");
   const [cities, setCities] = useState<City[]>([]);
+  const [cats, setCats] = useState<Cat[]>([]);
   const [cityId, setCityId] = useState("");
+  const [categoryId, setCategoryId] = useState("");
   const [text, setText] = useState("");
   const [url, setUrl] = useState("");
   const [files, setFiles] = useState<File[]>([]);
@@ -95,10 +104,25 @@ export default function IngestPage() {
 
   useEffect(() => {
     (async () => {
-      const { data } = await sb.from("cities").select("id, name, slug").eq("is_active", true).order("name");
-      if (data) setCities(data as City[]);
+      const [c, k] = await Promise.all([
+        sb.from("cities").select("id, name, slug").eq("is_active", true).order("name"),
+        sb.from("categories").select("id, name, type").order("type").order("name"),
+      ]);
+      if (c.data) {
+        setCities(c.data as City[]);
+        // se c'e' una sola citta' attiva, non ha senso farla scegliere
+        const salvata = typeof window !== "undefined" ? localStorage.getItem(RICORDA_CITTA) : null;
+        const valida = (c.data as City[]).find((x) => x.id === salvata);
+        if (valida) setCityId(valida.id);
+        else if ((c.data as City[]).length === 1) setCityId((c.data as City[])[0].id);
+      }
+      if (k.data) {
+        setCats(k.data as Cat[]);
+        const salvata = typeof window !== "undefined" ? localStorage.getItem(RICORDA_CAT) : null;
+        if (salvata && (k.data as Cat[]).some((x) => x.id === salvata)) setCategoryId(salvata);
+      }
     })();
-  }, []);
+  }, []); // eslint-disable-line react-hooks/exhaustive-deps
 
   useEffect(() => {
     const urls = files.map((f) => URL.createObjectURL(f));
@@ -121,17 +145,47 @@ export default function IngestPage() {
       valid.push(f);
     }
     setFiles((prev) => {
-      const next = [...prev, ...valid].slice(0, MAX_FILES);
-      if (prev.length + valid.length > MAX_FILES) {
-        showToast(`Massimo ${MAX_FILES} file alla volta`, true);
-      }
+      // stesso nome e stessa dimensione = stesso file: caricarlo due volte
+      // significa pagare due estrazioni e ritrovarsi due draft identici
+      const chiave = (f: File) => `${f.name}|${f.size}`;
+      const gia = new Set(prev.map(chiave));
+      const nuovi = valid.filter((f) => !gia.has(chiave(f)));
+      const scartati = valid.length - nuovi.length;
+      if (scartati > 0) showToast(`${scartati} già in lista, saltat${scartati === 1 ? "o" : "i"}`);
+      const next = [...prev, ...nuovi].slice(0, MAX_FILES);
+      if (prev.length + nuovi.length > MAX_FILES) showToast(`Massimo ${MAX_FILES} file alla volta`, true);
       return next;
     });
   };
 
-  const removeFile = (idx: number) => {
-    setFiles((prev) => prev.filter((_, i) => i !== idx));
-  };
+  // Incolla dagli appunti: screenshot di una storia Instagram -> Cmd+V.
+  // È il gesto piu' frequente quando si raccolgono flyer.
+  useEffect(() => {
+    if (mode !== "image") return;
+    const onPaste = (e: ClipboardEvent) => {
+      const items = e.clipboardData?.items;
+      if (!items) return;
+      const imgs: File[] = [];
+      for (const it of Array.from(items)) {
+        if (it.type.startsWith("image/")) {
+          const f = it.getAsFile();
+          if (f) {
+            // gli screenshot arrivano tutti come "image.png": rinominali
+            imgs.push(new File([f], `incollata-${Date.now()}-${imgs.length}.png`, { type: f.type }));
+          }
+        }
+      }
+      if (imgs.length) {
+        e.preventDefault();
+        addFiles(imgs);
+        showToast(imgs.length === 1 ? "Immagine incollata" : `${imgs.length} immagini incollate`);
+      }
+    };
+    window.addEventListener("paste", onPaste);
+    return () => window.removeEventListener("paste", onPaste);
+  }, [mode]); // eslint-disable-line react-hooks/exhaustive-deps
+
+  const removeFile = (idx: number) => setFiles((prev) => prev.filter((_, i) => i !== idx));
 
   const onDrop = (e: DragEvent<HTMLLabelElement>) => {
     e.preventDefault();
@@ -141,7 +195,17 @@ export default function IngestPage() {
 
   const onFileChange = (e: ChangeEvent<HTMLInputElement>) => {
     if (e.target.files) addFiles(e.target.files);
-    e.target.value = ""; // allow re-selecting the same file
+    e.target.value = "";
+  };
+
+  const scegliCitta = (id: string) => {
+    setCityId(id);
+    if (id) localStorage.setItem(RICORDA_CITTA, id);
+  };
+  const scegliCategoria = (id: string) => {
+    setCategoryId(id);
+    if (id) localStorage.setItem(RICORDA_CAT, id);
+    else localStorage.removeItem(RICORDA_CAT);
   };
 
   const handleSubmit = async (e: FormEvent) => {
@@ -189,8 +253,25 @@ export default function IngestPage() {
       }
 
       if (jobIds.length > 0) {
-        // Fire-and-forget trigger so worker starts now, not at next cron tick.
-        // For batches > 5, fire a few times spaced out to keep the worker fed.
+        // La categoria si scrive su ingestion_sources.category_hint_id:
+        // e' il campo che lo schema prevedeva gia' e che la RPC di claim
+        // restituisce al worker. I job non hanno una categoria propria,
+        // ce l'ha la sorgente da cui provengono.
+        if (categoryId) {
+          const { data: righe } = await sb
+            .from("ingestion_jobs").select("source_id").in("id", jobIds);
+          const sourceIds = Array.from(
+            new Set((righe || []).map((r: any) => r.source_id).filter(Boolean)),
+          );
+          if (sourceIds.length) {
+            const { error } = await sb
+              .from("ingestion_sources")
+              .update({ category_hint_id: categoryId })
+              .in("id", sourceIds);
+            if (error) showToast("Categoria non salvata", true);
+          }
+        }
+
         triggerWorker();
         if (jobIds.length > 5) {
           setTimeout(() => triggerWorker(), 6_000);
@@ -211,6 +292,9 @@ export default function IngestPage() {
       setProgress(null);
     }
   };
+
+  const catsPlace = cats.filter((c) => c.type === "place");
+  const catsEvent = cats.filter((c) => c.type === "event");
 
   return (
     <>
@@ -242,15 +326,38 @@ export default function IngestPage() {
 
         <form className="ing-card" onSubmit={handleSubmit}>
           <div className="ing-grid">
-            <div className="ing-field">
-              <label className="ing-label">City <span className="req">*</span></label>
-              <select className="ing-select" value={cityId} onChange={(e) => setCityId(e.target.value)} required>
-                <option value="">— Seleziona città —</option>
-                {cities.map((c) => (
-                  <option key={c.id} value={c.id}>{c.name}</option>
-                ))}
-              </select>
-              <div className="ing-hint">A quale città appartengono i contenuti. Gemini usa questo hint.</div>
+            <div className="ing-row">
+              <div className="ing-field">
+                <label className="ing-label">City <span className="req">*</span></label>
+                <select className="ing-select" value={cityId} onChange={(e) => scegliCitta(e.target.value)} required>
+                  <option value="">— Seleziona città —</option>
+                  {cities.map((c) => (
+                    <option key={c.id} value={c.id}>{c.name}</option>
+                  ))}
+                </select>
+              </div>
+
+              <div className="ing-field">
+                <label className="ing-label">Categoria</label>
+                <select className="ing-select" value={categoryId} onChange={(e) => scegliCategoria(e.target.value)}>
+                  <option value="">— la scelgo in review —</option>
+                  {catsEvent.length > 0 && (
+                    <optgroup label="Eventi">
+                      {catsEvent.map((c) => <option key={c.id} value={c.id}>{c.name}</option>)}
+                    </optgroup>
+                  )}
+                  {catsPlace.length > 0 && (
+                    <optgroup label="Posti">
+                      {catsPlace.map((c) => <option key={c.id} value={c.id}>{c.name}</option>)}
+                    </optgroup>
+                  )}
+                </select>
+              </div>
+            </div>
+            <div className="ing-hint">
+              La città Gemini la usa come indizio. La categoria non può indovinarla
+              (non conosce i tuoi id): se la scegli qui vale per tutti i file di questo
+              caricamento e in review non la devi più toccare.
             </div>
 
             {mode === "image" && (
@@ -312,8 +419,8 @@ export default function IngestPage() {
                   </div>
                 )}
 
-                <div className="ing-hint">
-                  Carica i flyer di una settimana di eventi in un colpo solo. Gemini li processa in parallelo.
+                <div className="ing-paste">
+                  <kbd>⌘V</kbd> incolla direttamente uno screenshot — storie Instagram, locandine, foto di una vetrina
                 </div>
               </div>
             )}
@@ -381,9 +488,7 @@ Esempio:
 
           {result && (
             <div className="ing-success">
-              <h3>
-                {result.count === 1 ? "Aggiunto" : `${result.count} aggiunti`}
-              </h3>
+              <h3>{result.count === 1 ? "Aggiunto" : `${result.count} aggiunti`}</h3>
               <p>
                 Il worker sta già processando.{" "}
                 <Link href={`/${locale}/admin/drafts`}>Vai ai drafts</Link>{" "}

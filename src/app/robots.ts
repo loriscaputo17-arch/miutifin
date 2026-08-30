@@ -1,34 +1,12 @@
 import type { MetadataRoute } from "next";
+import { SITE_URL } from "@/lib/seo";
 
 export default function robots(): MetadataRoute.Robots {
   return {
     rules: [
-      {
-        userAgent: "*",
-        allow: "/",
-        disallow: [
-          "/api/",
-          "/(protected)/",
-          "/auth/",
-          "/admin/",
-          "/secret/",
-        ],
-      },
-      {
-        // Block AI training scrapers from protected content
-        userAgent: [
-          "GPTBot",
-          "ChatGPT-User",
-          "CCBot",
-          "anthropic-ai",
-          "Claude-Web",
-          "Omgilibot",
-          "FacebookBot",
-        ],
-        disallow: ["/"],
-      },
+      { userAgent: "*", allow: "/", disallow: ["/api/", "/_next/"] },
     ],
-    sitemap: "https://miutifin.com/sitemap.xml",
-    host: "https://miutifin.com",
+    sitemap: `${SITE_URL}/sitemap.xml`,
+    host: SITE_URL,
   };
 }

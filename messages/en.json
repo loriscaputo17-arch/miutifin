@@ -1,41 +1,23 @@
 {
   "metadata": {
-    "title": "Miutifin | Software Factory – AI, Software Development, Robotics & Marketing",
+    "title": "Miutifin — AI, robotics and product studio | Milan",
     "titleTemplate": "%s | Miutifin",
-    "description": "Miutifin is a full-stack software factory specialising in AI development, software engineering, robotics automation, and AI-driven marketing. We build LLM integrations, web & mobile apps, ROS 2 systems, and data-driven growth strategies.",
-    "ogTitle": "Miutifin | Software Factory – AI, Software Development, Robotics & Marketing",
-    "ogDescription": "Full-stack software factory. We build AI systems, software products, robotics solutions and run AI-powered marketing campaigns. 120+ projects delivered.",
-    "ogImageAlt": "Miutifin – Software Factory",
-    "twitterTitle": "Miutifin | Software Factory – AI, Software Development & Robotics",
-    "twitterDescription": "Full-stack software factory specialising in AI, software engineering, robotics and AI-driven marketing. 120+ projects delivered.",
+    "description": "Software house and engineering collective in Milan. We build AI, digital products, robotics and data systems for European companies.",
+    "ogTitle": "Miutifin — Software house in Milan",
+    "ogDescription": "Engineers building AI, digital products and robotics for European companies. From Milan, for Italy and Europe.",
+    "ogImageAlt": "Miutifin — software house and engineering collective, Milan",
     "ogLocale": "en_US",
+    "siteName": "Miutifin",
+    "twitterTitle": "Miutifin — AI and robotics studio, Milan",
+    "twitterDescription": "AI, digital products, robotics and data. An engineering collective based in Milan.",
     "keywords": [
-      "software factory",
-      "software development agency",
+      "software house Milan",
       "AI development",
-      "artificial intelligence agency",
-      "machine learning",
       "LLM integration",
-      "AI agents",
-      "robotics automation",
-      "ROS 2",
-      "computer vision",
-      "AI marketing",
-      "marketing AI",
-      "SEO agency",
-      "growth hacking",
-      "startup support",
-      "MVP development",
-      "web app development",
-      "mobile app development",
-      "video AI",
-      "generative AI",
-      "Next.js",
-      "React",
-      "Python",
-      "OpenAI",
-      "Anthropic",
-      "digital strategy"
+      "robotics",
+      "app development",
+      "software consultancy",
+      "machine learning"
     ]
   },
   "schema": {
@@ -150,11 +132,22 @@
   },
   "esco": {
     "metadata": {
-      "title": "ESCO — The city, read for you | by Miutifin",
-      "description": "ESCO doesn't list places. It writes you a journey through your city — where to go, in what order, and why each step fits the version of you tonight. Private network, by invitation.",
-      "ogTitle": "ESCO — The city, read for you",
-      "ogDescription": "Private network that writes journeys through your city. By invitation. Now in 4 European cities.",
-      "keywords": ["esco", "miutifin", "city app", "journey", "milano", "private network", "city guide"]
+      "title": "ESCO — What to do today, near you | Milan beta",
+    "description": "Three experiences picked for you every day: exhibitions, sport, theatre, places to eat. Near where you are, for the hours you have free.",
+    "ogTitle": "ESCO — What to do today, near you",
+    "ogDescription": "Three experiences a day, picked for you. No endless feed. Private beta in Milan.",
+    "ogImageAlt": "ESCO — three experiences picked for you, today in Milan",
+    "ogLocale": "en_US",
+    "siteName": "ESCO",
+    "twitterTitle": "ESCO — What to do today, near you",
+    "twitterDescription": "Three experiences a day, picked for you. Private beta in Milan.",
+    "keywords": [
+      "what to do in Milan",
+      "Milan events",
+      "experiences app",
+      "city guide",
+      "things to do today"
+    ]
     },
     "nav": {
       "preview": "Preview",

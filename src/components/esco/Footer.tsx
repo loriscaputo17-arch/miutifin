@@ -1,138 +1,65 @@
 "use client";
 
-import { useState } from "react";
-import { useLocale, useTranslations } from "next-intl";
-import { createSupabaseBrowserClient } from "@/lib/supabaseClient";
+import { useLocale } from "next-intl";
+import { useEscoCopy } from "@/components/esco/content";
+
+const S = `
+.e-foot{border-top:1px solid var(--e-line);padding:2.6rem 0 2.2rem}
+.e-foot-in{
+  display:flex;align-items:center;justify-content:space-between;gap:1.5rem;flex-wrap:wrap;
+}
+.e-foot-brand{display:flex;align-items:center;gap:11px}
+.e-foot-logo{
+  width:38px;height:38px;border-radius:11px;background:var(--e-paper-2);border:1px solid var(--e-line);
+  display:flex;align-items:center;justify-content:center;overflow:hidden;flex-shrink:0;
+}
+.e-foot-logo img{width:38px;height:38px;object-fit:contain}
+.e-foot-name{font-family:var(--e-fd);font-size:22px;font-weight:600;letter-spacing:-.05em;color:var(--e-ink)}
+.e-foot-tag{font-size:14.5px;color:var(--e-mut);margin-top:2px;letter-spacing:-.01em}
+.e-foot-links{display:flex;gap:22px;flex-wrap:wrap}
+.e-foot-links a{font-size:14.5px;color:var(--e-mut);transition:color .18s ease}
+.e-foot-links a:hover{color:var(--e-ink)}
+.e-foot-bottom{
+  display:flex;align-items:center;justify-content:space-between;gap:1rem;flex-wrap:wrap;
+  margin-top:2.2rem;padding-top:1.3rem;border-top:1px solid var(--e-line);
+  font-family:var(--e-fm);font-size:12px;color:var(--e-mut-2);letter-spacing:.04em;
+}
+.e-foot-bottom a:hover{color:var(--e-ink)}
+@media(max-width:600px){
+  .e-foot{padding:2.2rem 0 1.8rem}
+  .e-foot-in{flex-direction:column;align-items:flex-start;gap:1.6rem}
+  .e-foot-links{gap:14px 20px}
+  .e-foot-bottom{margin-top:1.8rem;flex-direction:column;align-items:flex-start;gap:.6rem;font-size:11.5px}
+}
+`;
 
 export function EscoFooter() {
-  const t = useTranslations("esco.footer");
-  const locale = useLocale() as "it" | "en";
-  const [email, setEmail] = useState("");
-  const [subscribed, setSubscribed] = useState(false);
-  const [loading, setLoading] = useState(false);
-  const [err, setErr] = useState<string | null>(null);
-
-  const isValidEmail = (e: string) => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(e);
-
-  const submitNewsletter = async (e: React.FormEvent) => {
-    e.preventDefault();
-    const trimmed = email.trim().toLowerCase();
-    if (!isValidEmail(trimmed)) {
-      setErr(t("newsletterErrorGeneric"));
-      return;
-    }
-    setLoading(true);
-    setErr(null);
-
-    try {
-      const sb = createSupabaseBrowserClient();
-      const { error } = await sb.from("newsletter").insert({ email: trimmed });
-
-      if (error) {
-        if (error.code === "23505") setSubscribed(true);
-        else setErr(t("newsletterErrorGeneric"));
-        setLoading(false);
-        return;
-      }
-
-      setSubscribed(true);
-      setLoading(false);
-    } catch {
-      setErr(t("newsletterErrorNetwork"));
-      setLoading(false);
-    }
-  };
+  const locale = useLocale();
+  const c = useEscoCopy(locale);
 
   return (
-    <footer className="esco-foot">
-      <div className="esco-wrap">
-        <p className="esco-foot-manifesto">
-          {t("manifestoLine1")} <em>{t("manifestoEm")}</em>
-        </p>
-
-        <div className="esco-foot-grid">
-          <div>
-            <div className="esco-foot-brand-row">
-              <a href={`/${locale}/esco`} className="flex items-center gap-4">
-
-              <div className="esco-foot-logo">
-                <img src="/images/esco_logo.png" alt="ESCO" />
+    <>
+      <style>{S}</style>
+      <footer className="e-foot">
+        <div className="e-wrap">
+          <div className="e-foot-in">
+            <div className="e-foot-brand">
+              <span className="e-foot-logo"><img src="/images/esco_colored_logo.png" alt="" /></span>
+              <div>
+                <div className="e-foot-name">ESCO</div>
+                <div className="e-foot-tag">{c.footer.tag}</div>
               </div>
-              <span className="esco-foot-name">esco</span>
-              </a>
             </div>
-            <p className="esco-foot-tag">{t("tag")}</p>
-            <div className="esco-foot-newsletter">
-              <span className="esco-foot-newsletter-label">{t("newsletterLabel")}</span>
-              {subscribed ? (
-                <p style={{ fontSize: 13, color: "var(--terra)", fontFamily: "var(--f-serif)", fontStyle: "italic" }}>
-                  {t("newsletterSuccess")}
-                </p>
-              ) : (
-                <>
-                  <form className="esco-foot-newsletter-form" onSubmit={submitNewsletter}>
-                    <input
-                      type="email"
-                      required
-                      placeholder={t("newsletterPlaceholder")}
-                      value={email}
-                      onChange={(e) => setEmail(e.target.value)}
-                      disabled={loading}
-                    />
-                    <button type="submit" disabled={loading}>
-                      {loading ? t("newsletterSubmitting") : `${t("newsletterSubmit")} →`}
-                    </button>
-                  </form>
-                  {err && <p style={{ fontSize: 11, color: "var(--terra)", marginTop: 4 }}>{err}</p>}
-                </>
-              )}
+            <div className="e-foot-links">
+              {c.footer.links.map(l => <a key={l.href} href={l.href}>{l.label}</a>)}
             </div>
           </div>
-
-          <div>
-            <h4 className="esco-foot-col-title">{t("columns.product")}</h4>
-            <ul className="esco-foot-links">
-              <li><a href="/esco#how">{t("links.howItWorks")}</a></li>
-              <li><a href="/esco#try">{t("links.tryIt")}</a></li>
-              <li><a href="/esco#journeys">{t("links.journeys")}</a></li>
-              <li><a href="/esco#signal">{t("links.signal")}</a></li>
-              <li><a href="/esco#cities">{t("links.cities")} <span className="live-tag">{t("links.citiesLive", { count: 1 })}</span></a></li>
-            </ul>
-          </div>
-
-          <div>
-            <h4 className="esco-foot-col-title">{t("columns.network")}</h4>
-            <ul className="esco-foot-links">
-              <li><a href="/esco#access">{t("links.requestAccess")}</a></li>
-              <li><a href="/esco#access">{t("links.inviteSystem")}</a></li>
-              <li><a href="/esco/login">{t("links.members")}</a></li>
-            </ul>
-          </div>
-
-          <div>
-            <h4 className="esco-foot-col-title">{t("columns.support")}</h4>
-            <ul className="esco-foot-links">
-              <li><a href="/esco#faq">{t("links.faq")}</a></li>
-              <li><a href="mailto:miutifin.ask@gmail.com">{t("links.contact")}</a></li>
-              <li><a href="/privacy">{t("links.privacy")}</a></li>
-              <li><a href="/terms">{t("links.terms")}</a></li>
-              <li><a href="/esco/cookies">{t("links.cookies")}</a></li>
-            </ul>
+          <div className="e-foot-bottom">
+            <span>© {new Date().getFullYear()} Miutifin — {c.footer.rights}</span>
+            <a href={`/${locale}`}>{c.footer.studio} ↗</a>
           </div>
         </div>
-
-        <div className="esco-foot-bottom">
-          <div className="esco-foot-status">{t("status")}</div>
-          <div className="esco-foot-social">
-            <a href="https://www.instagram.com/miutifinglobal" aria-label="Instagram">IG</a>
-            <a href="https://www.linkedin.com/company/miutifin" aria-label="LinkedIn">IN</a>
-          </div>
-          <div className="esco-foot-meta">
-            <span>© {new Date().getFullYear()} Miutifin</span>
-            <a href="/">miutifin.com</a>
-          </div>
-        </div>
-      </div>
-    </footer>
+      </footer>
+    </>
   );
 }

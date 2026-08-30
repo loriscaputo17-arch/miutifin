@@ -14,6 +14,7 @@ import {
   type DraftRow,
   type PlaceLite,
 } from "@/lib/contentOs";
+import { DraftFields, DRAFT_FIELDS_CSS } from "./_DraftFields";
 
 const STYLES = `
   .rv{padding:40px 32px 80px;max-width:1200px;margin:0 auto}
@@ -69,7 +70,7 @@ const STYLES = `
   .rv-toast.ok{background:#3d5e2f}
   @keyframes toast-in{from{opacity:0;transform:translate(-50%,20px)}to{opacity:1;transform:translate(-50%,0)}}
   .rv-loading{padding:80px 20px;text-align:center;color:rgba(26,24,21,0.42);font-style:italic;font-size:14px}
-`;
+` + DRAFT_FIELDS_CSS;
 
 export default function DraftReviewPage() {
   const params = useParams();
@@ -79,7 +80,8 @@ export default function DraftReviewPage() {
 
   const [draft, setDraft] = useState<DraftRow | null>(null);
   const [loading, setLoading] = useState(true);
-  const [payloadText, setPayloadText] = useState("");
+  const [payload, setPayload] = useState<Record<string, any>>({});
+  const [categoryId, setCategoryId] = useState<string | null>(null);
   const [dirty, setDirty] = useState(false);
   const [busy, setBusy] = useState(false);
   const [toast, setToast] = useState<{ msg: string; kind?: "err" | "ok" } | null>(null);
@@ -100,7 +102,8 @@ export default function DraftReviewPage() {
     try {
       const d = await getDraft(id);
       setDraft(d);
-      setPayloadText(JSON.stringify(d.payload, null, 2));
+      setPayload((d.payload as Record<string, any>) || {});
+      setCategoryId(((d as any).category_id as string | null) ?? null);
       setDirty(false);
       if (d.kind === "event") {
         try {
@@ -115,7 +118,7 @@ export default function DraftReviewPage() {
           setPlaces([]);
         }
         // resolve the currently linked place even if it belongs to another city
-        const linkedId = (d.payload as any)?.place_id as string | undefined;
+        const linkedId = (d.payload as Record<string, any>)?.place_id as string | undefined;
         if (linkedId) {
           try {
             const p = await getPlaceById(linkedId);
@@ -154,41 +157,32 @@ export default function DraftReviewPage() {
     return () => { cancelled = true; clearTimeout(t); };
   }, [placeSearch]);
 
-  const parsedPayload = useMemo(() => {
-    try { return JSON.parse(payloadText); } catch { return null; }
-  }, [payloadText]);
-
   const linkedPlace = useMemo(() => {
-    if (!parsedPayload || draft?.kind !== "event") return null;
-    const pid = parsedPayload.place_id;
+    if (draft?.kind !== "event") return null;
+    const pid = payload.place_id as string | undefined;
     if (!pid) return null;
     return (
       placeCache[pid] ||
       places.find((p) => p.id === pid) || {
         id: pid,
-        name: parsedPayload.venue_name || "(place sconosciuto)",
+        name: (payload.venue_name as string) || "(place sconosciuto)",
         slug: "",
       }
     );
-  }, [parsedPayload, places, placeCache, draft]);
+  }, [payload, places, placeCache, draft]);
 
   const filteredPlaces = useMemo(() => {
     if (placeSearch.trim()) return searchResults;
     return places.slice(0, 30);
   }, [places, searchResults, placeSearch]);
 
-  const onPayloadChange = (val: string) => {
-    setPayloadText(val);
+  const onPayloadChange = (next: Record<string, any>) => {
+    setPayload(next);
     setDirty(true);
   };
 
   const linkPlace = (place: PlaceLite) => {
-    if (!parsedPayload) {
-      showToast("Payload JSON non valido, sistema prima", "err");
-      return;
-    }
-    const updated = { ...parsedPayload, place_id: place.id, venue_name: place.name };
-    setPayloadText(JSON.stringify(updated, null, 2));
+    setPayload({ ...payload, place_id: place.id, venue_name: place.name });
     setDirty(true);
     setPlaceSearch("");
     setPlaceCache((c) => ({ ...c, [place.id]: place }));
@@ -196,22 +190,16 @@ export default function DraftReviewPage() {
   };
 
   const unlinkPlace = () => {
-    if (!parsedPayload) return;
-    const updated = { ...parsedPayload };
-    delete updated.place_id;
-    setPayloadText(JSON.stringify(updated, null, 2));
+    const { place_id: _rimosso, ...resto } = payload;
+    setPayload(resto);
     setDirty(true);
   };
 
   const handleSave = async () => {
     if (!draft) return;
-    if (!parsedPayload) {
-      showToast(`JSON non valido`, "err");
-      return;
-    }
     setBusy(true);
     try {
-      await updateDraftPayload(draft.id, parsedPayload);
+      await updateDraftPayload(draft.id, payload);
       showToast("Salvato", "ok");
       setDirty(false);
       load();
@@ -270,8 +258,8 @@ export default function DraftReviewPage() {
     );
   }
 
-  const cover = (draft.payload as any)?.cover_image;
-  const sourceUrl = (draft.payload as any)?.website_url || (draft.payload as any)?.source_url;
+  const cover = payload.cover_image as string | undefined;
+  const sourceUrl = (payload.website_url || payload.source_url) as string | undefined;
 
   return (
     <>
@@ -290,12 +278,15 @@ export default function DraftReviewPage() {
 
         <div className="rv-body">
           <div className="rv-card">
-            <div className="rv-section">Payload (editabile)</div>
-            <textarea
-              className="rv-textarea"
-              value={payloadText}
-              onChange={(e) => onPayloadChange(e.target.value)}
-              spellCheck={false}
+            <div className="rv-section">Contenuto</div>
+            <DraftFields
+              kind={draft.kind as "place" | "event"}
+              payload={payload}
+              onChange={onPayloadChange}
+              draftId={draft.id}
+              cityId={draft.city_id}
+              categoryId={categoryId}
+              onCategoryChange={setCategoryId}
             />
             <div className="rv-actions">
               <button

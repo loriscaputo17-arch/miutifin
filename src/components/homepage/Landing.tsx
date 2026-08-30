@@ -203,12 +203,12 @@ const S = `
 @media(max-width:900px){.mf-col-grid{grid-template-columns:1fr;gap:2rem}}
 .mf-col-points{display:flex;flex-direction:column;border-top:1px solid var(--mf-line)}
 .mf-col-points li{
-  display:flex;gap:14px;padding:1.15rem 0;border-bottom:1px solid var(--mf-line);
+  position:relative;padding:1.15rem 0 1.15rem 21px;border-bottom:1px solid var(--mf-line);
   font-size:16px;line-height:1.55;letter-spacing:-.011em;color:var(--mf-ink-2);
 }
 .mf-col-points li::before{
-  content:'';width:7px;height:7px;border-radius:2px;background:var(--mf-red-b);
-  flex-shrink:0;margin-top:.5em;
+  content:'';position:absolute;left:0;top:calc(1.15rem + .5em);
+  width:7px;height:7px;border-radius:2px;background:var(--mf-red-b);
 }
 .mf-join{
   margin-top:1.6rem;background:var(--mf-bg-2);border:1px solid var(--mf-line);border-radius:var(--mf-r);
@@ -247,8 +247,8 @@ const S = `
 .mf-contact-grid{display:grid;grid-template-columns:1fr 1.1fr;gap:clamp(2.5rem,6vw,5rem);align-items:start}
 @media(max-width:900px){.mf-contact-grid{grid-template-columns:1fr}}
 .mf-re{margin-top:2rem;display:flex;flex-direction:column;gap:.9rem}
-.mf-re li{display:flex;gap:11px;font-size:15.5px;color:var(--mf-ink-2);letter-spacing:-.011em;line-height:1.45}
-.mf-re li::before{content:'✓';color:var(--mf-red-b);font-size:12px;font-weight:700;margin-top:2px}
+.mf-re li{position:relative;padding-left:20px;font-size:15.5px;color:var(--mf-ink-2);letter-spacing:-.011em;line-height:1.45}
+.mf-re li::before{content:'✓';position:absolute;left:0;top:1px;color:var(--mf-red-b);font-size:12px;font-weight:700}
 .mf-cinfo{margin-top:2.4rem;display:flex;gap:2.5rem;flex-wrap:wrap}
 .mf-cinfo-l{font-family:var(--mf-fm);font-size:10.5px;letter-spacing:.13em;text-transform:uppercase;color:var(--mf-mut-2);margin-bottom:7px}
 .mf-cinfo-v{font-size:15.5px;letter-spacing:-.012em;color:var(--mf-ink)}
@@ -647,7 +647,7 @@ type Key = keyof Form;
 const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 const REQUIRED: Key[] = ["name", "company", "email", "type", "message", "consent"];
 
-function Contact({ c }: { c: ReturnType<typeof useCopy> }) {
+function Contact({ c, locale }: { c: ReturnType<typeof useCopy>; locale: string }) {
   const f = c.contact.form;
   const [form, setForm] = useState<Form>({
     name: "", company: "", email: "", type: "", budget: "", message: "", consent: false,
@@ -828,7 +828,7 @@ function Contact({ c }: { c: ReturnType<typeof useCopy> }) {
                       onChange={e => set("consent", e.target.checked)} onBlur={() => blur("consent")}
                       aria-invalid={!!(touched.consent && errors.consent)}
                     />
-                    <span>{f.consent}<a href="/privacy" target="_blank" rel="noopener noreferrer">{f.privacy}</a>.</span>
+                    <span>{f.consent}<a href={`/${locale}/privacy`} target="_blank" rel="noopener noreferrer">{f.privacy}</a>.</span>
                   </label>
                   {err("consent")}
                 </div>
@@ -889,7 +889,7 @@ export default function Landing() {
         <Esco c={c} locale={locale} />
         <Collective c={c} />
         <Faq c={c} />
-        <Contact c={c} />
+        <Contact c={c} locale={locale} />
       </main>
       <Footer />
       <StickyCta c={c} />

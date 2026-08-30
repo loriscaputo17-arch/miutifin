@@ -1,169 +1,97 @@
 "use client";
 
 import { useEffect, useState, useTransition } from "react";
-import { useLocale, useTranslations } from "next-intl";
+import { useLocale } from "next-intl";
 import { useRouter, usePathname } from "@/i18n/navigation";
-import { createSupabaseBrowserClient } from "@/lib/supabaseClient";
+import { useEscoCopy } from "@/components/esco/content";
 
-export function EscoNavbar({ activePath }: { activePath?: string } = {}) {
-  const [scrolled, setScrolled] = useState(false);
-  const [open, setOpen] = useState(false);
-  const [isPending, startTransition] = useTransition();
+const S = `
+.e-nav{
+  position:fixed;top:0;left:0;right:0;z-index:200;height:74px;display:flex;align-items:center;
+  background:rgba(246,243,236,.72);backdrop-filter:blur(16px) saturate(180%);
+  -webkit-backdrop-filter:blur(16px) saturate(180%);
+  border-bottom:1px solid transparent;transition:border-color .25s ease,background .25s ease,height .25s ease;
+}
+.e-nav.s{border-bottom-color:var(--e-line);background:rgba(246,243,236,.94);height:66px}
+.e-nav-in{
+  width:100%;max-width:var(--e-wrap);margin:0 auto;padding:0 var(--e-pad);
+  display:flex;align-items:center;justify-content:space-between;gap:1.5rem;
+}
+.e-brand{display:flex;align-items:center;gap:12px;min-width:0}
+.e-brand-logo{
+  width:42px;height:42px;border-radius:12px;background:var(--e-paper-2);border:1px solid var(--e-line);
+  display:flex;align-items:center;justify-content:center;flex-shrink:0;overflow:hidden;
+}
+.e-brand-logo img{width:42px;height:42px;object-fit:contain}
+.e-brand-name{font-family:var(--e-fd);font-size:24px;font-weight:900;letter-spacing:-.05em;color:var(--e-ink)}
+.e-brand-back{
+  display:none;align-items:center;gap:6px;padding-left:14px;margin-left:2px;
+  border-left:1px solid var(--e-line);font-size:13.5px;color:var(--e-mut-2);transition:color .2s ease;
+}
+.e-brand-back:hover{color:var(--e-ink)}
+@media(min-width:820px){.e-brand-back{display:inline-flex}}
 
-  // Stats reali da Supabase (stesso RPC dell'Hero)
-  const [stats, setStats] = useState<{ members: number; citiesLive: number } | null>(null);
+.e-nav-right{display:flex;align-items:center;gap:14px}
+.e-lang{display:inline-flex;align-items:center;gap:6px;font-family:var(--e-fm);font-size:12px;letter-spacing:.1em}
+.e-lang button{background:none;border:none;padding:2px;color:var(--e-mut-2);font:inherit;transition:color .18s ease}
+.e-lang button:hover{color:var(--e-ink)}
+.e-lang button.a{color:var(--e-ink);font-weight:500}
+.e-lang button:disabled{opacity:.5;cursor:wait}
+.e-lang i{color:var(--e-line-3);font-style:normal}
+.e-nav-cta{height:42px;padding:0 20px;font-size:14.5px}
+@media(max-width:560px){
+  .e-nav-cta{display:none}
+  .e-nav{height:64px}
+  .e-nav.s{height:58px}
+  .e-brand-logo{width:36px;height:36px;border-radius:10px}
+  .e-brand-logo img{width:36px;height:36px}
+  .e-brand-name{font-size:21px}
+}
+`;
 
-  const locale = useLocale() as "it" | "en";
-  const t = useTranslations("esco.nav");
+export function EscoNavbar() {
+  const locale = useLocale();
+  const c = useEscoCopy(locale);
   const router = useRouter();
   const pathname = usePathname();
-
-  const NAV_LINKS = [
-    { label: t("preview"), href: "/esco#preview" },
-    { label: t("access"), href: "/esco#access" },
-    { label: t("cities"), href: "/esco#cities" },
-  ];
-
-  const switchLang = (next: "it" | "en") => {
-    if (next === locale) return;
-    startTransition(() => {
-      router.replace(pathname, { locale: next });
-    });
-  };
+  const [isPending, startTransition] = useTransition();
+  const [scrolled, setScrolled] = useState(false);
 
   useEffect(() => {
-    const fn = () => setScrolled(window.scrollY > 30);
+    const fn = () => setScrolled(window.scrollY > 8);
+    fn();
     window.addEventListener("scroll", fn, { passive: true });
     return () => window.removeEventListener("scroll", fn);
   }, []);
 
-  useEffect(() => {
-    document.body.style.overflow = open ? "hidden" : "";
-    return () => { document.body.style.overflow = ""; };
-  }, [open]);
-
-  // Fetch stats reali da Supabase
-  useEffect(() => {
-    const fetchStats = async () => {
-      try {
-        const sb = createSupabaseBrowserClient();
-        const { data, error } = await sb.rpc("get_landing_stats");
-        if (!error && data) {
-          setStats({
-            members: (data as { members: number }).members,
-            citiesLive: (data as { citiesLive: number }).citiesLive,
-          });
-        }
-      } catch {
-        // Silenzioso — se fallisce, non mostriamo le stats
-      }
-    };
-    fetchStats();
-  }, []);
-
-  const LangSwitch = ({ small = false }: { small?: boolean }) => (
-    <div className="esco-lang" role="group" aria-label={t("language")}>
-      <span className={`esco-lang-pill ${locale === "en" ? "en" : ""}`} aria-hidden />
-      <button
-        type="button"
-        className={locale === "it" ? "a" : ""}
-        onClick={() => switchLang("it")}
-        aria-pressed={locale === "it"}
-        disabled={isPending}
-      >IT</button>
-      <button
-        type="button"
-        className={locale === "en" ? "a" : ""}
-        onClick={() => switchLang("en")}
-        aria-pressed={locale === "en"}
-        disabled={isPending}
-      >EN</button>
-    </div>
-  );
+  const switchLang = (next: "it" | "en") => {
+    if (next === locale) return;
+    startTransition(() => router.replace(pathname, { locale: next }));
+  };
 
   return (
     <>
-      <nav className={`esco-nav ${scrolled ? "s" : ""}`}>
-        <div className="esco-nav-inner">
-          <div className="esco-brand">
-            <a href={`/${locale}/esco`} className="esco-brand-logo" aria-label="ESCO home">
-              <img src="/images/esco_logo.png" alt="ESCO" />
+      <style>{S}</style>
+      <nav className={`e-nav ${scrolled ? "s" : ""}`}>
+        <div className="e-nav-in">
+          <div className="e-brand">
+            <a href={`/${locale}/esco`} className="e-brand-logo" aria-label="ESCO">
+              <img src="/images/esco_colored_logo.png" alt="" />
             </a>
-            <a href={`/${locale}/esco`}>
-              <span className="esco-brand-name">esco</span>
-            </a>
-            <a href={`/${locale}`} className="esco-brand-back">
-              <svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6" /></svg>
-              miutifin
-            </a>
+            <a href={`/${locale}/esco`}><span className="e-brand-name">ESCO</span></a>
+            <a href={`/${locale}`} className="e-brand-back">← {c.nav.back}</a>
           </div>
 
-          <div className="esco-nav-links">
-            {NAV_LINKS.map(l => (
-              <a
-                key={l.href}
-                href={l.href}
-                className={activePath && l.href.startsWith(activePath) ? "active" : ""}
-              >
-                {l.label}
-              </a>
-            ))}
-          </div>
-
-          <div className="esco-nav-right">
-            <LangSwitch />
-            <a href="/esco#waitlist" className="esco-nav-cta">{t("cta")}</a>
-            <button
-              className={`esco-burger ${open ? "o" : ""}`}
-              onClick={() => setOpen(!open)}
-              aria-label="menu"
-            >
-              <span /><span /><span />
-            </button>
+          <div className="e-nav-right">
+            <div className="e-lang" role="group" aria-label={c.nav.language}>
+              <button type="button" className={locale === "it" ? "a" : ""} onClick={() => switchLang("it")} disabled={isPending} aria-pressed={locale === "it"}>IT</button>
+              <i aria-hidden>/</i>
+              <button type="button" className={locale === "en" ? "a" : ""} onClick={() => switchLang("en")} disabled={isPending} aria-pressed={locale === "en"}>EN</button>
+            </div>
+            <a href="#join" className="e-btn e-btn-p e-nav-cta">{c.nav.cta}</a>
           </div>
         </div>
       </nav>
-
-      <div className={`esco-mob ${open ? "o" : ""}`}>
-        <div className="esco-mob-eyebrow">{t("menu")}</div>
-        <div className="esco-mob-list">
-          {NAV_LINKS.map(l => (
-            <a key={l.href} href={l.href} onClick={() => setOpen(false)}>
-              <span>{l.label}</span>
-              <span className="arr">→</span>
-            </a>
-          ))}
-          <a href="/esco/journal" onClick={() => setOpen(false)}>
-            <span>{t("journal")}</span><span className="arr">→</span>
-          </a>
-          <a href="/esco/press" onClick={() => setOpen(false)}>
-            <span>{t("press")}</span><span className="arr">→</span>
-          </a>
-          <a href={`/${locale}`} onClick={() => setOpen(false)}>
-            <span>{t("back")}</span><span className="arr">→</span>
-          </a>
-        </div>
-
-        <div className="esco-mob-lang">
-          <span className="esco-mob-lang-label">{t("language")}</span>
-          <LangSwitch />
-        </div>
-
-        <div className="esco-mob-foot">
-          <a href="/esco#waitlist" onClick={() => setOpen(false)} className="esco-mob-cta">
-            {t("cta")} →
-          </a>
-          {/* Stats reali — appaiono solo se ci sono dati */}
-          {stats && (
-            <div className="esco-mob-foot-info">
-              <span className="live">{t("citiesLive", { count: stats.citiesLive })}</span>
-              {stats.members > 0 && (
-                <span>{t("membersCount", { count: stats.members.toLocaleString() })}</span>
-              )}
-            </div>
-          )}
-        </div>
-      </div>
     </>
   );
 }
