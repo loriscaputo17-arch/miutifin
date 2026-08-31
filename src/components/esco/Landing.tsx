@@ -489,10 +489,10 @@ function JoinForm({ c, source, locale }: { c: ReturnType<typeof useEscoCopy>; so
     <form className="e-join" onSubmit={submit} noValidate>
       <div className="e-tabs" role="tablist">
         <span className={`e-tabs-pill ${mode === "email" ? "email" : ""}`} aria-hidden />
-        <button
+        {/*<button
           type="button" role="tab" aria-selected={mode === "phone"}
           className={`e-tab ${mode === "phone" ? "a" : ""}`} onClick={() => switchTo("phone")}
-        >{h.tabPhone}</button>
+        >{h.tabPhone}</button>*/}
         <button
           type="button" role="tab" aria-selected={mode === "email"}
           className={`e-tab ${mode === "email" ? "a" : ""}`} onClick={() => switchTo("email")}
