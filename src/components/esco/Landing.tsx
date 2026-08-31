@@ -416,7 +416,7 @@ const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
    ============================================================ */
 function JoinForm({ c, source, locale }: { c: ReturnType<typeof useEscoCopy>; source: string; locale: string }) {
   const h = c.hero;
-  const [mode, setMode] = useState<"phone" | "email">("phone");
+  const [mode, setMode] = useState<"phone" | "email">("email");
   const [value, setValue] = useState("");
   const [consent, setConsent] = useState(false);
   const [trap, setTrap] = useState("");            // honeypot
