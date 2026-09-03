@@ -133,7 +133,7 @@ export async function POST(req: NextRequest) {
   }
 
   const url = process.env.NEXT_PUBLIC_SUPABASE_URL;
-  const key = process.env.SUPABASE_SERVICE_ROLE_KEY;
+  const key = process.env.SUPABASE_SERVICE_KEY;
   if (!url || !key) {
     console.error("waitlist: variabili Supabase mancanti");
     return NextResponse.json({ error: "server" }, { status: 500 });
