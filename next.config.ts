@@ -33,6 +33,10 @@ const nextConfig: NextConfig = {
     },
   ];
 },
+
+async redirects() {
+  return [{ source: "/u/:nickname", destination: "/it/esco/u/:nickname", permanent: false }];
+}
 };
 
 export default withNextIntl(nextConfig);
